@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LearningAssistant</string>
+
+
+    <!--Nav Menu Strings-->
+    <string name="nav_menu_messages">Сообщения</string>
+    <string name="nav_menu_settings">Настройки</string>
+    <string name="nav_menu_exit">Выход</string>
+
+
+</resources>
