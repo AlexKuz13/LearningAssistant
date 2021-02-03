@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Style Toolbar-->
     <style name="mainToolbar">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
@@ -8,12 +9,21 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
-    <style name="nav_menu_header">
+
+    <!--Style TextView Nav Menu Header-->
+    <style name="text_nav_menu_header">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/normal_margin</item>
         <item name="android:layout_marginLeft">@dimen/normal_margin</item>
-        <item name="android:layout_marginTop">12dp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Style Text in Nav Menu -->
+    <style name="text_nav_menu">
+        <item name="itemIconTint">@color/purple_700</item>
+        <item name="itemTextColor">@color/purple_700</item>
+        <item name="android:textSize">@dimen/normal_text</item>
+        <item name="itemIconSize">30dp</item>
     </style>
 </resources>

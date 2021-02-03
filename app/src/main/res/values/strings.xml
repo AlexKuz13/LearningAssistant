@@ -6,6 +6,11 @@
     <string name="nav_menu_messages">Сообщения</string>
     <string name="nav_menu_settings">Настройки</string>
     <string name="nav_menu_exit">Выход</string>
+    <string name="nav_menu_header_defalt_fullname">Name Surname</string>
+    <string name="nav_menu_header_phone">+79650000000</string>
 
+    <!-- Navigation strings -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>
