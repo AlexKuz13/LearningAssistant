@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LearningAssistant</string>
+    <string name="app_name">Learning Assistant</string>
 
 
     <!--Nav Menu Strings-->
@@ -12,5 +12,8 @@
     <!-- Navigation strings -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
