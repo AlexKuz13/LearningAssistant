@@ -47,7 +47,6 @@
         android:textCursorDrawable="@drawable/black_cursor"
         android:gravity="center"
         android:inputType="phone"
-        android:maxLines="1"
         android:hint="@string/nav_menu_header_phone"
         app:layout_constraintEnd_toEndOf="@id/register_signature_phone"
         app:layout_constraintStart_toStartOf="@id/register_signature_phone"
@@ -58,11 +57,10 @@
         android:id="@+id/register_btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_arrow_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="@dimen/normal_margin"
-        />
-
+        android:layout_margin="@dimen/normal_margin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

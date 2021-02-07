@@ -28,4 +28,10 @@
     <string name="settings_info_signature">Напишите немного о себе</string>
     <string name="change_name">Изменить имя</string>
 
+    <!-- register and entercode fragment -->
+    <string name="register_enter_phone">Введите ваш номер телефона</string>
+    <string name="enter_code_phrase">Введите код</string>
+    <string name="code_sent_phone">Код отправлен на ваш телефон</string>
+    <string name="hint_et_code">- - - - - -</string>
+
 </resources>

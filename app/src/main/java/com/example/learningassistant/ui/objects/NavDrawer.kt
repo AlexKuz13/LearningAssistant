@@ -25,7 +25,6 @@ class NavDrawer(private var toolbar: Toolbar) {
     fun create() {
         initView()
         initNavDrawer()
-        APP_ACTIVITY.drawer_layout
     }
 
     private fun initView() {

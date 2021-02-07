@@ -10,6 +10,9 @@
     <dimen name="large_text">20sp</dimen>
     <dimen name="normal_text">16sp</dimen>
     <dimen name="small_text">14sp</dimen>
+
+    <!-- Image Size -->
     <dimen name="size_circle_image">55dp</dimen>
+    <dimen name="size_large_circle_image">75dp</dimen>
 
 </resources>

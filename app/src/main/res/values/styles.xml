@@ -69,7 +69,8 @@
         <item name="android:layout_marginEnd">@dimen/normal_margin</item>
         <item name="android:layout_marginRight">@dimen/normal_margin</item>
     </style>
-    
+
+    <!-- Action menu in SettingsFragment -->
     <style name="action_menu" parent="Theme.AppCompat.Light">
         <item name="background">@color/white</item>
         <item name="actionMenuTextColor">@color/black</item>

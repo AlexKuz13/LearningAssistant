@@ -2,13 +2,17 @@ package com.example.learningassistant
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.fragments.MainFragment
+import com.example.learningassistant.ui.fragments.register.RegisterFragment
 import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.replaceFragment
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,8 +33,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun initFunc() {
         setSupportActionBar(mToolbar)
-        mNavDrawer.create()
-        replaceFragment(MainFragment(), false)
+        if (false) {
+            mNavDrawer.create()
+            replaceFragment(MainFragment(), false)
+        } else {
+            mToolbar.visibility = View.GONE
+            drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            replaceFragment(RegisterFragment(), false)
+        }
 
         //проверка на авторизацию и замена фрагментов
     }
