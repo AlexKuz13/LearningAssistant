@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.fragments.MainFragment
 import com.example.learningassistant.ui.fragments.register.RegisterFragment
@@ -12,6 +13,7 @@ import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.replaceFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
     lateinit var mNavDrawer: NavDrawer
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun initFunc() {
         setSupportActionBar(mToolbar)
-        if (false) {
+        if (AUTH.currentUser!=null) {
             mNavDrawer.create()
             replaceFragment(MainFragment(), false)
         } else {
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mNavDrawer = NavDrawer(mToolbar)
+        AUTH= FirebaseAuth.getInstance()
     }
 
     override fun onBackPressed() {

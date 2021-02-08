@@ -10,10 +10,12 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
+import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.ui.fragments.MessagesFragment
 import com.example.learningassistant.ui.fragments.SettingsFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.replaceFragment
+import com.example.learningassistant.utilits.restartActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,7 +30,7 @@ class NavDrawer(private var toolbar: Toolbar) {
     }
 
     private fun initView() {
-         mDrawerLayout = APP_ACTIVITY.drawer_layout
+        mDrawerLayout = APP_ACTIVITY.drawer_layout
         mNavigationView = APP_ACTIVITY.nav_view
     }
 
@@ -50,26 +52,30 @@ class NavDrawer(private var toolbar: Toolbar) {
     }
 
     fun onNavMenuSelected(item: MenuItem) {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.nav_settings -> replaceFragment(SettingsFragment())
             R.id.nav_messages -> replaceFragment(MessagesFragment())
+            R.id.nav_logout -> {
+                AUTH.signOut()
+                restartActivity()
+            }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START)
     }
 
-    fun disableDrawer(){
-       toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+    fun disableDrawer() {
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         toolbar.setNavigationOnClickListener {
             APP_ACTIVITY.supportFragmentManager.popBackStack()
         }
     }
 
-    fun enableDrawer(){
+    fun enableDrawer() {
         toolbar.setNavigationIcon(R.drawable.ic_nav_menu)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         toolbar.setNavigationOnClickListener {
-           mDrawerLayout.openDrawer(GravityCompat.START)
+            mDrawerLayout.openDrawer(GravityCompat.START)
         }
     }
 

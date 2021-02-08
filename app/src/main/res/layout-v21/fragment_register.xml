@@ -19,10 +19,11 @@
     <TextView
         android:id="@+id/register_app_name"
         style="@style/text_nav_menu_header"
-        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/large_margin"
         android:fontFamily="@font/baloo"
         android:text="@string/app_name"
         android:textSize="40sp"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintBottom_toTopOf="@id/register_signature_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,6 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/register_input_phone_number"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"
