@@ -20,7 +20,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
 
     private lateinit var mCallBack:PhoneAuthProvider.OnVerificationStateChangedCallbacks
-
+    private lateinit var mPhoneNumber:String
 
     override fun onStart() {
         super.onStart()
@@ -39,7 +39,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             }
 
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-                replaceFragment(EnterCodeFragment(id))
+                replaceFragment(EnterCodeFragment(mPhoneNumber,id))
             }
         }
         register_btn_next.setOnClickListener {
@@ -55,7 +55,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun authUser() {
-       val mPhoneNumber=register_input_phone_number.text.toString()
+        mPhoneNumber=register_input_phone_number.text.toString()
         PhoneAuthProvider.verifyPhoneNumber(
             PhoneAuthOptions
                 .newBuilder(FirebaseAuth.getInstance())

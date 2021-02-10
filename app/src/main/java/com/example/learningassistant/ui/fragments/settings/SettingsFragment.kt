@@ -1,11 +1,12 @@
-package com.example.learningassistant.ui.fragments
+package com.example.learningassistant.ui.fragments.settings
 
-import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import com.example.learningassistant.R
+import com.example.learningassistant.database.USER
+import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
@@ -13,6 +14,17 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         super.onResume()
         APP_ACTIVITY.title="Настройки"
         setHasOptionsMenu(true)
+        initFields()
+    }
+
+    private fun initFields() {
+        settings_phone_number.text=USER.phone
+        settings_header_fullname.text=USER.fullName
+        settings_info.text=USER.info
+        settings_rating.text=USER.rating.toString()
+        settings_number_work.text=USER.completeWorks.toString()
+        settings_header_status.text=USER.status
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

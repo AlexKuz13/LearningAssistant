@@ -1,18 +1,14 @@
 package com.example.learningassistant.ui.objects
 
-import android.service.dreams.DreamService
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
 import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.ui.fragments.MessagesFragment
-import com.example.learningassistant.ui.fragments.SettingsFragment
+import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.replaceFragment
 import com.example.learningassistant.utilits.restartActivity
