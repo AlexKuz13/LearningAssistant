@@ -16,6 +16,8 @@ import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.replaceFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.header.*
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,13 +35,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         initUser()
         initFields()
         initFunc()
-
-
     }
 
     private fun initFunc() {
         setSupportActionBar(mToolbar)
-        if (AUTH.currentUser!=null) {
+        if (AUTH.currentUser != null) {
             mNavDrawer.create()
             replaceFragment(MainFragment(), false)
         } else {
@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mNavDrawer = NavDrawer(mToolbar)
-
     }
 
     override fun onBackPressed() {

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.learningassistant.R
+import com.example.learningassistant.database.USER
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.showToast
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {

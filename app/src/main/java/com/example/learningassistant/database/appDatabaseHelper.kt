@@ -1,6 +1,8 @@
 package com.example.learningassistant.database
 
 import com.example.learningassistant.models.User
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -32,5 +34,7 @@ fun initUser(){
     DB.collection(COLL_USERS).document(UID).get()
         .addOnSuccessListener {
             USER=it.toObject(User::class.java) ?: User()
+            APP_ACTIVITY.mNavDrawer.updateHeader()
         }
+        .addOnFailureListener { showToast(it.message.toString()) }
 }

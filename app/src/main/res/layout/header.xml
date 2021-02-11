@@ -10,7 +10,6 @@
         android:layout_width="@dimen/size_large_circle_image"
         android:layout_height="@dimen/size_large_circle_image"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="@dimen/normal_margin"
         android:layout_marginStart="@dimen/normal_margin"
         android:src="@drawable/ic_default_profile_photo"
         app:layout_constraintStart_toStartOf="parent"

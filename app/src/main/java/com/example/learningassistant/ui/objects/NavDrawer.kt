@@ -1,12 +1,15 @@
 package com.example.learningassistant.ui.objects
 
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
 import com.example.learningassistant.database.AUTH
+import com.example.learningassistant.database.USER
 import com.example.learningassistant.ui.fragments.MessagesFragment
 import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
@@ -14,15 +17,24 @@ import com.example.learningassistant.utilits.replaceFragment
 import com.example.learningassistant.utilits.restartActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.header.*
+import kotlinx.android.synthetic.main.header.view.*
 
 class NavDrawer(private var toolbar: Toolbar) {
     lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mNavigationView: NavigationView
     private lateinit var mToggle: ActionBarDrawerToggle
+    private lateinit var mHeader:View
 
     fun create() {
         initView()
         initNavDrawer()
+    }
+
+     fun updateHeader() {
+        mHeader= mNavigationView.getHeaderView(0)
+        mHeader.menu_profile_fullname.text=USER.fullName
+        mHeader.menu_profile_phone_number.text=USER.phone
     }
 
     private fun initView() {
@@ -74,5 +86,4 @@ class NavDrawer(private var toolbar: Toolbar) {
             mDrawerLayout.openDrawer(GravityCompat.START)
         }
     }
-
 }

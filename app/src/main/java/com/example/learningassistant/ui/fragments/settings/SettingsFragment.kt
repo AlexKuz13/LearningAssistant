@@ -5,6 +5,7 @@ import com.example.learningassistant.R
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.replaceFragment
 import com.example.learningassistant.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_settings.*
 
@@ -24,7 +25,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_rating.text=USER.rating.toString()
         settings_number_work.text=USER.completeWorks.toString()
         settings_header_status.text=USER.status
-
+        settings_layout_info.setOnClickListener { replaceFragment(ChangeInfoFragment()) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -33,7 +34,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.settings_menu_change_name -> showToast("Изменить имя")
+            R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }
         return true
     }
