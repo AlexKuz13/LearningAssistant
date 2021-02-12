@@ -9,7 +9,7 @@
         android:id="@+id/menu_profile_photo"
         android:layout_width="@dimen/size_large_circle_image"
         android:layout_height="@dimen/size_large_circle_image"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="@dimen/normal_margin"
         android:src="@drawable/ic_default_profile_photo"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/menu_profile_fullname"
         style="@style/text_nav_menu_header"
-        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:fontFamily="@font/baloo"
         android:text="@string/nav_menu_header_defalt_fullname"
         android:textSize="@dimen/large_text"

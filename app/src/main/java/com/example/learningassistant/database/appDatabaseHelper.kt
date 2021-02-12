@@ -1,17 +1,23 @@
 package com.example.learningassistant.database
 
+import android.net.Uri
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 lateinit var AUTH:FirebaseAuth
 lateinit var DB:FirebaseFirestore
 lateinit var USER:User
 lateinit var UID:String
+lateinit var REF_STORAGE_ROOT: StorageReference
 
 const val COLL_USERS="users"
+
+const val FOLDER_PROFILE_IMAGE = "profile_image"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
@@ -28,6 +34,7 @@ fun initFirebase(){
     DB= FirebaseFirestore.getInstance()
     USER = User()
     UID= AUTH.currentUser?.uid.toString()
+    REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
 }
 
 fun initUser(){
@@ -38,3 +45,24 @@ fun initUser(){
         }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
+
+
+inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
+    path.putFile(uri)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url: String) -> Unit) {
+    path.downloadUrl
+        .addOnSuccessListener { function(it.toString()) }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+inline fun putUrlToDatabase(url:String, crossinline function: () -> Unit){
+    DB.collection(COLL_USERS).document(UID).update(CHILD_PHOTO_URL,url)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+
