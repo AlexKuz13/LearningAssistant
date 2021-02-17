@@ -37,11 +37,11 @@ fun initFirebase(){
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
 }
 
-fun initUser(){
+inline fun initUser(crossinline function: () -> Unit){
     DB.collection(COLL_USERS).document(UID).get()
         .addOnSuccessListener {
             USER=it.toObject(User::class.java) ?: User()
-            APP_ACTIVITY.mNavDrawer.updateHeader()
+            function()
         }
         .addOnFailureListener { showToast(it.message.toString()) }
 }

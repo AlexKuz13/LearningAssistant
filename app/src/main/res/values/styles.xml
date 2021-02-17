@@ -15,7 +15,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/normal_margin</item>
-        <item name="android:layout_marginLeft">@dimen/normal_margin</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -65,9 +64,7 @@
         <item name="android:background">@color/grey</item>
         <item name="android:layout_marginTop">@dimen/small_margin</item>
         <item name="android:layout_marginStart">@dimen/normal_margin</item>
-        <item name="android:layout_marginLeft">@dimen/normal_margin</item>
         <item name="android:layout_marginEnd">@dimen/normal_margin</item>
-        <item name="android:layout_marginRight">@dimen/normal_margin</item>
     </style>
 
     <!-- Action menu in SettingsFragment -->

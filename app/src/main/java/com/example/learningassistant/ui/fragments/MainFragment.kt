@@ -8,13 +8,20 @@ import android.view.ViewGroup
 import com.example.learningassistant.R
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.replaceFragment
 import com.example.learningassistant.utilits.showToast
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
+
+
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title= "Learning Assistant"
         APP_ACTIVITY.mNavDrawer.enableDrawer()
+        btn_create_task.setOnClickListener {
+            CreateTaskFragment().show(APP_ACTIVITY.supportFragmentManager,"createTaskFragment")
+        }
     }
 }

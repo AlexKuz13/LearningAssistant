@@ -34,4 +34,13 @@
     <string name="code_sent_phone">Код отправлен на ваш телефон</string>
     <string name="hint_et_code">- - - - - -</string>
 
+    <!-- Task Item -->
+    <string name="task_topic">Тема:</string>
+    <string name="task_description">Описание:</string>
+    <string name="create_task">Попросить помощь</string>
+    <string name="create_task_hint_description">Опишите свое задание</string>
+    <string name="create_task_submit">Разместить</string>
+    <string name="create_task_name_topic">Название темы</string>
+    <string name="btn_help">Помочь</string>
+
 </resources>
