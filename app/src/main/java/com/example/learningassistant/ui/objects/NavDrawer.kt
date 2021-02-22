@@ -12,10 +12,7 @@ import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.ui.fragments.MessagesFragment
 import com.example.learningassistant.ui.fragments.settings.SettingsFragment
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.downloadAndSetImage
-import com.example.learningassistant.utilits.replaceFragment
-import com.example.learningassistant.utilits.restartActivity
+import com.example.learningassistant.utilits.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.*
@@ -66,6 +63,7 @@ class NavDrawer(private var toolbar: Toolbar) {
             R.id.nav_settings -> replaceFragment(SettingsFragment())
             R.id.nav_messages -> replaceFragment(MessagesFragment())
             R.id.nav_logout -> {
+                AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
                 restartActivity()
             }
@@ -86,6 +84,7 @@ class NavDrawer(private var toolbar: Toolbar) {
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         toolbar.setNavigationOnClickListener {
             mDrawerLayout.openDrawer(GravityCompat.START)
+            AppStates.updateState(AppStates.ONLINE)
         }
     }
 }

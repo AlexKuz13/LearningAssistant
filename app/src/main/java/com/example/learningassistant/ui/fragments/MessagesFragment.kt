@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.learningassistant.R
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.AppStates
 import com.example.learningassistant.utilits.showToast
 
 class MessagesFragment : BaseFragment(R.layout.fragment_messages) {

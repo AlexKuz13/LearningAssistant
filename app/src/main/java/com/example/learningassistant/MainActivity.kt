@@ -73,14 +73,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mNavDrawer.onNavMenuSelected(item)
         return true
     }
+    
 
-    override fun onStart() {
-        super.onStart()
-        AppStates.updateState(AppStates.ONLINE)
-    }
-
-    override fun onStop() {
+     override fun onStop() {
         super.onStop()
         AppStates.updateState(AppStates.OFFLINE)
     }
+
 }

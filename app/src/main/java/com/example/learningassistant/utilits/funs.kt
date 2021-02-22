@@ -9,14 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
 
-fun showToast(message:String){
-    Toast.makeText(APP_ACTIVITY,message, Toast.LENGTH_SHORT).show()
+fun showToast(message: String) {
+    Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
 }
 
-fun replaceFragment(fragment: Fragment, addStack:Boolean=true){
-    if(addStack) {
+fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
+    if (addStack) {
         APP_ACTIVITY.supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.data_container, fragment).commit()
@@ -32,15 +36,23 @@ fun restartActivity() {
     APP_ACTIVITY.finish()
 }
 
-fun AppCompatActivity.hideKeyboard(){
-    val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.hideSoftInputFromWindow(window.decorView.windowToken,0)
+fun AppCompatActivity.hideKeyboard() {
+    val imm: InputMethodManager =
+        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
 }
 
-fun ImageView.downloadAndSetImage(url:String){
+fun ImageView.downloadAndSetImage(url: String) {
     Picasso.get()
         .load(url)
         .fit()
         .placeholder(R.drawable.ic_default_profile_photo)
         .into(this)
+}
+
+fun String.asTime(): String {
+    val seconds = this.substringBefore(',').substringAfter('=') + "000"
+    val time = Date(seconds.toLong())
+    val timeFormat = SimpleDateFormat("dd.MM HH:mm", Locale.getDefault())
+    return timeFormat.format(time)
 }

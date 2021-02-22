@@ -3,10 +3,7 @@ package com.example.learningassistant.ui.fragments.register
 import androidx.fragment.app.Fragment
 import com.example.learningassistant.R
 import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.replaceFragment
-import com.example.learningassistant.utilits.restartActivity
-import com.example.learningassistant.utilits.showToast
+import com.example.learningassistant.utilits.*
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential

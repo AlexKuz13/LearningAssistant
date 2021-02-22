@@ -1,23 +1,34 @@
 package com.example.learningassistant.database
 
 import android.net.Uri
+import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.asTime
 import com.example.learningassistant.utilits.showToast
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firestore.v1.DocumentTransform
+import com.google.type.DateTime
+
 
 lateinit var AUTH:FirebaseAuth
 lateinit var DB:FirebaseFirestore
 lateinit var USER:User
+lateinit var TASK:Task
 lateinit var UID:String
 lateinit var REF_STORAGE_ROOT: StorageReference
 
 const val COLL_USERS="users"
+const val COLL_TASKS="tasks"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
+
+const val TYPE_TEXT = "text"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
@@ -27,7 +38,11 @@ const val CHILD_PHOTO_URL = "photoUrl"
 const val CHILD_STATUS = "status"
 const val CHILD_RATING="rating"
 const val CHILD_COMPLETEWORKS="completeWorks"
-
+const val CHILD_TOPIC="topic"
+const val CHILD_FROM="from"
+const val CHILD_DESCRIPTION="description"
+const val CHILD_TYPE_DES="type_des"
+const val CHILD_TIMESTAMP="timestamp"
 
 fun initFirebase(){
     AUTH= FirebaseAuth.getInstance()
@@ -62,6 +77,24 @@ inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url:
 inline fun putUrlToDatabase(url:String, crossinline function: () -> Unit){
     DB.collection(COLL_USERS).document(UID).update(CHILD_PHOTO_URL,url)
         .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+
+fun sendTask(topic: String, description: String, uid: String, typeDes: String, function: () -> Unit) {
+    TASK=Task()
+    TASK.topic=topic
+    TASK.description=description
+    TASK.from=uid
+    TASK.type_des=typeDes
+    TASK.timeStamp=FieldValue.serverTimestamp()
+    val taskKey=DB.collection(COLL_USERS).document().id
+    //val taskkey=FieldValue.serverTimestamp().toString().asTime()
+    DB.collection(COLL_TASKS).document(taskKey).set(TASK)
+        .addOnSuccessListener {
+            showToast("Заявка размещена")
+            function()
+        }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
 

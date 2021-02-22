@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/block_task"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/normal_margin"
@@ -37,6 +38,7 @@
         app:layout_constraintTop_toTopOf="@id/task_profile_fullname" />
 
     <TextView
+        android:id="@+id/task_profile_rating"
         style="@style/text_nav_menu_header"
         android:layout_marginStart="5dp"
         android:textSize="@dimen/small_text"
@@ -46,6 +48,7 @@
         tools:text="5.0" />
 
     <TextView
+        android:id="@+id/task_time"
         style="@style/text_nav_menu_header"
         android:layout_marginEnd="@dimen/normal_margin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,20 +58,19 @@
     <TextView
         android:id="@+id/task_topic"
         style="@style/text_nav_menu_header"
-        android:text="@string/task_topic"
-        android:textStyle="bold"
-        android:textSize="@dimen/large_text"
         android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintTop_toBottomOf="@id/task_profile_photo"
+        android:text="@string/task_topic"
+        android:textSize="@dimen/large_text"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/task_profile_photo" />
 
     <TextView
         android:id="@+id/task_topic_name"
         style="@style/text_nav_menu_header"
+        android:maxWidth="290dp"
         android:textSize="@dimen/large_text"
         android:textStyle="bold"
-        android:maxWidth="290dp"
         app:layout_constraintStart_toEndOf="@id/task_topic"
         app:layout_constraintTop_toTopOf="@id/task_topic"
         tools:text="Уравнения математической физики" />
@@ -76,18 +78,18 @@
     <TextView
         android:id="@+id/task_description"
         style="@style/text_nav_menu_header"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:text="@string/task_description"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold|italic"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintTop_toBottomOf="@id/task_topic_name"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/task_topic_name" />
 
     <TextView
         android:id="@+id/task_description_text"
         style="@style/text_nav_menu_header"
+        android:layout_width="match_parent"
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginEnd="@dimen/normal_margin"
         android:padding="5dp"
@@ -95,18 +97,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task_description"
-        tools:text="Отчет должен содержать: постановку задачи и исходные данные; одной систзультатамиые данные;" />
+        tools:text="Отчет должен содержать: Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:" />
 
     <Button
+        android:id="@+id/btn_task_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/small_margin"
+        android:backgroundTint="@color/white"
         android:text="@string/btn_help"
         android:textColor="@color/purple_500"
-        android:backgroundTint="@color/white"
-        android:layout_margin="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_description_text"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_description_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
