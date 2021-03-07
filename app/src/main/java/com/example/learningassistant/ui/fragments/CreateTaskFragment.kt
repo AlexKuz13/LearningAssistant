@@ -1,8 +1,6 @@
 package com.example.learningassistant.ui.fragments
 
-import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +9,13 @@ import com.example.learningassistant.R
 import com.example.learningassistant.database.TYPE_TEXT
 import com.example.learningassistant.database.UID
 import com.example.learningassistant.database.sendTask
-import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_create_task.*
 
 
 class CreateTaskFragment : DialogFragment() {
 
+    private var mainFrag:MainFragment= MainFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,4 +39,5 @@ class CreateTaskFragment : DialogFragment() {
         }
 
     }
+
 }

@@ -13,10 +13,7 @@ import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.fragments.MainFragment
 import com.example.learningassistant.ui.fragments.register.RegisterFragment
 import com.example.learningassistant.ui.objects.NavDrawer
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.AppStates
-import com.example.learningassistant.utilits.replaceFragment
-import com.example.learningassistant.utilits.showToast
+import com.example.learningassistant.utilits.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.*
@@ -73,11 +70,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mNavDrawer.onNavMenuSelected(item)
         return true
     }
-    
 
-     override fun onStop() {
+    override fun onStop() {
         super.onStop()
         AppStates.updateState(AppStates.OFFLINE)
     }
 
+    override fun onResume() {
+        super.onResume()
+        android.os.Handler().postDelayed({
+            AppStates.updateState((AppStates.ONLINE))
+        }, 3000)
+    }
 }

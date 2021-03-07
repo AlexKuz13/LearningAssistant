@@ -23,44 +23,49 @@ import com.example.learningassistant.utilits.downloadAndSetImage
 import com.example.learningassistant.utilits.showToast
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.task_item.view.*
+import java.lang.NullPointerException
 
-class TaskAdapter:RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
+class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
     private var mlistTasksCache = emptyList<Task>()
 
-    class TaskHolder(view: View):RecyclerView.ViewHolder(view){
-        val blockTask:ConstraintLayout=view.block_task
-        val taskProfilePhoto:CircleImageView=view.task_profile_photo
-        val taskProfileFullname: TextView=view.task_profile_fullname
-        val taskStarRating:TextView=view.task_profile_rating
-        val taskTime:TextView=view.task_time
-        val taskTopicName:TextView=view.task_topic_name
-        val taskDescriptionText:TextView=view.task_description_text
-        val taskBtnHelp:Button=view.btn_task_help
+    class TaskHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val blockTask: ConstraintLayout = view.block_task
+        val taskProfilePhoto: CircleImageView = view.task_profile_photo
+        val taskProfileFullname: TextView = view.task_profile_fullname
+        val taskStarRating: TextView = view.task_profile_rating
+        val taskTime: TextView = view.task_time
+        val taskTopicName: TextView = view.task_topic_name
+        val taskDescriptionText: TextView = view.task_description_text
+        val taskBtnHelp: Button = view.btn_task_help
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         return TaskHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.task_item, parent, false))
+                .inflate(R.layout.task_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
-        var TaskUser:User
-        DB.collection(COLL_USERS).document(mlistTasksCache[position].from).get() // в отдельную функцию
+        var TaskUser: User
+        DB.collection(COLL_USERS).document(mlistTasksCache[position].from)
+            .get() // в отдельную функцию
             .addOnSuccessListener {
-                 TaskUser =it.toObject(User::class.java) ?: User()
+                TaskUser = it.toObject(User::class.java) ?: User()
                 holder.taskProfilePhoto.downloadAndSetImage(TaskUser.photoUrl)
-                holder.taskProfileFullname.text=TaskUser.fullName
-                holder.taskStarRating.text=TaskUser.rating.toString()
-                holder.taskTime.text=mlistTasksCache[position].timeStamp.toString().asTime()
-                holder.taskTopicName.text=mlistTasksCache[position].topic
-                holder.taskDescriptionText.text=mlistTasksCache[position].description
+                holder.taskProfileFullname.text = TaskUser.fullName
+                holder.taskStarRating.text = TaskUser.rating.toString()
+                android.os.Handler().postDelayed({
+                    holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
+                }, 1000)
+                holder.taskTopicName.text = mlistTasksCache[position].topic
+                holder.taskDescriptionText.text = mlistTasksCache[position].description
             }
             .addOnFailureListener { showToast(it.message.toString()) }
-        if(mlistTasksCache[position].from==UID) {
-            holder.taskBtnHelp.visibility=View.GONE
-            holder.blockTask.background= APP_ACTIVITY.getDrawable(R.drawable.task_background_user)
+        if (mlistTasksCache[position].from == UID) {
+            holder.taskBtnHelp.visibility = View.GONE
+            holder.blockTask.background = APP_ACTIVITY.getDrawable(R.drawable.task_background_user)
         }
     }
 

@@ -31,28 +31,32 @@
         android:id="@+id/star_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/normal_margin"
         android:src="@drawable/ic_star_rating"
+        android:layout_marginEnd="@dimen/normal_margin"
         app:layout_constraintBottom_toBottomOf="@id/task_profile_fullname"
-        app:layout_constraintStart_toEndOf="@id/task_profile_fullname"
+        app:layout_constraintEnd_toStartOf="@id/task_profile_rating"
         app:layout_constraintTop_toTopOf="@id/task_profile_fullname" />
 
     <TextView
         android:id="@+id/task_profile_rating"
         style="@style/text_nav_menu_header"
-        android:layout_marginStart="5dp"
-        android:textSize="@dimen/small_text"
+        android:textSize="@dimen/normal_text"
         app:layout_constraintBottom_toBottomOf="@id/star_rating"
-        app:layout_constraintStart_toEndOf="@id/star_rating"
+        android:layout_marginEnd="@dimen/normal_margin"
         app:layout_constraintTop_toTopOf="@id/star_rating"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="5.0" />
 
     <TextView
         android:id="@+id/task_time"
         style="@style/text_nav_menu_header"
-        android:layout_marginEnd="@dimen/normal_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/star_rating"
+        android:textSize="@dimen/normal_text"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_description_text"
         tools:text="23:31" />
 
     <TextView

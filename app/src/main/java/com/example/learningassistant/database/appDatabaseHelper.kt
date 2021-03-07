@@ -3,17 +3,12 @@ package com.example.learningassistant.database
 import android.net.Uri
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.asTime
 import com.example.learningassistant.utilits.showToast
-import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firestore.v1.DocumentTransform
-import com.google.type.DateTime
 
 
 lateinit var AUTH:FirebaseAuth
@@ -42,7 +37,7 @@ const val CHILD_TOPIC="topic"
 const val CHILD_FROM="from"
 const val CHILD_DESCRIPTION="description"
 const val CHILD_TYPE_DES="type_des"
-const val CHILD_TIMESTAMP="timestamp"
+const val CHILD_TIMESTAMP="timeStamp"
 
 fun initFirebase(){
     AUTH= FirebaseAuth.getInstance()
@@ -89,7 +84,6 @@ fun sendTask(topic: String, description: String, uid: String, typeDes: String, f
     TASK.type_des=typeDes
     TASK.timeStamp=FieldValue.serverTimestamp()
     val taskKey=DB.collection(COLL_USERS).document().id
-    //val taskkey=FieldValue.serverTimestamp().toString().asTime()
     DB.collection(COLL_TASKS).document(taskKey).set(TASK)
         .addOnSuccessListener {
             showToast("Заявка размещена")

@@ -18,39 +18,38 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var mRefTasks: CollectionReference
-    private lateinit var mre:CollectionReference
+    private lateinit var mre: CollectionReference
     private lateinit var mAdapter: TaskAdapter
     private lateinit var mRecyclerView: RecyclerView
 
-    //private lateinit var mTasksListener:EventListener<>
     private var mListTasks = emptyList<Task>()
 
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Learning Assistant"
         APP_ACTIVITY.mNavDrawer.enableDrawer()
+        initRecyclerView()
         btn_create_task.setOnClickListener {
             CreateTaskFragment().show(APP_ACTIVITY.supportFragmentManager, "createTaskFragment")
         }
-        initRecyclerView()
     }
 
-    private fun initRecyclerView() {
+     private fun initRecyclerView() {
         mRecyclerView = task_recycler_view
         mAdapter = TaskAdapter()
         mRefTasks = DB.collection(COLL_TASKS)
         mRecyclerView.adapter = mAdapter
-        mRefTasks.addSnapshotListener { value, error ->
+        mRefTasks.orderBy(CHILD_TIMESTAMP).addSnapshotListener { value, error ->
             error?.let {
                 showToast(it.message.toString())
-                return@addSnapshotListener
             }
             value?.let {
                 mListTasks = it.toObjects(Task::class.java)
                 mAdapter.setList(mListTasks)
-                //mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+                mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
             }
-
         }
     }
+
+
 }

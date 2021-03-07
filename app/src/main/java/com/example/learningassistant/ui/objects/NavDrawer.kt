@@ -84,7 +84,6 @@ class NavDrawer(private var toolbar: Toolbar) {
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         toolbar.setNavigationOnClickListener {
             mDrawerLayout.openDrawer(GravityCompat.START)
-            AppStates.updateState(AppStates.ONLINE)
         }
     }
 }
