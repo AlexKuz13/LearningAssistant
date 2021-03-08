@@ -56,3 +56,10 @@ fun String.asTime(): String {
     val timeFormat = SimpleDateFormat("dd.MM HH:mm", Locale.getDefault())
     return timeFormat.format(time)
 }
+
+fun String.asTimeMessage(): String {
+    val seconds = this.substringBefore(',').substringAfter('=') + "000"
+    val time = Date(seconds.toLong())
+    val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return timeFormat.format(time)
+}

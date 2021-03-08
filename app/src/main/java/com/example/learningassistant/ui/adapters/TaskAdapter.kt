@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
@@ -17,10 +18,9 @@ import com.example.learningassistant.database.UID
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.asTime
-import com.example.learningassistant.utilits.downloadAndSetImage
-import com.example.learningassistant.utilits.showToast
+import com.example.learningassistant.ui.fragments.messages.SingleChatFragment
+import com.example.learningassistant.ui.fragments.settings.SettingsFragment
+import com.example.learningassistant.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.task_item.view.*
 import java.lang.NullPointerException
@@ -54,6 +54,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
             .addOnSuccessListener {
                 TaskUser = it.toObject(User::class.java) ?: User()
                 holder.taskProfilePhoto.downloadAndSetImage(TaskUser.photoUrl)
+                holder.taskProfilePhoto.setOnClickListener { replaceFragment(SettingsFragment(TaskUser)) }
                 holder.taskProfileFullname.text = TaskUser.fullName
                 holder.taskStarRating.text = TaskUser.rating.toString()
                 android.os.Handler().postDelayed({
@@ -61,11 +62,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
                 }, 1000)
                 holder.taskTopicName.text = mlistTasksCache[position].topic
                 holder.taskDescriptionText.text = mlistTasksCache[position].description
+                holder.taskBtnHelp.setOnClickListener { replaceFragment(SingleChatFragment(TaskUser)) }
             }
             .addOnFailureListener { showToast(it.message.toString()) }
         if (mlistTasksCache[position].from == UID) {
             holder.taskBtnHelp.visibility = View.GONE
-            holder.blockTask.background = APP_ACTIVITY.getDrawable(R.drawable.task_background_user)
+            holder.blockTask.background = getDrawable(APP_ACTIVITY,R.drawable.task_background_user)
         }
     }
 

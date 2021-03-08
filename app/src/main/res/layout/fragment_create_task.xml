@@ -75,17 +75,6 @@
         android:autofillHints=""
         android:inputType="textMultiLine" />
 
-    <ImageButton
-        android:id="@+id/btn_attach_file"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_attach_file"
-        app:layout_constraintBottom_toBottomOf="@id/btn_submit_task"
-        app:layout_constraintEnd_toStartOf="@id/btn_submit_task"
-        app:layout_constraintTop_toTopOf="@id/btn_submit_task" />
-
     <Button
         android:id="@+id/btn_submit_task"
         android:layout_width="wrap_content"

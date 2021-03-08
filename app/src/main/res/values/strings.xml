@@ -20,12 +20,15 @@
     <string name="settings_header_status">В сети</string>
     <string name="account">Аккаунт</string>
     <string name="hint_phone_number">Ваш номер телефона</string>
+    <string name="phone">Номер телефона</string>
     <string name="default_rating">0.0</string>
     <string name="your_rating">Ваш рейтинг</string>
+    <string name="rating">Рейтинг</string>
     <string name="_0">0</string>
     <string name="number_completed_works">Количество выполненных работ</string>
     <string name="settings_default_info">Не задано</string>
     <string name="settings_info_signature">Напишите немного о себе</string>
+    <string name="info">О себе</string>
     <string name="change_name">Изменить имя</string>
 
     <!-- register and entercode fragment -->
@@ -42,5 +45,6 @@
     <string name="create_task_submit">Разместить</string>
     <string name="create_task_name_topic">Название темы</string>
     <string name="btn_help">Помочь</string>
+    <string name="messagehint">Message</string>
 
 </resources>

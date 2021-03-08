@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.*
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
+import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.downloadAndSetImage
@@ -15,12 +16,33 @@ import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
-class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
+class SettingsFragment(private val human: User) : BaseFragment(R.layout.fragment_settings) {
+
+
     override fun onResume() {
         super.onResume()
-        APP_ACTIVITY.title = "Настройки"
-        setHasOptionsMenu(true)
-        initFields()
+        if (human.id != UID) {
+            APP_ACTIVITY.title = "Пользователь"
+            initProfileUser()
+        } else {
+            APP_ACTIVITY.title = "Настройки"
+            setHasOptionsMenu(true)
+            initFields()
+        }
+    }
+
+    private fun initProfileUser() {
+        phone.text = getString(R.string.phone)
+        info.text = getString(R.string.info)
+        rating.text = getString(R.string.rating)
+        settings_change_photo.visibility = View.GONE
+        settings_phone_number.text = human.phone
+        settings_header_fullname.text = human.fullName
+        settings_info.text = human.info
+        settings_rating.text = human.rating.toString()
+        settings_number_work.text = human.completeWorks.toString()
+        settings_header_status.text = human.status
+        settings_header_profile_photo.downloadAndSetImage(human.photoUrl)
     }
 
     private fun initFields() {
@@ -45,16 +67,17 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE &&
-            resultCode == Activity.RESULT_OK && data != null){
+            resultCode == Activity.RESULT_OK && data != null
+        ) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(UID)
-            putImageToStorage(uri,path){
-                getUrlFromStorage(path){
-                    putUrlToDatabase(it){
+            putImageToStorage(uri, path) {
+                getUrlFromStorage(path) {
+                    putUrlToDatabase(it) {
                         settings_header_profile_photo.downloadAndSetImage(it)
                         showToast("Данные обновлены")
-                        USER.photoUrl=it
+                        USER.photoUrl = it
                         APP_ACTIVITY.mNavDrawer.updateHeader()
                     }
                 }

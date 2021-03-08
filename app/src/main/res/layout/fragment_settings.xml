@@ -72,6 +72,7 @@
             style="@style/text_settings_layouts" />
 
         <TextView
+            android:id="@+id/phone"
             android:text="@string/hint_phone_number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settings_phone_number"
@@ -100,6 +101,7 @@
             style="@style/text_settings_layouts" />
 
         <TextView
+            android:id="@+id/rating"
             android:text="@string/your_rating"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settings_rating"
@@ -156,6 +158,7 @@
             style="@style/text_settings_layouts" />
 
         <TextView
+            android:id="@+id/info"
             android:text="@string/settings_info_signature"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settings_info"
