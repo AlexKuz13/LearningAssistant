@@ -25,7 +25,7 @@
     <string name="your_rating">Ваш рейтинг</string>
     <string name="rating">Рейтинг</string>
     <string name="_0">0</string>
-    <string name="number_completed_works">Количество выполненных работ</string>
+    <string name="number_completed_works">Количество \"помощей\"</string>
     <string name="settings_default_info">Не задано</string>
     <string name="settings_info_signature">Напишите немного о себе</string>
     <string name="info">О себе</string>
@@ -46,5 +46,6 @@
     <string name="create_task_name_topic">Название темы</string>
     <string name="btn_help">Помочь</string>
     <string name="messagehint">Message</string>
+    <string name="edit_rating">Оценить</string>
 
 </resources>

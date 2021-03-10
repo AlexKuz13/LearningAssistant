@@ -2,6 +2,9 @@ package com.example.learningassistant.ui.fragments.messages
 
 import android.app.Activity
 import android.content.Intent
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +15,8 @@ import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.adapters.SingleChatAdapter
 import com.example.learningassistant.ui.fragments.BaseFragment
+import com.example.learningassistant.ui.fragments.RatingFragment
+import com.example.learningassistant.ui.fragments.settings.ChangeNameFragment
 import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.*
 import com.google.firebase.firestore.CollectionReference
@@ -39,6 +44,7 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
 
     override fun onResume() {
         super.onResume()
+        setHasOptionsMenu(true)
         initFields()
         initToolbar()
         initRecyclerView()
@@ -134,6 +140,17 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
             }
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.user_rating, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.user_rating -> RatingFragment(human).show(APP_ACTIVITY.supportFragmentManager,"rating_fragment")
+        }
+        return true
     }
 
     override fun onPause() {

@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.fragment_create_task.*
 
 class CreateTaskFragment : DialogFragment() {
 
-    private var mainFrag:MainFragment= MainFragment()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

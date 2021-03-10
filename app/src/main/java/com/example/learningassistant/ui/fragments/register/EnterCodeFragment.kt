@@ -45,14 +45,17 @@ class EnterCodeFragment(private val phoneNumber: String, val id: String) :
                         USER.phone = phoneNumber
                         DB.collection(COLL_USERS).document(uid).set(USER)
                             .addOnSuccessListener {
+                                val map = hashMapOf("rating_sum" to 0.0 )
+                                DB.collection(COLL_RATINGS).document(uid).set(
+                                    map
+                                ).addOnFailureListener {
+                                    showToast(it.message.toString()) }
                                 showToast("Добро пожаловать")
                                 APP_ACTIVITY.hideKeyboard()
                                 restartActivity()
+                                }
                             }
                     }
-                }
-
-                    .addOnFailureListener { showToast(it.message.toString()) }
             }
             .addOnFailureListener { showToast(it.message.toString()) }
     }
