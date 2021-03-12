@@ -11,12 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.models.Message
-import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.adapters.SingleChatAdapter
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.ui.fragments.RatingFragment
-import com.example.learningassistant.ui.fragments.settings.ChangeNameFragment
 import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.*
 import com.google.firebase.firestore.CollectionReference
@@ -24,9 +22,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
-import kotlinx.android.synthetic.main.toolbar_info.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 
 
@@ -38,6 +34,8 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
     private lateinit var mToolbarInfo: View
     private lateinit var mlistenerToolbar:ListenerRegistration
     private lateinit var mlistenerMessage:ListenerRegistration
+     private lateinit var menuRating: Menu
+
 
     private var mUser = User()
     private var mListMessages= emptyList<Message>()
@@ -54,14 +52,14 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
 
     private fun initFields() {
         mLayoutManager = LinearLayoutManager(this.context)
-        chat_input_message.addTextChangedListener(AppTextWatcher{
-            val string=chat_input_message.text.toString()
-            if(string.isEmpty()){
-                chat_btn_send_message.visibility=View.GONE
-                chat_btn_attach.visibility=View.VISIBLE
-            } else{
-                chat_btn_attach.visibility=View.GONE
-                chat_btn_send_message.visibility=View.VISIBLE
+        chat_input_message.addTextChangedListener(AppTextWatcher {
+            val string = chat_input_message.text.toString()
+            if (string.isEmpty()) {
+                chat_btn_send_message.visibility = View.GONE
+                chat_btn_attach.visibility = View.VISIBLE
+            } else {
+                chat_btn_attach.visibility = View.GONE
+                chat_btn_send_message.visibility = View.VISIBLE
             }
         })
 
@@ -70,10 +68,12 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
             val message = chat_input_message.text.toString()
             val messageKey = DB.collection(COLL_MESSAGES).document().id
             sendMessage(message, human.id, messageKey) {
+                addToRoster(human.id)
                 chat_input_message.setText("")
             }
         }
     }
+
 
     private fun attachFile() {
         CropImage.activity()
@@ -89,9 +89,9 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
             val messageKey = DB.collection(COLL_MESSAGES).document().id
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(messageKey)
-            putImageToStorage(uri,path){
+            putImageToStorage(uri, path){
                 getUrlFromStorage(path){
-                    sendMessageAsImage(human.id,it,messageKey)
+                    sendMessageAsImage(human.id, it, messageKey)
                 }
             }
         }
@@ -144,11 +144,14 @@ class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragme
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.user_rating, menu)
+        menuRating=menu
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.user_rating -> RatingFragment(human).show(APP_ACTIVITY.supportFragmentManager,"rating_fragment")
+            R.id.user_rating -> RatingFragment(human,menuRating).show(
+                APP_ACTIVITY.supportFragmentManager,
+                "rating_fragment")
         }
         return true
     }

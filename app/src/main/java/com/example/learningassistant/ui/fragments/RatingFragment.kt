@@ -1,10 +1,7 @@
 package com.example.learningassistant.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.learningassistant.R
 import com.example.learningassistant.database.rateUser
@@ -13,7 +10,8 @@ import com.example.learningassistant.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_rating.*
 
 
-class RatingFragment(private var user: User) : DialogFragment() {
+class RatingFragment(private var user: User, private var menuRating: Menu) : DialogFragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +24,9 @@ class RatingFragment(private var user: User) : DialogFragment() {
         super.onResume()
         btn_rate.setOnClickListener {
             rateUser(user,ratingBar.rating){
-                showToast("Оценка поставлена успешно")
+                showToast("Спасибо за оценку!")
+                menuRating.clear()
+               //скрыть меню
                 dismiss()
             }
         }

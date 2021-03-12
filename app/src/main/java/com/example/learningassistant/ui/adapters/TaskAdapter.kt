@@ -24,6 +24,7 @@ import com.example.learningassistant.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.task_item.view.*
 import java.lang.NullPointerException
+import java.text.DecimalFormat
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
@@ -56,7 +57,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
                 holder.taskProfilePhoto.downloadAndSetImage(TaskUser.photoUrl)
                 holder.taskProfilePhoto.setOnClickListener { replaceFragment(SettingsFragment(TaskUser)) }
                 holder.taskProfileFullname.text = TaskUser.fullName
-                holder.taskStarRating.text = TaskUser.rating.toString()
+                holder.taskStarRating.text = DecimalFormat("#.##").format(TaskUser.rating).toString()
                 android.os.Handler().postDelayed({
                     holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
                 }, 1000)

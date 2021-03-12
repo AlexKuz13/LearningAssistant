@@ -14,6 +14,7 @@ import com.example.learningassistant.utilits.showToast
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
+import java.text.DecimalFormat
 
 
 class SettingsFragment(private val human: User) : BaseFragment(R.layout.fragment_settings) {
@@ -39,7 +40,7 @@ class SettingsFragment(private val human: User) : BaseFragment(R.layout.fragment
         settings_phone_number.text = human.phone
         settings_header_fullname.text = human.fullName
         settings_info.text = human.info
-        settings_rating.text = human.rating.toString()
+        settings_rating.text = DecimalFormat("#.##").format(human.rating).toString()
         settings_number_work.text = human.completeWorks.toString()
         settings_header_status.text = human.status
         settings_header_profile_photo.downloadAndSetImage(human.photoUrl)

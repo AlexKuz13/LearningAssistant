@@ -1,10 +1,7 @@
 package com.example.learningassistant.database
 
 import android.net.Uri
-import com.example.learningassistant.models.Message
-import com.example.learningassistant.models.Rating
-import com.example.learningassistant.models.Task
-import com.example.learningassistant.models.User
+import com.example.learningassistant.models.*
 import com.example.learningassistant.utilits.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -19,6 +16,7 @@ lateinit var USER: User
 lateinit var TASK: Task
 lateinit var MESSAGE: Message
 lateinit var RATING:Rating
+lateinit var CHAT:Chat
 lateinit var UID: String
 lateinit var REF_STORAGE_ROOT: StorageReference
 
@@ -45,6 +43,7 @@ const val CHILD_FROM = "from"
 const val CHILD_DESCRIPTION = "description"
 const val CHILD_TYPE_DES = "type_des"
 const val CHILD_TIMESTAMP = "timeStamp"
+
 
 
 fun initFirebase() {
@@ -187,6 +186,9 @@ fun saveFields(user: User,function: () -> Unit) {
                 .addOnFailureListener {showToast(it.message.toString()) }
         }
         .addOnFailureListener {showToast(it.message.toString())  }
+}
+
+fun addToRoster(id: String) {
 
 }
 
