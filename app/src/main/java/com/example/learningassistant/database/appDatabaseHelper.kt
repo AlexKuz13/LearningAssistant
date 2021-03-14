@@ -24,6 +24,7 @@ const val COLL_USERS = "users"
 const val COLL_TASKS = "tasks"
 const val COLL_MESSAGES = "messages"
 const val COLL_RATINGS = "ratings"
+const val COLL_CHATS_ROSTER="chats_roster"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 
@@ -128,6 +129,9 @@ fun sendMessage(
     messageKey: String,
     function: () -> Unit
 ) {
+    CHAT=Chat()
+    CHAT.last_message=message
+    CHAT.timeStamp=FieldValue.serverTimestamp()
     MESSAGE = Message()
     MESSAGE.from = UID
     MESSAGE.text = message
@@ -188,7 +192,20 @@ fun saveFields(user: User,function: () -> Unit) {
         .addOnFailureListener {showToast(it.message.toString())  }
 }
 
-fun addToRoster(id: String) {
+fun addToRoster(humanid: String) {
+    CHAT.id=humanid
+    val chatKey = DB.collection(COLL_CHATS_ROSTER).document().id
+    DB.collection(COLL_CHATS_ROSTER).document(UID).collection("interlocutor").document(chatKey)
+        .set(CHAT).addOnSuccessListener {
+            CHAT.id=UID
+            DB.collection(COLL_CHATS_ROSTER).document(humanid).collection(UID)
+                .document("interlocutor")
+                .set(CHAT)
+                .addOnFailureListener {
+                    showToast(it.message.toString())
+                }
+        }
+        .addOnFailureListener { showToast(it.message.toString()) }
 
 }
 

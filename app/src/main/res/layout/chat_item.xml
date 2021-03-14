@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_profile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:background="@drawable/ripple_effect"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chat_profile_photo"
+        android:layout_width="@dimen/size_circle_image"
+        android:layout_height="@dimen/size_circle_image"
+        android:layout_margin="@dimen/small_margin"
+        android:src="@drawable/default_photo_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chat_profile_fullname"
+        style="@style/text_nav_menu_header"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/chat_profile_photo"
+        app:layout_constraintTop_toTopOf="@id/chat_profile_photo"
+        tools:text="@string/nav_menu_header_defalt_fullname"
+         />
+    <TextView
+        android:id="@+id/chat_profile_message"
+        style="@style/text_nav_menu_header"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/grey"
+        android:layout_marginBottom="5dp"
+        android:maxWidth="250dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintStart_toEndOf="@id/chat_profile_photo"
+        app:layout_constraintBottom_toBottomOf="@id/chat_profile_photo"
+        android:text="Hello developer. please check this message for long length. max length to 50 characters"
+        />
+
+    <View
+        style="@style/separator"
+
+        app:layout_constraintTop_toBottomOf="@id/chat_profile_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
