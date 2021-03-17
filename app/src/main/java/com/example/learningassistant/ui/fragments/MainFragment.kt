@@ -1,19 +1,18 @@
 package com.example.learningassistant.ui.fragments
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.database.CHILD_TIMESTAMP
+import com.example.learningassistant.database.COLL_TASKS
+import com.example.learningassistant.database.DB
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.ui.adapters.TaskAdapter
-import com.example.learningassistant.utilits.*
-import com.google.firebase.firestore.*
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.showToast
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.fragment_main.*
 
 

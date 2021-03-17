@@ -1,4 +1,4 @@
-package com.example.learningassistant.ui.fragments
+package com.example.learningassistant.ui.fragments.messages
 
 import android.os.Bundle
 import android.view.*
@@ -26,7 +26,6 @@ class RatingFragment(private var user: User, private var menuRating: Menu) : Dia
             rateUser(user,ratingBar.rating){
                 showToast("Спасибо за оценку!")
                 menuRating.clear()
-               //скрыть меню
                 dismiss()
             }
         }

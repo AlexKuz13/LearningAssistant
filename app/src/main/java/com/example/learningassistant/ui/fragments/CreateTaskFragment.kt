@@ -35,7 +35,6 @@ class CreateTaskFragment : DialogFragment() {
                 }
             }
         }
-
     }
 
 }

@@ -9,12 +9,11 @@
         android:id="@+id/menu_profile_photo"
         android:layout_width="@dimen/size_large_circle_image"
         android:layout_height="@dimen/size_large_circle_image"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="50dp"
         android:src="@drawable/ic_default_profile_photo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/menu_profile_fullname"

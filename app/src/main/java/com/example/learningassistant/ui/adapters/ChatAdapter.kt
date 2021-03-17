@@ -39,17 +39,20 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
     override fun onBindViewHolder(holder: ChatHolder, position: Int) {
         var ChatUser: User
         DB.collection(COLL_USERS).document(mlistChatCache[position].id)
-            .get() // в отдельную функцию
+            .get()
             .addOnSuccessListener {
                 ChatUser = it.toObject(User::class.java) ?: User()
-                if (ChatUser.photoUrl!="empty") {
-                    holder.chatProfilePhoto.downloadAndSetImage(ChatUser.photoUrl)
-                }
-                holder.chatProfile.setOnClickListener { replaceFragment(SingleChatFragment(ChatUser)) }
-                holder.chatProfileFullname.text = ChatUser.fullName
-                holder.chatProfileMessage.text = mlistChatCache[position].last_message
+                initHolder(ChatUser,holder,position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
+    }
+
+
+    private fun initHolder(user: User, holder: ChatHolder, position: Int) {
+        holder.chatProfilePhoto.downloadAndSetImage(user.photoUrl)
+        holder.chatProfile.setOnClickListener { replaceFragment(SingleChatFragment(user)) }
+        holder.chatProfileFullname.text = user.fullName
+        holder.chatProfileMessage.text = mlistChatCache[position].last_message
     }
 
     override fun getItemCount(): Int = mlistChatCache.size

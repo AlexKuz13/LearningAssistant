@@ -3,11 +3,12 @@ package com.example.learningassistant.ui.fragments.messages
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.database.CHILD_TIMESTAMP
+import com.example.learningassistant.database.COLL_CHATS_ROSTER
+import com.example.learningassistant.database.DB
+import com.example.learningassistant.database.UID
 import com.example.learningassistant.models.Chat
-import com.example.learningassistant.models.Task
 import com.example.learningassistant.ui.adapters.ChatAdapter
-import com.example.learningassistant.ui.adapters.TaskAdapter
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast

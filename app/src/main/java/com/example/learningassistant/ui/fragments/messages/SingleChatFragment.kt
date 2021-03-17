@@ -14,7 +14,6 @@ import com.example.learningassistant.models.Message
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.adapters.SingleChatAdapter
 import com.example.learningassistant.ui.fragments.BaseFragment
-import com.example.learningassistant.ui.fragments.RatingFragment
 import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.*
 import com.google.firebase.firestore.CollectionReference
@@ -27,6 +26,7 @@ import kotlinx.android.synthetic.main.toolbar_info.view.*
 
 
 class SingleChatFragment(private val human: User) : BaseFragment(R.layout.fragment_single_chat) {
+
     private lateinit var mRefMessages: CollectionReference
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mRecyclerView: RecyclerView

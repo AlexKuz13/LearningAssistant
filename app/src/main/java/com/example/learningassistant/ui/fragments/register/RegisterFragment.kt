@@ -25,7 +25,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 AUTH.signInWithCredential(credential)
                     .addOnSuccessListener {
-                        showToast("Добро пожаловать")
+                        showToast("C возвращением!")
                         restartActivity()
                         }
                     .addOnFailureListener { showToast(it.message.toString()) }

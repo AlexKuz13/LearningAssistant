@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_grey"
     tools:context=".ui.fragments.MainFragment">
 
 
@@ -12,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/normal_margin"
-        tools:listitem="@layout/task_item"
         app:layout_constraintBottom_toTopOf="@id/btn_create_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/task_item" />
 
     <Button
         android:id="@+id/btn_create_task"

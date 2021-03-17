@@ -51,25 +51,30 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
         var TaskUser: User
         DB.collection(COLL_USERS).document(mlistTasksCache[position].from)
-            .get() // в отдельную функцию
+            .get()
             .addOnSuccessListener {
                 TaskUser = it.toObject(User::class.java) ?: User()
-                holder.taskProfilePhoto.downloadAndSetImage(TaskUser.photoUrl)
-                holder.taskProfilePhoto.setOnClickListener { replaceFragment(SettingsFragment(TaskUser)) }
-                holder.taskProfileFullname.text = TaskUser.fullName
-                holder.taskStarRating.text = DecimalFormat("#.##").format(TaskUser.rating).toString()
-                android.os.Handler().postDelayed({
-                    holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
-                }, 1000)
-                holder.taskTopicName.text = mlistTasksCache[position].topic
-                holder.taskDescriptionText.text = mlistTasksCache[position].description
-                holder.taskBtnHelp.setOnClickListener { replaceFragment(SingleChatFragment(TaskUser)) }
+                initHolder(TaskUser,holder,position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
         if (mlistTasksCache[position].from == UID) {
             holder.taskBtnHelp.visibility = View.GONE
             holder.blockTask.background = getDrawable(APP_ACTIVITY,R.drawable.task_background_user)
         }
+    }
+
+
+    private fun initHolder(user: User, holder: TaskHolder, position: Int) {
+        holder.taskProfilePhoto.downloadAndSetImage(user.photoUrl)
+        holder.taskProfilePhoto.setOnClickListener { replaceFragment(SettingsFragment(user)) }
+        holder.taskProfileFullname.text = user.fullName
+        holder.taskStarRating.text = DecimalFormat("#.##").format(user.rating).toString()
+        android.os.Handler().postDelayed({
+            holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
+        }, 1000)
+        holder.taskTopicName.text = mlistTasksCache[position].topic
+        holder.taskDescriptionText.text = mlistTasksCache[position].description
+        holder.taskBtnHelp.setOnClickListener { replaceFragment(SingleChatFragment(user)) }
     }
 
     override fun getItemCount(): Int = mlistTasksCache.size

@@ -22,20 +22,20 @@
         android:id="@+id/create_task_et_topic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="@dimen/small_margin"
+        android:autofillHints=""
+        android:backgroundTint="@color/white"
+        android:hint="@string/create_task_name_topic"
         android:inputType="text"
+        android:textColor="@color/black"
         android:textCursorDrawable="@drawable/black_cursor"
         android:textSize="@dimen/normal_text"
-        android:hint="@string/create_task_name_topic"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        android:layout_marginTop="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/create_task_topic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/create_task_topic"
-        app:layout_constraintTop_toTopOf="@id/create_task_topic"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="@id/create_task_topic" />
 
     <View
         android:id="@+id/create_task_separator"
@@ -62,18 +62,18 @@
         android:layout_height="200dp"
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginEnd="@dimen/normal_margin"
+        android:autofillHints=""
         android:backgroundTint="@color/white"
         android:gravity="start|top"
         android:hint="@string/create_task_hint_description"
+        android:inputType="textMultiLine"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/black_cursor"
         android:textSize="@dimen/normal_text"
         app:layout_constraintBottom_toTopOf="@id/btn_submit_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_task_description"
-        android:autofillHints=""
-        android:inputType="textMultiLine" />
+        app:layout_constraintTop_toBottomOf="@id/create_task_description" />
 
     <Button
         android:id="@+id/btn_submit_task"

@@ -4,19 +4,14 @@ import androidx.fragment.app.Fragment
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.utilits.*
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_enter_code.*
 
 class EnterCodeFragment(private val phoneNumber: String, val id: String) :
     Fragment(R.layout.fragment_enter_code) {
 
-    private lateinit var mDocReference: DocumentReference
-    private lateinit var document: DocumentSnapshot
 
     override fun onStart() {
         super.onStart()
@@ -34,29 +29,31 @@ class EnterCodeFragment(private val phoneNumber: String, val id: String) :
         AUTH.signInWithCredential(credential)
             .addOnSuccessListener {
                 val uid = AUTH.currentUser?.uid.toString()
-                mDocReference = DB.collection(COLL_USERS).document(uid)
-                mDocReference.get().addOnCompleteListener {
-                    if (it.result?.exists() == true) {
-                        showToast("С возвращением!")
-                        APP_ACTIVITY.hideKeyboard()
-                        restartActivity()
-                    } else {
-                        USER.id = uid
-                        USER.phone = phoneNumber
-                        DB.collection(COLL_USERS).document(uid).set(USER)
-                            .addOnSuccessListener {
-                                val map = hashMapOf("rating_sum" to 0.0 )
-                                DB.collection(COLL_RATINGS).document(uid).set(
-                                    map
-                                ).addOnFailureListener {
-                                    showToast(it.message.toString()) }
-                                showToast("Добро пожаловать")
-                                APP_ACTIVITY.hideKeyboard()
-                                restartActivity()
-                                }
-                            }
+                DB.collection(COLL_USERS).document(uid)
+                    .get().addOnCompleteListener {
+                        if (it.result?.exists() == true) {
+                            showToast("С возвращением!")
+                            APP_ACTIVITY.hideKeyboard()
+                            restartActivity()
+                        } else registerUser(uid)
                     }
+             .addOnFailureListener { showToast(it.message.toString()) }
             }
-            .addOnFailureListener { showToast(it.message.toString()) }
+    }
+
+    private fun registerUser(uid: String) {
+        USER.id = uid
+        USER.phone = phoneNumber
+        DB.collection(COLL_USERS).document(uid).set(USER)
+            .addOnSuccessListener {
+                val map = hashMapOf("rating_sum" to 0.0)
+                DB.collection(COLL_RATINGS).document(uid).set(map)
+                    .addOnFailureListener {
+                        showToast(it.message.toString())
+                    }
+                showToast("Добро пожаловать")
+                APP_ACTIVITY.hideKeyboard()
+                restartActivity()
+            }
     }
 }

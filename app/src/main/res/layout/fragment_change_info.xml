@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_grey"
     tools:context=".ui.fragments.settings.ChangeInfoFragment">
 
     <EditText
@@ -11,16 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
+        android:autofillHints=""
         android:backgroundTint="@color/black"
         android:inputType="textMultiLine"
         android:padding="7dp"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/black_cursor"
-        android:textSize="@dimen/normal_text"
+        android:textSize="@dimen/large_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints=""
         tools:ignore="LabelFor" />
 
 

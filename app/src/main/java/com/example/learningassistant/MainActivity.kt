@@ -6,17 +6,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.database.USER
 import com.example.learningassistant.database.initFirebase
 import com.example.learningassistant.database.initUser
 import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.fragments.MainFragment
 import com.example.learningassistant.ui.fragments.register.RegisterFragment
 import com.example.learningassistant.ui.objects.NavDrawer
-import com.example.learningassistant.utilits.*
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.AppStates
+import com.example.learningassistant.utilits.replaceFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.header.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -50,8 +50,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             replaceFragment(RegisterFragment(), false)
         }
-
-        //проверка на авторизацию и замена фрагментов
     }
 
 

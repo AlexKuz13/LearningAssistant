@@ -1,9 +1,8 @@
 package com.example.learningassistant.ui.fragments.settings
 
-import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import androidx.drawerlayout.widget.DrawerLayout
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.example.learningassistant.R
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY

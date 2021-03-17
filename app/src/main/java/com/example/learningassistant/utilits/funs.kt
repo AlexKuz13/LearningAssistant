@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
-import com.google.firebase.Timestamp
-import com.google.firebase.firestore.FieldValue
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_grey"
     tools:context=".ui.fragments.settings.SettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,28 +20,28 @@
             android:id="@+id/settings_header_profile_photo"
             android:layout_width="@dimen/size_circle_image"
             android:layout_height="@dimen/size_circle_image"
-            android:src="@drawable/ic_default_profile_photo"
             android:layout_marginStart="@dimen/normal_margin"
+            android:src="@drawable/ic_default_profile_photo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/settings_header_fullname"
             style="@style/text_nav_menu_header"
+            android:layout_marginTop="5dp"
             android:text="@string/nav_menu_header_defalt_fullname"
             android:textSize="@dimen/normal_text"
-            android:layout_marginTop="5dp"
-            app:layout_constraintTop_toTopOf="@+id/settings_header_profile_photo"
-            app:layout_constraintStart_toEndOf="@+id/settings_header_profile_photo"/>
+            app:layout_constraintStart_toEndOf="@+id/settings_header_profile_photo"
+            app:layout_constraintTop_toTopOf="@+id/settings_header_profile_photo" />
+
         <TextView
             android:id="@+id/settings_header_status"
             style="@style/text_nav_menu_header"
             android:text="@string/settings_header_status"
             android:textSize="@dimen/small_text"
             app:layout_constraintStart_toEndOf="@id/settings_header_profile_photo"
-            app:layout_constraintTop_toBottomOf="@id/settings_header_fullname"
-            />
+            app:layout_constraintTop_toBottomOf="@id/settings_header_fullname" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,129 +61,129 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_layout_phone_number"
         style="@style/settings_buttons"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_account">
 
         <TextView
             android:id="@+id/settings_phone_number"
+            style="@style/text_settings_layouts"
             android:text="@string/nav_menu_header_phone"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/text_settings_layouts" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/phone"
+            style="@style/settings_text_layouts_signature"
             android:text="@string/hint_phone_number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings_phone_number"
-            style="@style/settings_text_layouts_signature" />
+            app:layout_constraintTop_toBottomOf="@+id/settings_phone_number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         style="@style/separator"
-        app:layout_constraintTop_toBottomOf="@id/settings_layout_phone_number"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/settings_layout_phone_number" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_layout_rating"
         style="@style/settings_buttons"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_layout_phone_number">
 
         <TextView
             android:id="@+id/settings_rating"
+            style="@style/text_settings_layouts"
             android:text="@string/default_rating"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/text_settings_layouts" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/rating"
+            style="@style/settings_text_layouts_signature"
             android:text="@string/your_rating"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings_rating"
-            style="@style/settings_text_layouts_signature" />
+            app:layout_constraintTop_toBottomOf="@+id/settings_rating" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         style="@style/separator"
-        app:layout_constraintTop_toBottomOf="@id/settings_layout_rating"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/settings_layout_rating" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_layout_number_work"
         style="@style/settings_buttons"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_layout_rating">
 
         <TextView
             android:id="@+id/settings_number_work"
+            style="@style/text_settings_layouts"
             android:text="@string/_0"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/text_settings_layouts" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            style="@style/settings_text_layouts_signature"
             android:text="@string/number_completed_works"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings_number_work"
-            style="@style/settings_text_layouts_signature" />
+            app:layout_constraintTop_toBottomOf="@+id/settings_number_work" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         style="@style/separator"
-        app:layout_constraintTop_toBottomOf="@id/settings_layout_number_work"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/settings_layout_number_work" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_layout_info"
         style="@style/settings_buttons"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_layout_number_work">
 
         <TextView
             android:id="@+id/settings_info"
+            style="@style/text_settings_layouts"
             android:text="@string/settings_default_info"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/text_settings_layouts" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/info"
+            style="@style/settings_text_layouts_signature"
             android:text="@string/settings_info_signature"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings_info"
-            style="@style/settings_text_layouts_signature" />
+            app:layout_constraintTop_toBottomOf="@+id/settings_info" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         style="@style/separator"
-        app:layout_constraintTop_toBottomOf="@id/settings_layout_info"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/settings_layout_info" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_change_photo"
         android:layout_width="@dimen/size_circle_image"
         android:layout_height="@dimen/size_circle_image"
+        android:layout_marginEnd="@dimen/normal_margin"
         android:src="@drawable/ic_camera"
-        app:civ_circle_background_color="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
         app:civ_border_color="@color/purple_500"
         app:civ_border_width="2dp"
-        android:layout_marginEnd="@dimen/normal_margin"
+        app:civ_circle_background_color="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/settings_header"
-        app:layout_constraintTop_toBottomOf="@id/settings_header"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,41 +10,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
 
-lateinit var AUTH: FirebaseAuth
-lateinit var DB: FirebaseFirestore
-lateinit var USER: User
-lateinit var TASK: Task
-lateinit var MESSAGE: Message
-lateinit var RATING:Rating
-lateinit var CHAT:Chat
-lateinit var UID: String
-lateinit var REF_STORAGE_ROOT: StorageReference
-
-const val COLL_USERS = "users"
-const val COLL_TASKS = "tasks"
-const val COLL_MESSAGES = "messages"
-const val COLL_RATINGS = "ratings"
-const val COLL_CHATS_ROSTER="chats_roster"
-
-const val FOLDER_PROFILE_IMAGE = "profile_image"
-
-const val TYPE_TEXT = "text"
-const val TYPE_IMAGE = "image"
-
-const val CHILD_ID = "id"
-const val CHILD_PHONE = "phone"
-const val CHILD_FULLNAME = "fullName"
-const val CHIlD_INFO = "info"
-const val CHILD_PHOTO_URL = "photoUrl"
-const val CHILD_STATUS = "status"
-const val CHILD_RATING = "rating"
-const val CHILD_COMPLETEWORKS = "completeWorks"
-const val CHILD_TOPIC = "topic"
-const val CHILD_FROM = "from"
-const val CHILD_DESCRIPTION = "description"
-const val CHILD_TYPE_DES = "type_des"
-const val CHILD_TIMESTAMP = "timeStamp"
-
 
 
 fun initFirebase() {
@@ -192,21 +157,19 @@ fun saveFields(user: User,function: () -> Unit) {
         .addOnFailureListener {showToast(it.message.toString())  }
 }
 
-fun addToRoster(humanid: String) {
-    CHAT.id=humanid
-    val chatKey = DB.collection(COLL_CHATS_ROSTER).document().id
-    DB.collection(COLL_CHATS_ROSTER).document(UID).collection("interlocutor").document(chatKey)
+fun addToRoster(human_id: String) {
+    CHAT.id=human_id
+    DB.collection(COLL_CHATS_ROSTER).document(UID).collection("interlocutor").document(human_id)
         .set(CHAT).addOnSuccessListener {
             CHAT.id=UID
-            DB.collection(COLL_CHATS_ROSTER).document(humanid).collection(UID)
-                .document("interlocutor")
+            DB.collection(COLL_CHATS_ROSTER).document(human_id).collection("interlocutor")
+                .document(UID)
                 .set(CHAT)
                 .addOnFailureListener {
                     showToast(it.message.toString())
                 }
         }
         .addOnFailureListener { showToast(it.message.toString()) }
-
 }
 
 

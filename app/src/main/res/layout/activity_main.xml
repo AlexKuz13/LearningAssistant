@@ -5,20 +5,19 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:fitsSystemWindows="true"
+    tools:context=".MainActivity"
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        style="@style/text_nav_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:id="@+id/nav_view"
         app:headerLayout="@layout/header"
-        app:menu="@menu/nav_menu"
         app:itemTextAppearance="@style/text_nav_menu"
-        style="@style/text_nav_menu"
-        />
+        app:menu="@menu/nav_menu" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,16 +26,16 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
             style="@style/mainToolbar"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_nav_menu"
-            android:visibility="visible">
+            app:navigationIcon="@drawable/ic_nav_menu">
 
-        <include layout="@layout/toolbar_info"
-            android:visibility="gone"
-            android:id="@+id/toolbar_info"
-            />
+            <include
+                android:id="@+id/toolbar_info"
+                layout="@layout/toolbar_info"
+                android:visibility="gone" />
         </androidx.appcompat.widget.Toolbar>
 
 

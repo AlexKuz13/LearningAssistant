@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/purple_500">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/toolbar_chat_image"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_default_profile_photo"
         app:civ_circle_background_color="@color/purple_700"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/toolbar_chat_fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Ivan Ivanov"
-        android:textSize="@dimen/normal_text"
-        android:textColor="@color/white"
         android:layout_marginStart="@dimen/normal_margin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_text"
         app:layout_constraintStart_toEndOf="@+id/toolbar_chat_image"
         app:layout_constraintTop_toTopOf="@id/toolbar_chat_image"
-        />
+        tools:text="Ivan Ivanov" />
 
     <TextView
         android:id="@+id/toolbar_chat_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="В сети"
+        android:layout_marginStart="@dimen/normal_margin"
         android:textColor="@color/white"
         android:textSize="@dimen/small_text"
-        android:layout_marginStart="@dimen/normal_margin"
         app:layout_constraintStart_toEndOf="@id/toolbar_chat_image"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_chat_fullname"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar_chat_fullname"
+        tools:text="В сети" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
