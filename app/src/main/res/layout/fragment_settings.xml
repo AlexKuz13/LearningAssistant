@@ -155,6 +155,7 @@
             android:id="@+id/settings_info"
             style="@style/text_settings_layouts"
             android:text="@string/settings_default_info"
+            android:maxWidth="350dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
