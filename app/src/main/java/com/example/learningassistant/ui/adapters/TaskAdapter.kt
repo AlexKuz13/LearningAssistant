@@ -1,5 +1,6 @@
 package com.example.learningassistant.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -57,10 +58,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
                 initHolder(TaskUser,holder,position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
-        if (mlistTasksCache[position].from == UID) {
-            holder.taskBtnHelp.visibility = View.GONE
-            holder.blockTask.background = getDrawable(APP_ACTIVITY,R.drawable.task_background_user)
-        }
+
+
+
     }
 
 
@@ -75,6 +75,20 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         holder.taskTopicName.text = mlistTasksCache[position].topic
         holder.taskDescriptionText.text = mlistTasksCache[position].description
         holder.taskBtnHelp.setOnClickListener { replaceFragment(SingleChatFragment(user)) }
+        initMyOrNo(position, holder)
+    }
+
+    private fun initMyOrNo(
+        position: Int,
+        holder: TaskHolder
+    ) {
+        if (mlistTasksCache[position].from == UID) {
+            holder.taskBtnHelp.visibility = View.GONE
+            holder.blockTask.background = getDrawable(APP_ACTIVITY, R.drawable.task_background_user)
+        } else {
+            holder.taskBtnHelp.visibility = View.VISIBLE
+            holder.blockTask.background = getDrawable(APP_ACTIVITY, R.drawable.task_background)
+        }
     }
 
     override fun getItemCount(): Int = mlistTasksCache.size

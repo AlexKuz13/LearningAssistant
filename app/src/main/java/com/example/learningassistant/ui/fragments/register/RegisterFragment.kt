@@ -22,6 +22,15 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     override fun onStart() {
         super.onStart()
         mCallBack = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onVerificationFailed(p0: FirebaseException) {
+                showToast(p0.message.toString())
+            }
+
+            override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
+                replaceFragment(EnterCodeFragment(mPhoneNumber, id))
+            }
+
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 AUTH.signInWithCredential(credential)
                     .addOnSuccessListener {
@@ -31,14 +40,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                                 if (it.result?.exists() != true) {
                                     USER.id = uid
                                     USER.phone = mPhoneNumber
-                                    DB.collection(COLL_USERS).document(uid).set(USER)
-                                        .addOnSuccessListener {
+                                    DB.collection(COLL_USERS).document(uid).set(USER).addOnSuccessListener {
                                             val map = hashMapOf("rating_sum" to 0.0)
-                                            DB.collection(COLL_RATINGS).document(uid)
-                                                .set(map)
-                                                .addOnFailureListener {
-                                                    showToast(it.message.toString())
-                                                }
+                                            DB.collection(COLL_RATINGS).document(uid).set(map)
+                                                .addOnFailureListener { showToast(it.message.toString()) }
                                             showToast("Добро пожаловать")
                                             APP_ACTIVITY.hideKeyboard()
                                             restartActivity()
@@ -52,13 +57,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     }
             }
 
-        override fun onVerificationFailed(p0: FirebaseException) {
-            showToast(p0.message.toString())
-        }
 
-        override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-            replaceFragment(EnterCodeFragment(mPhoneNumber, id))
-        }
     }
 
     register_btn_next.setOnClickListener{
