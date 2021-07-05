@@ -1,5 +1,6 @@
 package com.example.learningassistant.ui.objects
 
+import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -58,12 +59,16 @@ class NavDrawer(private var toolbar: Toolbar) {
 
     fun onNavMenuSelected(item: MenuItem) {
         when (item.itemId) {
-            R.id.nav_settings -> replaceFragment(SettingsFragment(USER))
-            R.id.nav_messages -> replaceFragment(MessagesFragment())
+            R.id.nav_settings -> {
+                val bundle = Bundle()
+                bundle.putSerializable("User",USER)
+                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_settingsFragment,bundle)
+            }
+            R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_messagesFragment)
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
-                restartActivity()
+                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_registerFragment)
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START)
@@ -73,7 +78,7 @@ class NavDrawer(private var toolbar: Toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         toolbar.setNavigationOnClickListener {
-            APP_ACTIVITY.supportFragmentManager.popBackStack()
+            APP_ACTIVITY.navController.popBackStack()
         }
     }
 

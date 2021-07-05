@@ -12,10 +12,8 @@ import com.example.learningassistant.database.TYPE_IMAGE
 import com.example.learningassistant.database.TYPE_TEXT
 import com.example.learningassistant.database.UID
 import com.example.learningassistant.models.Message
-import com.example.learningassistant.utilits.asTime
 import com.example.learningassistant.utilits.asTimeMessage
 import com.example.learningassistant.utilits.downloadAndSetImage
-import com.example.learningassistant.utilits.showToast
 import kotlinx.android.synthetic.main.message_item.view.*
 
 class SingleChatAdapter:RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {

@@ -5,30 +5,41 @@ import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.learningassistant.R
 import com.example.learningassistant.database.rateUser
+import com.example.learningassistant.databinding.FragmentRatingBinding
 import com.example.learningassistant.models.User
+import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_rating.*
 
 
-class RatingFragment(private var user: User, private var menuRating: Menu) : DialogFragment() {
+class RatingFragment : DialogFragment() {
 
+    private var _binding: FragmentRatingBinding? = null
+    private val mBinding get() = _binding!!
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_rating, container, false)
+    ): View {
+        _binding = FragmentRatingBinding.inflate(layoutInflater, container, false)
+        user = arguments?.getSerializable("User") as User
+        return mBinding.root
     }
 
     override fun onResume() {
         super.onResume()
-        btn_rate.setOnClickListener {
-            rateUser(user,ratingBar.rating){
+        mBinding.btnRate.setOnClickListener {
+            rateUser(user, ratingBar.rating) {
                 showToast("Спасибо за оценку!")
-                menuRating.clear()
-                dismiss()
+                //menuRating.clear()
+                APP_ACTIVITY.navController.navigate(R.id.action_ratingFragment_to_singleChatFragment)
             }
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

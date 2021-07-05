@@ -1,30 +1,23 @@
 package com.example.learningassistant.ui.adapters
 
-import android.util.Log
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.getDrawable
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
 import com.example.learningassistant.database.COLL_USERS
 import com.example.learningassistant.database.DB
 import com.example.learningassistant.database.UID
-import com.example.learningassistant.database.USER
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
-import com.example.learningassistant.ui.fragments.messages.SingleChatFragment
-import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.task_item.view.*
-import java.lang.NullPointerException
 import java.text.DecimalFormat
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
@@ -50,12 +43,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     }
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
-        var TaskUser: User
+        var taskUser: User
         DB.collection(COLL_USERS).document(mlistTasksCache[position].from)
             .get()
             .addOnSuccessListener {
-                TaskUser = it.toObject(User::class.java) ?: User()
-                initHolder(TaskUser,holder,position)
+                taskUser = it.toObject(User::class.java) ?: User()
+                initHolder(taskUser,holder,position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
 
@@ -65,8 +58,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
 
     private fun initHolder(user: User, holder: TaskHolder, position: Int) {
+        val bundle = Bundle()
+        bundle.putSerializable("User",user)
         holder.taskProfilePhoto.downloadAndSetImage(user.photoUrl)
-        holder.taskProfilePhoto.setOnClickListener { replaceFragment(SettingsFragment(user)) }
+        holder.taskProfilePhoto.setOnClickListener {
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_settingsFragment,bundle)
+            }
         holder.taskProfileFullname.text = user.fullName
         holder.taskStarRating.text = DecimalFormat("#.##").format(user.rating).toString()
         android.os.Handler().postDelayed({
@@ -74,7 +71,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         }, 1000)
         holder.taskTopicName.text = mlistTasksCache[position].topic
         holder.taskDescriptionText.text = mlistTasksCache[position].description
-        holder.taskBtnHelp.setOnClickListener { replaceFragment(SingleChatFragment(user)) }
+        holder.taskBtnHelp.setOnClickListener {
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_singleChatFragment,bundle)
+            }
         initMyOrNo(position, holder)
     }
 

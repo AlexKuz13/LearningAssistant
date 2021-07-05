@@ -1,5 +1,7 @@
 package com.example.learningassistant.models
 
+import java.io.Serializable
+
 data class User (
     var id:String="",
     var fullName:String="Name Surname",
@@ -9,4 +11,4 @@ data class User (
     var rating:Double=0.0,
     var completeWorks:Int=0,
     var photoUrl:String="empty"
-        )
+        ) :Serializable

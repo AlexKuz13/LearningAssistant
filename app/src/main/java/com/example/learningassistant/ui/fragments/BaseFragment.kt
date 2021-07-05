@@ -5,7 +5,7 @@ import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.hideKeyboard
 
 
-open class BaseFragment(layout:Int) : Fragment(layout) {
+open class BaseFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         APP_ACTIVITY.mNavDrawer.disableDrawer()

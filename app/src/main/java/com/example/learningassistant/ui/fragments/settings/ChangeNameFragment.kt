@@ -1,26 +1,42 @@
 package com.example.learningassistant.ui.fragments.settings
 
-import com.example.learningassistant.R
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.example.learningassistant.database.*
+import com.example.learningassistant.databinding.FragmentChangeNameBinding
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
-import kotlinx.android.synthetic.main.fragment_change_name.*
 
 
-class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
+class ChangeNameFragment : BaseChangeFragment() {
+
+    private var _binding: FragmentChangeNameBinding? = null
+    private val mBinding get() = _binding!!
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentChangeNameBinding.inflate(layoutInflater, container, false)
+        return mBinding.root
+    }
 
     override fun onResume() {
         super.onResume()
         val fullnameList = USER.fullName.split(" ")
         if (fullnameList.size > 1) {
-            et_change_name.setText(fullnameList[0])
-            et_change_surname.setText(fullnameList[1])
-        } else et_change_name.setText(fullnameList[0])
+            mBinding.etChangeName.setText(fullnameList[0])
+            mBinding.etChangeSurname.setText(fullnameList[1])
+        } else mBinding.etChangeName.setText(fullnameList[0])
     }
 
     override fun change() {
-        val name = et_change_name.text.toString()
-        val surname = et_change_surname.text.toString()
+        val name = mBinding.etChangeName.text.toString()
+        val surname = mBinding.etChangeSurname.text.toString()
         if (name.isEmpty()) {
             showToast("Имя не может быть пустым")
         } else {
@@ -30,9 +46,14 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
                     showToast("Данные обновлены")
                     USER.fullName = fullname
                     APP_ACTIVITY.mNavDrawer.updateHeader()
-                    fragmentManager?.popBackStack()
+                    APP_ACTIVITY.navController.popBackStack()
                 }
                 .addOnFailureListener { showToast(it.message.toString()) }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

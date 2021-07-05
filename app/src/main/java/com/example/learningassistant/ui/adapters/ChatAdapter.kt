@@ -1,5 +1,6 @@
 package com.example.learningassistant.ui.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +12,13 @@ import com.example.learningassistant.database.COLL_USERS
 import com.example.learningassistant.database.DB
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.User
-import com.example.learningassistant.ui.fragments.messages.SingleChatFragment
+import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.downloadAndSetImage
-import com.example.learningassistant.utilits.replaceFragment
 import com.example.learningassistant.utilits.showToast
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.chat_item.view.*
 
-class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
+class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
     private var mlistChatCache = emptyList<Chat>()
 
@@ -42,7 +42,7 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
             .get()
             .addOnSuccessListener {
                 ChatUser = it.toObject(User::class.java) ?: User()
-                initHolder(ChatUser,holder,position)
+                initHolder(ChatUser, holder, position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
     }
@@ -50,7 +50,14 @@ class ChatAdapter:RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
     private fun initHolder(user: User, holder: ChatHolder, position: Int) {
         holder.chatProfilePhoto.downloadAndSetImage(user.photoUrl)
-        holder.chatProfile.setOnClickListener { replaceFragment(SingleChatFragment(user)) }
+        holder.chatProfile.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("User", user)
+            APP_ACTIVITY.navController.navigate(
+                R.id.action_messagesFragment_to_singleChatFragment,
+                bundle
+            )
+        }
         holder.chatProfileFullname.text = user.fullName
         holder.chatProfileMessage.text = mlistChatCache[position].last_message
     }
