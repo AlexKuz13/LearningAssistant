@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (AUTH.currentUser != null) {
             mNavDrawer.create()
             APP_ACTIVITY.mNavDrawer.updateHeader()
-            navController.navigate(R.id.action_registerFragment_to_mainFragment)
+            navController.navigate(R.id.action_enterFragment_to_mainFragment)
         } else {
             mToolbar.visibility = View.GONE
             mBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

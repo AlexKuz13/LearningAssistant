@@ -6,9 +6,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
 import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,6 +30,7 @@ fun AppCompatActivity.hideKeyboard() {
     imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
 }
 
+@BindingAdapter("android:src")
 fun ImageView.downloadAndSetImage(url: String) {
     Picasso.get()
         .load(url)

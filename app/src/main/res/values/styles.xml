@@ -80,4 +80,12 @@
         <item name="colorControlActivated">@color/purple_500</item>
     </style>
 
+    <!-- Text input layout in Enter and Register fragments -->
+    <style name="text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/normal_margin</item>
+        <item name="android:textColorHint">@color/purple_700</item>
+    </style>
+
 </resources>

@@ -33,7 +33,7 @@ class RatingFragment : DialogFragment() {
             rateUser(user, ratingBar.rating) {
                 showToast("Спасибо за оценку!")
                 //menuRating.clear()
-                APP_ACTIVITY.navController.navigate(R.id.action_ratingFragment_to_singleChatFragment)
+                APP_ACTIVITY.navController.popBackStack()
             }
         }
     }

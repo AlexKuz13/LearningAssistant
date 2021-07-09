@@ -10,8 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
 import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.database.USER
-import com.example.learningassistant.ui.fragments.messages.MessagesFragment
-import com.example.learningassistant.ui.fragments.settings.SettingsFragment
 import com.example.learningassistant.utilits.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,7 +30,7 @@ class NavDrawer(private var toolbar: Toolbar) {
         mHeader = mNavigationView.getHeaderView(0)
         mHeader.menu_profile_fullname.text = USER.fullName
         mHeader.menu_profile_photo.downloadAndSetImage(USER.photoUrl)
-        mHeader.menu_profile_phone_number.text = USER.phone
+        mHeader.menu_profile_email.text = USER.email
     }
 
     private fun initView() {
@@ -68,7 +66,7 @@ class NavDrawer(private var toolbar: Toolbar) {
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
-                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_registerFragment)
+                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_enterFragment)
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START)

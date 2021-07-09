@@ -3,35 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/registerFragment">
+    app:startDestination="@id/enterFragment">
 
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.example.learningassistant.ui.fragments.register.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        android:id="@+id/enterFragment"
+        android:name="com.example.learningassistant.ui.fragments.register.EnterFragment"
+        android:label="fragment_enter"
+        tools:layout="@layout/fragment_enter">
         <action
-            android:id="@+id/action_registerFragment_to_enterCodeFragment"
-            app:destination="@id/enterCodeFragment" />
+            android:id="@+id/action_enterFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_registerFragment_to_mainFragment"
+            android:id="@+id/action_enterFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_graph" />
     </fragment>
     <fragment
-        android:id="@+id/enterCodeFragment"
-        android:name="com.example.learningassistant.ui.fragments.register.EnterCodeFragment"
-        android:label="fragment_enter_code"
-        tools:layout="@layout/fragment_enter_code" >
+        android:id="@+id/registerFragment"
+        android:name="com.example.learningassistant.ui.fragments.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
         <action
-            android:id="@+id/action_enterCodeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_enterCodeFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/navigation_graph" />
+            android:id="@+id/action_registerFragment_to_enterFragment"
+            app:destination="@id/enterFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -39,8 +34,8 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_registerFragment"
-            app:destination="@id/registerFragment"
+            android:id="@+id/action_mainFragment_to_enterFragment"
+            app:destination="@id/enterFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_graph" />
         <action

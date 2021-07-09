@@ -17,8 +17,8 @@
     <!-- Settings fragment -->
     <string name="settings_header_status">В сети</string>
     <string name="account">Аккаунт</string>
-    <string name="hint_phone_number">Ваш номер телефона</string>
-    <string name="phone">Номер телефона</string>
+    <string name="hint_email">Ваш почтовый адрес</string>
+    <string name="hint_user_email">Почтовый адрес</string>
     <string name="default_rating">0.0</string>
     <string name="your_rating">Ваш рейтинг</string>
     <string name="rating">Рейтинг</string>
@@ -28,6 +28,8 @@
     <string name="settings_info_signature">Напишите немного о себе</string>
     <string name="info">О себе</string>
     <string name="change_name">Изменить имя</string>
+    <string name="ratingValue" formatted="false">%.2f</string>
+    <string name="complWorkValue" formatted="false">%d</string>
 
     <!-- register and entercode fragment -->
     <string name="register_enter_phone">Введите ваш номер телефона</string>
@@ -47,5 +49,20 @@
     <!-- Single chat -->
     <string name="messagehint">Message</string>
     <string name="edit_rating">Оценить</string>
+
+
+    <!-- New update -->
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Вход</string>
+    <string name="login_button_desc">Login button</string>
+    <string name="text_register_now">Зарегистрироваться</string>
+    <string name="dont_have_acc">У вас нет аккаунта?</string>
+    <string name="image_lock_desc">Image lock</string>
+    <string name="have_yet_acc">Уже есть аккаунт?</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="register">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
 
 </resources>

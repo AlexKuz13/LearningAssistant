@@ -26,10 +26,10 @@
         app:layout_constraintTop_toBottomOf="@+id/menu_profile_photo" />
 
     <TextView
-        android:id="@+id/menu_profile_phone_number"
+        android:id="@+id/menu_profile_email"
         style="@style/text_nav_menu_header"
         android:fontFamily="@font/baloo"
-        android:text="@string/nav_menu_header_phone"
+        android:text="@string/email"
         android:textSize="@dimen/normal_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menu_profile_fullname" />

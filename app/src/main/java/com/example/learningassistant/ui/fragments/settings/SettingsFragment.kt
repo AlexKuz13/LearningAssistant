@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.databinding.DataBindingUtil
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.databinding.FragmentSettingsBinding
@@ -14,8 +15,6 @@ import com.example.learningassistant.utilits.downloadAndSetImage
 import com.example.learningassistant.utilits.showToast
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import kotlinx.android.synthetic.main.fragment_settings.*
-import java.text.DecimalFormat
 
 
 class SettingsFragment : BaseFragment() {
@@ -29,48 +28,28 @@ class SettingsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
-        human = arguments?.getSerializable("User") as User
+        _binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_settings, container, false)
+        mBinding.user = arguments?.getSerializable("User") as User
         return mBinding.root
     }
 
     override fun onResume() {
         super.onResume()
-        if (human.id != UID) {
+        if (mBinding.user != USER) {
             APP_ACTIVITY.title = "Пользователь"
-            initProfileUser()
+            mBinding.userBoolean = false
         } else {
             APP_ACTIVITY.title = "Настройки"
             setHasOptionsMenu(true)
-            initFields()
+            mBinding.userBoolean = true
+            mBinding.settingsChangePhoto.setOnClickListener { changePhotoUser() }
+            mBinding.settingsLayoutInfo.setOnClickListener {
+                APP_ACTIVITY.navController.navigate(R.id.action_settingsFragment_to_changeInfoFragment)
+            }
         }
     }
 
-    private fun initProfileUser() {
-        phone.text = getString(R.string.phone) //Data Binding
-        info.text = getString(R.string.info)
-        rating.text = getString(R.string.rating)
-        settings_change_photo.visibility = View.GONE
-        settings_phone_number.text = human.phone
-        settings_header_fullname.text = human.fullName
-        settings_info.text = human.info
-        settings_rating.text = DecimalFormat("#.##").format(human.rating).toString()
-        settings_number_work.text = human.completeWorks.toString()
-        settings_header_status.text = human.status
-        settings_header_profile_photo.downloadAndSetImage(human.photoUrl)
-    }
-
-    private fun initFields() {
-        settings_phone_number.text = USER.phone
-        settings_header_fullname.text = USER.fullName
-        settings_info.text = USER.info
-        settings_rating.text = USER.rating.toString()
-        settings_number_work.text = USER.completeWorks.toString()
-        settings_header_status.text = USER.status
-        settings_header_profile_photo.downloadAndSetImage(USER.photoUrl)
-        settings_layout_info.setOnClickListener { APP_ACTIVITY.navController.navigate(R.id.action_settingsFragment_to_changeInfoFragment) }
-        settings_change_photo.setOnClickListener { changePhotoUser() }
-    }
 
     private fun changePhotoUser() {
         CropImage.activity()
@@ -90,7 +69,7 @@ class SettingsFragment : BaseFragment() {
             putImageToStorage(uri, path) {
                 getUrlFromStorage(path) {
                     putUrlToDatabase(it) {
-                        settings_header_profile_photo.downloadAndSetImage(it)
+                        mBinding.settingsHeaderProfilePhoto.downloadAndSetImage(it)
                         showToast("Данные обновлены")
                         USER.photoUrl = it
                         APP_ACTIVITY.mNavDrawer.updateHeader()

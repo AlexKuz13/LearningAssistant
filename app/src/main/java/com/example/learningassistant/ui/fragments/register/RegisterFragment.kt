@@ -8,23 +8,13 @@ import androidx.fragment.app.Fragment
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.databinding.FragmentRegisterBinding
-import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.hideKeyboard
-import com.example.learningassistant.utilits.showToast
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
-import java.util.concurrent.TimeUnit
-
+import com.example.learningassistant.utilits.*
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val mBinding get() = _binding!!
-    private lateinit var mCallBack: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-    private lateinit var mPhoneNumber: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,79 +27,63 @@ class RegisterFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        mCallBack = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        mBinding.tvLogin.setOnClickListener { APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_enterFragment) }
 
-            override fun onVerificationFailed(p0: FirebaseException) {
-                showToast(p0.message.toString())
+        mBinding.btnRegister.setOnClickListener {
+            checkFields {
+                readData {
+                    register()
+                }
             }
+        }
+    }
 
-            override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-                val bundle = Bundle()
-                bundle.putString("phoneNumber", mPhoneNumber)
-                bundle.putString("id", id)
-                APP_ACTIVITY.navController.navigate(
-                    R.id.action_registerFragment_to_enterCodeFragment,
-                    bundle
-                )
+
+    private fun checkFields(function: () -> Unit) {
+        when {
+            mBinding.registerInputName.text.isEmpty() -> showToast("Введите Имя")
+            mBinding.registerInputSurname.text.isEmpty() -> showToast("Введите Фамилию")
+            mBinding.registerInputEmail.text.isEmpty() -> showToast("Введите Email")
+            mBinding.registerInputPassword.text.isEmpty() -> showToast("Введите Пароль")
+            mBinding.registerRepeatPassword.text.isEmpty() -> showToast("Повторите Пароль")
+            mBinding.registerInputPassword.text.toString() != mBinding.registerRepeatPassword.text.toString() ->
+                showToast("Вы ввели разные пароли!")
+            else ->{
+                function()
             }
+        }
+    }
 
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                AUTH.signInWithCredential(credential)
+    private fun readData(function: () -> Unit) {
+        val fullName =
+            mBinding.registerInputName.text.toString() + " " + mBinding.registerInputSurname.text.toString()
+        USER.fullName = fullName
+        USER.email = mBinding.registerInputEmail.text.toString()
+        USER.password = mBinding.registerInputPassword.text.toString()
+        function()
+    }
+
+    private fun register() {
+        AUTH.createUserWithEmailAndPassword(USER.email, USER.password)
+            .addOnSuccessListener {
+                USER.id = AUTH.currentUser?.uid.toString()
+                DB.collection(COLL_USERS).document(USER.id).set(USER)
                     .addOnSuccessListener {
-                        val uid = AUTH.currentUser?.uid.toString()
-                        DB.collection(COLL_USERS).document(uid).get()
-                            .addOnCompleteListener {
-                                if (it.result?.exists() != true) {
-                                    USER.id = uid
-                                    USER.phone = mPhoneNumber
-                                    DB.collection(COLL_USERS).document(uid).set(USER)
-                                        .addOnSuccessListener {
-                                            val map = hashMapOf("rating_sum" to 0.0)
-                                            DB.collection(COLL_RATINGS).document(uid).set(map)
-                                                .addOnFailureListener { showToast(it.message.toString()) }
-                                            showToast("Добро пожаловать")
-                                            APP_ACTIVITY.hideKeyboard()
-                                            APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_mainFragment)
-                                        }
-                                } else {
-                                    showToast("C возвращением!")
-                                    APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_mainFragment)
-                                }
+                        val map = hashMapOf("rating_sum" to 0.0)
+                        DB.collection(COLL_RATINGS).document(USER.id).set(map)
+                            .addOnSuccessListener {
+                                showToast("Регистрация прошла успешно!")
+                                APP_ACTIVITY.hideKeyboard()
+                                APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_enterFragment)
                             }
-                            .addOnFailureListener { showToast(it.message.toString()) }
                     }
             }
-
-
-        }
-
-        mBinding.registerBtnNext.setOnClickListener {
-            sentCode()
-        }
-    }
-
-    private fun sentCode() {
-        if (mBinding.registerInputPhoneNumber.text.toString().isEmpty()) {
-            showToast("Введите номер телефона")
-        } else
-            authUser()
-    }
-
-    private fun authUser() {
-        mPhoneNumber = mBinding.registerInputPhoneNumber.text.toString()
-        PhoneAuthProvider.verifyPhoneNumber(
-            PhoneAuthOptions
-                .newBuilder(FirebaseAuth.getInstance())
-                .setActivity(APP_ACTIVITY)
-                .setPhoneNumber(mPhoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setCallbacks(mCallBack)
-                .build()
-        )
+            .addOnFailureListener { showToast(it.message.toString()) }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
