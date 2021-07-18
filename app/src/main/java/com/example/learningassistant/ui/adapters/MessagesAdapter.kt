@@ -16,7 +16,7 @@ import com.example.learningassistant.utilits.asTimeMessage
 import com.example.learningassistant.utilits.downloadAndSetImage
 import kotlinx.android.synthetic.main.message_item.view.*
 
-class SingleChatAdapter:RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
+class MessagesAdapter:RecyclerView.Adapter<MessagesAdapter.SingleChatHolder>() {
 
     private var mlistMessagesCache = emptyList<Message>()
 

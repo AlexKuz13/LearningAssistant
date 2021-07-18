@@ -72,7 +72,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         holder.taskTopicName.text = mlistTasksCache[position].topic
         holder.taskDescriptionText.text = mlistTasksCache[position].description
         holder.taskBtnHelp.setOnClickListener {
-            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_singleChatFragment,bundle)
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_messagesFragment,bundle)
             }
         initMyOrNo(position, holder)
     }

@@ -54,7 +54,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
             val bundle = Bundle()
             bundle.putSerializable("User", user)
             APP_ACTIVITY.navController.navigate(
-                R.id.action_messagesFragment_to_singleChatFragment,
+                R.id.action_chatsFragment_to_messagesFragment,
                 bundle
             )
         }

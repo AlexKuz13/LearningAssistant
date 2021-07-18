@@ -8,5 +8,5 @@ interface DatabaseStorage {
 
     suspend fun putImageToStorage(uri: Uri, path: StorageReference, onSuccess:()->Unit)
 
-    suspend fun getUrlFromStorage(uri: Uri, path: StorageReference, onSuccess:()->Unit)
+    suspend fun getUrlFromStorage(uri: Uri, path: StorageReference) :String
 }

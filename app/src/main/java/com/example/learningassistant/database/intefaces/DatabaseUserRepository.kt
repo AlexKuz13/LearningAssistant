@@ -5,7 +5,7 @@ import com.example.learningassistant.models.User
 
 interface DatabaseUserRepository {
 
-    val useR: LiveData<User>
+    val currentUser: LiveData<User>
     suspend fun insertUser(user: User, onSuccess:()->Unit)
-    suspend fun updateUser(user: User, onSuccess:()->Unit)
+    suspend fun updateUser(user: User, hashMap: HashMap<String,Any>, onSuccess:()->Unit)
 }

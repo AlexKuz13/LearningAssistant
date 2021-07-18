@@ -53,7 +53,7 @@ class MainFragment : Fragment() {
 
     private fun initFields() {
         APP_ACTIVITY.title = "Learning Assistant"
-        APP_ACTIVITY.mNavDrawer.enableDrawer()
+       // APP_ACTIVITY.mNavDrawer.enableDrawer()
         mLayoutManager = LinearLayoutManager(this.context)
     }
 

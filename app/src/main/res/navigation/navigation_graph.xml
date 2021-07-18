@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/enterFragment"
-        android:name="com.example.learningassistant.ui.fragments.register.EnterFragment"
+        android:name="com.example.learningassistant.ui.fragments.enter.EnterFragment"
         android:label="fragment_enter"
         tools:layout="@layout/fragment_enter">
         <action
@@ -39,8 +39,8 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_graph" />
         <action
-            android:id="@+id/action_mainFragment_to_singleChatFragment"
-            app:destination="@id/singleChatFragment" />
+            android:id="@+id/action_mainFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
         <action
             android:id="@+id/action_mainFragment_to_createTaskFragment"
             app:destination="@id/createTaskFragment" />
@@ -48,8 +48,8 @@
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
+            android:id="@+id/action_mainFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment" />
     </fragment>
     <dialog
         android:id="@+id/createTaskFragment"
@@ -61,27 +61,27 @@
             app:destination="@id/mainFragment" />
     </dialog>
     <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.example.learningassistant.ui.fragments.messages.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_messages">
+        <action
+            android:id="@+id/action_chatsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_chatsFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/messagesFragment"
         android:name="com.example.learningassistant.ui.fragments.messages.MessagesFragment"
         android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" >
-        <action
-            android:id="@+id/action_messagesFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_messagesFragment_to_singleChatFragment"
-            app:destination="@id/singleChatFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/singleChatFragment"
-        android:name="com.example.learningassistant.ui.fragments.messages.SingleChatFragment"
-        android:label="fragment_single_chat"
-        tools:layout="@layout/fragment_single_chat" >
+        tools:layout="@layout/fragment_single_chat">
         <action
             android:id="@+id/action_singleChatFragment_to_ratingFragment"
             app:destination="@id/ratingFragment" />
         <action
-            android:id="@+id/action_singleChatFragment_to_settingsFragment"
+            android:id="@+id/action_messagesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
     <dialog
@@ -91,7 +91,7 @@
         tools:layout="@layout/fragment_rating" >
         <action
             android:id="@+id/action_ratingFragment_to_singleChatFragment"
-            app:destination="@id/singleChatFragment" />
+            app:destination="@id/messagesFragment" />
     </dialog>
     <fragment
         android:id="@+id/settingsFragment"

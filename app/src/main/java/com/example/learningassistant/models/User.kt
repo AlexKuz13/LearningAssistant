@@ -11,5 +11,6 @@ data class User (
     var info:String="Не задано",
     var rating:Double=0.0,
     var completeWorks:Int=0,
-    var photoUrl:String="empty"
+    var photoUrl:String="empty",
+    var rating_sum:Double=0.0
         ) :Serializable

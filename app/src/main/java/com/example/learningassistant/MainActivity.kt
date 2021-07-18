@@ -32,11 +32,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(mBinding.root)
         APP_ACTIVITY = this
         navController= Navigation.findNavController(this,R.id.nav_host_fragment)
-        initFirebase()
-        initUser {
-            initFields()
-            initFunc()
-        }
+
+        //initFirebase()
+        //initUser {
+        //    initFields()
+        //    initFunc()
+       // }
     }
 
 
@@ -71,13 +72,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onStop() {
         super.onStop()
-        AppStates.updateState(AppStates.OFFLINE)
+     //   AppStates.updateState(AppStates.OFFLINE)
     }
 
     override fun onResume() {
         super.onResume()
-        android.os.Handler().postDelayed({
-            AppStates.updateState((AppStates.ONLINE))
-        }, 3000)
+     //   android.os.Handler().postDelayed({
+    //        AppStates.updateState((AppStates.ONLINE))
+     //   }, 3000)
     }
 }

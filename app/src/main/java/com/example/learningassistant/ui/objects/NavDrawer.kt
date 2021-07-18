@@ -62,7 +62,7 @@ class NavDrawer(private var toolbar: Toolbar) {
                 bundle.putSerializable("User",USER)
                 APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_settingsFragment,bundle)
             }
-            R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_messagesFragment)
+            R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_chatsFragment)
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
