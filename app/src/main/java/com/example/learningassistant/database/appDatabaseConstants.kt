@@ -11,7 +11,7 @@ lateinit var AUTH: FirebaseAuth
 @SuppressLint("StaticFieldLeak")
 lateinit var DB: FirebaseFirestore
 lateinit var USER: User
-lateinit var TASK: Task
+//lateinit var TASK: Task
 lateinit var MESSAGE: Message
 lateinit var RATING: Rating
 lateinit var CHAT: Chat

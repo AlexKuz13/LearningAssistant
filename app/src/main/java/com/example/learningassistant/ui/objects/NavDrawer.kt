@@ -34,8 +34,8 @@ class NavDrawer(private var toolbar: Toolbar) {
     }
 
     private fun initView() {
-        mDrawerLayout = APP_ACTIVITY.drawer_layout
-        mNavigationView = APP_ACTIVITY.nav_view
+        mDrawerLayout = APP_ACTIVITY.mDrawerLayout
+        mNavigationView = APP_ACTIVITY.mBinding.navView
     }
 
     private fun initNavDrawer() {
@@ -66,6 +66,7 @@ class NavDrawer(private var toolbar: Toolbar) {
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
+                AppPreference.setInitUser(false)
                 APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_enterFragment)
             }
         }

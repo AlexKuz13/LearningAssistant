@@ -1,6 +1,9 @@
 package com.example.learningassistant.ui.adapters
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,9 +36,11 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         val taskTopicName: TextView = view.task_topic_name
         val taskDescriptionText: TextView = view.task_description_text
         val taskBtnHelp: Button = view.btn_task_help
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
+
         return TaskHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.task_item, parent, false)
@@ -48,10 +53,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
             .get()
             .addOnSuccessListener {
                 taskUser = it.toObject(User::class.java) ?: User()
-                initHolder(taskUser,holder,position)
+                initHolder(taskUser, holder, position)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
-
 
 
     }
@@ -59,21 +63,25 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
     private fun initHolder(user: User, holder: TaskHolder, position: Int) {
         val bundle = Bundle()
-        bundle.putSerializable("User",user)
+        bundle.putSerializable("User", user)
         holder.taskProfilePhoto.downloadAndSetImage(user.photoUrl)
         holder.taskProfilePhoto.setOnClickListener {
-            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_settingsFragment,bundle)
-            }
+            APP_ACTIVITY.navController.navigate(
+                R.id.action_mainFragment_to_settingsFragment,
+                bundle
+            )
+        }
         holder.taskProfileFullname.text = user.fullName
         holder.taskStarRating.text = DecimalFormat("#.##").format(user.rating).toString()
-        android.os.Handler().postDelayed({
-            holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
-        }, 1000)
+        holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
         holder.taskTopicName.text = mlistTasksCache[position].topic
         holder.taskDescriptionText.text = mlistTasksCache[position].description
         holder.taskBtnHelp.setOnClickListener {
-            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_messagesFragment,bundle)
-            }
+            APP_ACTIVITY.navController.navigate(
+                R.id.action_mainFragment_to_messagesFragment,
+                bundle
+            )
+        }
         initMyOrNo(position, holder)
     }
 

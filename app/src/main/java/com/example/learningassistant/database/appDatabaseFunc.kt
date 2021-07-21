@@ -20,14 +20,14 @@ fun initFirebase() {
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
 }
 
-inline fun initUser(crossinline function: () -> Unit) {
+/*inline fun initUser(crossinline function: () -> Unit) {
     DB.collection(COLL_USERS).document(UID).get()
         .addOnSuccessListener {
             USER = it.toObject(User::class.java) ?: User()
             function()
         }
         .addOnFailureListener { showToast(it.message.toString()) }
-}
+}*/
 
 
 inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
@@ -49,27 +49,27 @@ inline fun putUrlToDatabase(url: String, crossinline function: () -> Unit) {
 }
 
 
-fun sendTask(
-    topic: String,
-    description: String,
-    uid: String,
-    typeDes: String,
-    function: () -> Unit
-) {
-    TASK = Task()
-    TASK.topic = topic
-    TASK.description = description
-    TASK.from = uid
-    TASK.type_des = typeDes
-    TASK.timeStamp = FieldValue.serverTimestamp()
-    val taskKey = DB.collection(COLL_USERS).document().id
-    DB.collection(COLL_TASKS).document(taskKey).set(TASK)
-        .addOnSuccessListener {
-            showToast("Заявка размещена")
-            function()
-        }
-        .addOnFailureListener { showToast(it.message.toString()) }
-}
+//fun sendTask(
+//    topic: String,
+//    description: String,
+//    uid: String,
+//    typeDes: String,
+//    function: () -> Unit
+//) {
+//    TASK = Task()
+//    TASK.topic = topic
+//    TASK.description = description
+//    TASK.from = uid
+//    TASK.type_des = typeDes
+//    TASK.timeStamp = FieldValue.serverTimestamp()
+//    val taskKey = DB.collection(COLL_USERS).document().id
+//    DB.collection(COLL_TASKS).document(taskKey).set(TASK)
+//        .addOnSuccessListener {
+//            showToast("Заявка размещена")
+//            function()
+//        }
+//        .addOnFailureListener { showToast(it.message.toString()) }
+//}
 
 fun sendMessageAsImage(receivingUserId: String, it: String, messageKey: String) {
     MESSAGE = Message()

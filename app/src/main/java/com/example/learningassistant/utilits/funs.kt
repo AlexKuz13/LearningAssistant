@@ -40,8 +40,7 @@ fun ImageView.downloadAndSetImage(url: String) {
 }
 
 fun String.asTime(): String {
-    val seconds = this.substringBefore(',').substringAfter('=') + "000"
-    val time = Date(seconds.toLong())
+    val time = Date(this.toLong())
     val timeFormat = SimpleDateFormat("dd.MM HH:mm", Locale.getDefault())
     return timeFormat.format(time)
 }

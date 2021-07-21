@@ -1,10 +1,7 @@
 package com.example.learningassistant.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.database.COLL_TASKS
-import com.example.learningassistant.database.COLL_USERS
-import com.example.learningassistant.database.DB
+import com.example.learningassistant.database.*
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
@@ -24,7 +21,7 @@ class TaskLiveData: LiveData<List<Task>>() {
         }
 
     override fun onActive() {
-        listenerData = DB.collection(COLL_TASKS).addSnapshotListener(listener)
+        listenerData = DB.collection(COLL_TASKS).orderBy(CHILD_TIMESTAMP).addSnapshotListener(listener)
         super.onActive()
     }
 

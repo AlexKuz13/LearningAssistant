@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
 import com.example.learningassistant.databinding.FragmentEnterBinding
+import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 
@@ -17,7 +20,6 @@ class EnterFragment : Fragment() {
     private var _binding: FragmentEnterBinding? = null
     private val mBinding get() = _binding!!
     private lateinit var mViewModel: EnterFragmentViewModel
-    private lateinit var mViewModelFactory: EnterViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +33,8 @@ class EnterFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        APP_ACTIVITY.mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        APP_ACTIVITY.mToolbar.visibility = View.GONE
         mBinding.tvRegister.setOnClickListener { APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_registerFragment) }
         mBinding.btnLogin.setOnClickListener { login() }
     }
@@ -46,6 +50,7 @@ class EnterFragment : Fragment() {
             )
             mViewModel.initDatabase {
                 showToast("Добро пожаловать")
+                AppPreference.setInitUser(true)
                 APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_mainFragment)
             }
 

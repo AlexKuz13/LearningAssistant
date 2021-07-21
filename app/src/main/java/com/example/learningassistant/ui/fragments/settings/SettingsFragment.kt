@@ -80,14 +80,14 @@ class SettingsFragment : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.settings_action_menu, menu)
+        inflater.inflate(R.menu.settings_action_menu,menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.settings_menu_change_name -> APP_ACTIVITY.navController.navigate(R.id.action_settingsFragment_to_changeNameFragment)
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

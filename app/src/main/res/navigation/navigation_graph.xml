@@ -27,10 +27,13 @@
         <action
             android:id="@+id/action_registerFragment_to_enterFragment"
             app:destination="@id/enterFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.learningassistant.ui.fragments.MainFragment"
+        android:name="com.example.learningassistant.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -50,15 +53,18 @@
         <action
             android:id="@+id/action_mainFragment_to_chatsFragment"
             app:destination="@id/chatsFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/createTaskFragment"
-        android:name="com.example.learningassistant.ui.fragments.CreateTaskFragment"
+        android:name="com.example.learningassistant.ui.fragments.create_tasks.CreateTaskFragment"
         android:label="fragment_create_task"
         tools:layout="@layout/fragment_create_task" >
         <action
             android:id="@+id/action_createTaskFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_graph"/>
     </dialog>
     <fragment
         android:id="@+id/chatsFragment"
@@ -126,4 +132,5 @@
             android:id="@+id/action_changeNameFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
+
 </navigation>

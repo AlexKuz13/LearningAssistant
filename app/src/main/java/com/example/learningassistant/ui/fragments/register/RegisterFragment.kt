@@ -5,15 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.databinding.FragmentRegisterBinding
+import com.example.learningassistant.models.User
+import com.example.learningassistant.ui.fragments.enter.EnterFragmentViewModel
+import com.example.learningassistant.ui.fragments.enter.EnterViewModelFactory
+import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.utilits.*
+import kotlinx.coroutines.launch
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val mBinding get() = _binding!!
+    private lateinit var mViewModel: RegisterFragmentViewModel
 
 
     override fun onCreateView(
@@ -31,15 +39,26 @@ class RegisterFragment : Fragment() {
 
         mBinding.btnRegister.setOnClickListener {
             checkFields {
-                readData {
-                    register()
+                lifecycleScope.launch {
+                    readData()
+                    mViewModel = ViewModelProvider(
+                        this@RegisterFragment,
+                        RegisterViewModelFactory(USER)
+                    ).get(
+                        RegisterFragmentViewModel::class.java
+                    )
+                    mViewModel.createDatabase {
+                        showToast("Регистрация прошла успешно!")
+                        AppPreference.setInitUser(true)
+                        APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_mainFragment)
+                    }
                 }
             }
         }
     }
 
 
-    private fun checkFields(function: () -> Unit) {
+    private fun checkFields(onSuccess: () -> Unit) {
         when {
             mBinding.registerInputName.text.isEmpty() -> showToast("Введите Имя")
             mBinding.registerInputSurname.text.isEmpty() -> showToast("Введите Фамилию")
@@ -48,38 +67,19 @@ class RegisterFragment : Fragment() {
             mBinding.registerRepeatPassword.text.isEmpty() -> showToast("Повторите Пароль")
             mBinding.registerInputPassword.text.toString() != mBinding.registerRepeatPassword.text.toString() ->
                 showToast("Вы ввели разные пароли!")
-            else ->{
-                function()
-            }
+            else -> onSuccess()
         }
     }
 
-    private fun readData(function: () -> Unit) {
+    private suspend fun readData() {
         val fullName =
             mBinding.registerInputName.text.toString() + " " + mBinding.registerInputSurname.text.toString()
+        USER = User()
         USER.fullName = fullName
         USER.email = mBinding.registerInputEmail.text.toString()
         USER.password = mBinding.registerInputPassword.text.toString()
-        function()
     }
 
-    private fun register() {
-        AUTH.createUserWithEmailAndPassword(USER.email, USER.password)
-            .addOnSuccessListener {
-                USER.id = AUTH.currentUser?.uid.toString()
-                DB.collection(COLL_USERS).document(USER.id).set(USER)
-                    .addOnSuccessListener {
-                        val map = hashMapOf("rating_sum" to 0.0)
-                        DB.collection(COLL_RATINGS).document(USER.id).set(map)
-                            .addOnSuccessListener {
-                                showToast("Регистрация прошла успешно!")
-                                APP_ACTIVITY.hideKeyboard()
-                                APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_enterFragment)
-                            }
-                    }
-            }
-            .addOnFailureListener { showToast(it.message.toString()) }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

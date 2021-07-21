@@ -49,7 +49,7 @@ class AppFirebaseRepository : DatabaseRepository {
     }
 
 
-    private fun initRefs() {
+     fun initRefs() {
         UID = AUTH.currentUser?.uid.toString()
         REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
         DB = FirebaseFirestore.getInstance()
