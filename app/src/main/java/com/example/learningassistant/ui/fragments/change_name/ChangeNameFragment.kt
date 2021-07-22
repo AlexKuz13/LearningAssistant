@@ -1,11 +1,16 @@
-package com.example.learningassistant.ui.fragments.settings
+package com.example.learningassistant.ui.fragments.change_name
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.learningassistant.database.*
+import androidx.databinding.DataBindingUtil
+
+import androidx.lifecycle.ViewModelProvider
+import com.example.learningassistant.R
+import com.example.learningassistant.database.USER
 import com.example.learningassistant.databinding.FragmentChangeNameBinding
+import com.example.learningassistant.ui.fragments.settings.BaseChangeFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 
@@ -14,6 +19,7 @@ class ChangeNameFragment : BaseChangeFragment() {
 
     private var _binding: FragmentChangeNameBinding? = null
     private val mBinding get() = _binding!!
+    private lateinit var mViewModel: ChangeNameFragmentViewModel
 
 
     override fun onCreateView(
@@ -21,34 +27,30 @@ class ChangeNameFragment : BaseChangeFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentChangeNameBinding.inflate(layoutInflater, container, false)
+        _binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_change_name, container, false)
+        mBinding.user = USER
         return mBinding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        val fullnameList = USER.fullName.split(" ")
-        if (fullnameList.size > 1) {
-            mBinding.etChangeName.setText(fullnameList[0])
-            mBinding.etChangeSurname.setText(fullnameList[1])
-        } else mBinding.etChangeName.setText(fullnameList[0])
-    }
 
     override fun change() {
         val name = mBinding.etChangeName.text.toString()
         val surname = mBinding.etChangeSurname.text.toString()
-        if (name.isEmpty()) {
-            showToast("Имя не может быть пустым")
+        if (name.isEmpty() || surname.isEmpty()) {
+            showToast("Поля не могут быть пустыми")
         } else {
-            val fullname = "$name $surname"
-            DB.collection(COLL_USERS).document(UID).update(CHILD_FULLNAME, fullname)
-                .addOnSuccessListener {
+            val fullName = "$name $surname"
+            if (fullName != USER.fullName) {
+                mViewModel = ViewModelProvider(this, ChangeNameViewModelFactory(fullName)).get(
+                    ChangeNameFragmentViewModel::class.java
+                )
+                mViewModel.changeName {
                     showToast("Данные обновлены")
-                    USER.fullName = fullname
                     APP_ACTIVITY.mNavDrawer.updateHeader()
                     APP_ACTIVITY.navController.popBackStack()
                 }
-                .addOnFailureListener { showToast(it.message.toString()) }
+            } else APP_ACTIVITY.navController.popBackStack()
         }
     }
 

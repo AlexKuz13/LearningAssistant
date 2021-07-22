@@ -1,30 +1,20 @@
-package com.example.learningassistant.ui.main
+package com.example.learningassistant.ui.fragments.main
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
-import com.example.learningassistant.database.CHILD_TIMESTAMP
-import com.example.learningassistant.database.COLL_TASKS
-import com.example.learningassistant.database.DB
 import com.example.learningassistant.database.USER
 import com.example.learningassistant.databinding.FragmentMainBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.adapters.TaskAdapter
 import com.example.learningassistant.utilits.APP_ACTIVITY
-import com.example.learningassistant.utilits.showToast
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.ListenerRegistration
 
 
 class MainFragment : Fragment() {

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.databinding.FragmentSettingsBinding
@@ -21,7 +22,7 @@ class SettingsFragment : BaseFragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val mBinding get() = _binding!!
-    private lateinit var human: User
+    private lateinit var mViewModel: SettingsFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,15 +67,12 @@ class SettingsFragment : BaseFragment() {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(UID)
-            putImageToStorage(uri, path) {
-                getUrlFromStorage(path) {
-                    putUrlToDatabase(it) {
-                        mBinding.settingsHeaderProfilePhoto.downloadAndSetImage(it)
-                        showToast("Данные обновлены")
-                        USER.photoUrl = it
-                        APP_ACTIVITY.mNavDrawer.updateHeader()
-                    }
-                }
+            mViewModel = ViewModelProvider(this,SettingsViewModelFactory(uri,path)).get(
+                SettingsFragmentViewModel::class.java)
+            mViewModel.updatePhoto {
+                mBinding.settingsHeaderProfilePhoto.downloadAndSetImage(USER.photoUrl)
+                showToast("Данные обновлены")
+                APP_ACTIVITY.mNavDrawer.updateHeader()
             }
         }
     }

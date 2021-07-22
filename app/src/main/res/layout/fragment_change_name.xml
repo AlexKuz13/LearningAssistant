@@ -1,47 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_grey"
-    tools:context=".ui.fragments.settings.ChangeNameFragment">
 
-    <EditText
-        android:id="@+id/et_change_name"
+<layout>
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.learningassistant.models.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_margin"
-        android:autofillHints=""
-        android:backgroundTint="@color/black"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        android:padding="7dp"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/black_cursor"
-        android:textSize="@dimen/large_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/et_change_surname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_margin"
-        android:autofillHints=""
-        android:backgroundTint="@color/black"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        android:padding="7dp"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/black_cursor"
-        android:textSize="@dimen/large_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_change_name"
-        tools:ignore="LabelFor" />
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        tools:context=".ui.fragments.change_name.ChangeNameFragment">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/et_change_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:autofillHints=""
+            android:backgroundTint="@color/black"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:padding="7dp"
+            android:text="@{user.fullName.split(&quot; &quot;)[0]}"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:textSize="@dimen/large_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/et_change_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:autofillHints=""
+            android:backgroundTint="@color/black"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:padding="7dp"
+            android:text="@{user.fullName.split(&quot; &quot;)[1]}"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:textSize="@dimen/large_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_change_name"
+            tools:ignore="LabelFor" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -8,7 +8,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.learningassistant.database.firebase.AppFirebaseRepository
 import com.example.learningassistant.databinding.ActivityMainBinding
-import com.example.learningassistant.ui.main.MainFragment
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY

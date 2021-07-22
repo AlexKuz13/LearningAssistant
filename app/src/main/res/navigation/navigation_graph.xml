@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.learningassistant.ui.main.MainFragment"
+        android:name="com.example.learningassistant.ui.fragments.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/changeInfoFragment"
-        android:name="com.example.learningassistant.ui.fragments.settings.ChangeInfoFragment"
+        android:name="com.example.learningassistant.ui.fragments.change_info.ChangeInfoFragment"
         android:label="fragment_change_info"
         tools:layout="@layout/fragment_change_info" >
         <action
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/changeNameFragment"
-        android:name="com.example.learningassistant.ui.fragments.settings.ChangeNameFragment"
+        android:name="com.example.learningassistant.ui.fragments.change_name.ChangeNameFragment"
         android:label="fragment_change_name"
         tools:layout="@layout/fragment_change_name" >
         <action

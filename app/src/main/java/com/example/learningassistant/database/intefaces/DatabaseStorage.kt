@@ -6,7 +6,7 @@ import com.google.firebase.storage.StorageReference
 
 interface DatabaseStorage {
 
-    suspend fun putImageToStorage(uri: Uri, path: StorageReference, onSuccess:()->Unit)
+    suspend fun putImageToStorage(uri: Uri, path: StorageReference)
 
-    suspend fun getUrlFromStorage(uri: Uri, path: StorageReference) :String
+    suspend fun getUrlFromStorage( path: StorageReference,onSuccess:()->Unit)
 }

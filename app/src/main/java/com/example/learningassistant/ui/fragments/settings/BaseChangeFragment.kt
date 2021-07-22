@@ -9,6 +9,8 @@ import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.hideKeyboard
 
 open class BaseChangeFragment : BaseFragment() {
+
+
     override fun onStart() {
         super.onStart()
         setHasOptionsMenu(true)

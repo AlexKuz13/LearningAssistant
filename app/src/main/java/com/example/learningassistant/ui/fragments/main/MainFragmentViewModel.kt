@@ -1,4 +1,4 @@
-package com.example.learningassistant.ui.main
+package com.example.learningassistant.ui.fragments.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
