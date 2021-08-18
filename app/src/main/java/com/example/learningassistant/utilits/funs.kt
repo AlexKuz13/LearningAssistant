@@ -10,7 +10,6 @@ import androidx.databinding.BindingAdapter
 import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,8 +45,8 @@ fun String.asTime(): String {
 }
 
 fun String.asTimeMessage(): String {
-    val seconds = this.substringBefore(',').substringAfter('=') + "000"
-    val time = Date(seconds.toLong())
+    //val seconds = this.substringBefore(',').substringAfter('=') + "000"
+    val time = Date(this.toLong())
     val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     return timeFormat.format(time)
 }

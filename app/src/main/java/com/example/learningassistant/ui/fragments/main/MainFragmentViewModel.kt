@@ -10,10 +10,15 @@ import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 
 
-class MainFragmentViewModel():ViewModel() {
+class MainFragmentViewModel : ViewModel() {
+
+//    val currentUser: LiveData<User> by lazy {
+//        USER_REPOSITORY = AppFirebaseUser()
+//        USER_REPOSITORY.currentUser
+//    }
 
     val currentUser: LiveData<User>
-    val listTasks :LiveData<List<Task>>
+    val listTasks: LiveData<List<Task>>
 
     init {
         USER_REPOSITORY = AppFirebaseUser()

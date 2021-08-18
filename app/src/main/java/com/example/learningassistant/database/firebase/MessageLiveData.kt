@@ -1,7 +1,7 @@
 package com.example.learningassistant.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.AUTH
+import com.example.learningassistant.database.CHILD_TIMESTAMP
 import com.example.learningassistant.database.COLL_MESSAGES
 import com.example.learningassistant.database.DB
 import com.example.learningassistant.database.UID
@@ -11,9 +11,9 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QuerySnapshot
 
-class MessageLiveData(private val interlocutorId:String): LiveData<List<Message>>() {
+class MessageLiveData(private val interlocutorId: String) : LiveData<List<Message>>() {
 
-    private lateinit var listenerData : ListenerRegistration
+    private lateinit var listenerData: ListenerRegistration
 
     private val listener =
         EventListener<QuerySnapshot> { snapshot, error ->
@@ -22,8 +22,10 @@ class MessageLiveData(private val interlocutorId:String): LiveData<List<Message>
         }
 
     override fun onActive() {
-        listenerData = DB.collection(COLL_MESSAGES).document(UID).collection(interlocutorId)
-            .addSnapshotListener(listener)
+        listenerData =
+            DB.collection(COLL_MESSAGES).document(UID).collection(interlocutorId)
+                .orderBy(CHILD_TIMESTAMP)
+                .addSnapshotListener(listener)
         super.onActive()
     }
 

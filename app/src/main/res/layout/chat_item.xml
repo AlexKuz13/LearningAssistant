@@ -36,7 +36,7 @@
         android:ellipsize="end"
         android:maxWidth="250dp"
         android:maxLines="1"
-        android:text="Hello developer. please check this message for long length. max length to 50 characters"
+        tools:text="Hello developer. please check this message for long length. max length to 50 characters"
         android:textColor="@color/grey"
         android:textSize="@dimen/normal_text"
         app:layout_constraintBottom_toBottomOf="@id/chat_profile_photo"

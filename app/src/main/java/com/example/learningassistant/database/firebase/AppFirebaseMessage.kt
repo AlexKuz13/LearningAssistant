@@ -1,9 +1,11 @@
 package com.example.learningassistant.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.*
+import com.example.learningassistant.database.COLL_MESSAGES
+import com.example.learningassistant.database.COLL_USERS
+import com.example.learningassistant.database.DB
+import com.example.learningassistant.database.UID
 import com.example.learningassistant.database.intefaces.DatabaseMessageRepository
-import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.Message
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
@@ -31,13 +33,13 @@ class AppFirebaseMessage(private val interlocutorId: String) : DatabaseMessageRe
     }
 
 
-    override suspend fun rateUser(user: User, rate: Float, onSuccess: (interlocutor:User) -> Unit) {
-        DB.collection(COLL_USERS).document(user.id).get().addOnSuccessListener {
+    override suspend fun rateUser(rate: Float, onSuccess: () -> Unit) {
+        DB.collection(COLL_USERS).document(interlocutorId).get().addOnSuccessListener {
             val interlocutor = it.toObject(User::class.java) ?: User()
             interlocutor.completeWorks++
             interlocutor.rating_sum += rate
-            interlocutor.rating = interlocutor.rating_sum/interlocutor.completeWorks
-            onSuccess(interlocutor)
+            interlocutor.rating = interlocutor.rating_sum / interlocutor.completeWorks
+            onSuccess()
         }
     }
 
