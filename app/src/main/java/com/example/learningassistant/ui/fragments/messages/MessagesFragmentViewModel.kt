@@ -12,7 +12,7 @@ import com.example.learningassistant.models.Message
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MessagesFragmentViewModel(private val interlocutorId: String) : ViewModel() {
+class MessagesFragmentViewModel(interlocutorId: String) : ViewModel() {
 
     val listMessages: LiveData<List<Message>>
 

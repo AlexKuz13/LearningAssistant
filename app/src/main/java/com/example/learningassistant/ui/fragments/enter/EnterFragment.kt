@@ -1,5 +1,6 @@
 package com.example.learningassistant.ui.fragments.enter
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,15 @@ import android.view.ViewGroup
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
 import com.example.learningassistant.databinding.FragmentEnterBinding
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
+import com.vk.api.sdk.VK
+import com.vk.api.sdk.auth.VKAccessToken
+import com.vk.api.sdk.auth.VKAuthCallback
+import com.vk.api.sdk.auth.VKScope
 
 
 class EnterFragment : Fragment() {
@@ -37,6 +41,9 @@ class EnterFragment : Fragment() {
         APP_ACTIVITY.mToolbar.visibility = View.GONE
         mBinding.tvRegister.setOnClickListener { APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_registerFragment) }
         mBinding.btnLogin.setOnClickListener { login() }
+        mBinding.btnEnterVk.setOnClickListener {
+            VK.login(APP_ACTIVITY, arrayListOf(VKScope.WALL, VKScope.PHOTOS))
+        }
     }
 
     private fun login() {
@@ -54,6 +61,23 @@ class EnterFragment : Fragment() {
                 APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_mainFragment)
             }
 
+        }
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        val callback = object : VKAuthCallback {
+            override fun onLogin(token: VKAccessToken) {
+                APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_mainFragment)
+            }
+
+            override fun onLoginFailed(errorCode: Int) {
+                showToast("Ошибка авторизации")
+            }
+        }
+        if (data == null || !VK.onActivityResult(requestCode, resultCode, data, callback)) {
+            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 

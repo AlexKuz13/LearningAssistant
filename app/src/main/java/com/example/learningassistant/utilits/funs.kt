@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
-import com.example.learningassistant.MainActivity
 import com.example.learningassistant.R
+import com.example.learningassistant.ui.MainActivity
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*

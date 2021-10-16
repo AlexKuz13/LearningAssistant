@@ -1,22 +1,27 @@
-package com.example.learningassistant
+package com.example.learningassistant.ui
 
 import android.os.Bundle
+import android.util.Log
+
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.learningassistant.R
 import com.example.learningassistant.database.firebase.AppFirebaseRepository
 import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.google.android.material.navigation.NavigationView
+import com.vk.api.sdk.utils.VKUtils
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    lateinit var mBinding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
+    val mBinding get() = _binding!!
     lateinit var mToolbar: androidx.appcompat.widget.Toolbar
     lateinit var navController: NavController
     lateinit var mNavDrawer: NavDrawer
@@ -25,12 +30,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        //setTheme(R.style.Theme_LearningAssistant)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(mBinding.root)
+
         APP_ACTIVITY = this
+        val finger = VKUtils.getCertificateFingerprint(this, this.packageName)
+        finger?.forEach {
+            if (it != null) {
+                Log.d("dfdfd", it)
+            }
+        }
         AppPreference.getPreference(this)
         initFields()
-        
         mNavDrawer.create()
 
     }
@@ -41,6 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(mToolbar)
         mNavDrawer = NavDrawer(mToolbar)
         mDrawerLayout = mBinding.drawerLayout
+        Log.d("AR", "SDD")
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         if (AppPreference.getInitUser()) {
             AppFirebaseRepository().initRefs()

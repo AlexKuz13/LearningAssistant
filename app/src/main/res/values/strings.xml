@@ -64,5 +64,40 @@
     <string name="register">Регистрация</string>
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
+    <string name="enter_vk">Зайти с помощью VK</string>
+
+
+    <integer name="com_vk_sdk_AppId">7933261</integer>
+
+    <!-- Task Bottom Sheet -->
+    <string name="School_subject">Предмет</string>
+    <string name="all_subjects">Все</string>
+    <string name="maths">Математика</string>
+    <string name="subject_russian">Русский язык</string>
+    <string name="literature">Литература</string>
+    <string name="subject_english">Английский язык</string>
+    <string name="physics">Физика</string>
+    <string name="chemistry">Химия</string>
+    <string name="geograph">География</string>
+    <string name="history">История</string>
+    <string name="obshestvo">Обществознание</string>
+    <string name="geom">Геометрия</string>
+    <string name="algebra">Алгебра</string>
+    <string name="inform">Информатика</string>
+    <string name="biology">Биология</string>
+    <string name="school_class">Класс</string>
+    <string name="class_1">1</string>
+    <string name="class_2">2</string>
+    <string name="class_3">3</string>
+    <string name="class_4">4</string>
+    <string name="class_5">5</string>
+    <string name="class_6">6</string>
+    <string name="class_7">7</string>
+    <string name="class_8">8</string>
+    <string name="class_9">9</string>
+    <string name="class_10">10</string>
+    <string name="class_11">11</string>
+    <string name="all_classes">Все</string>
+    <string name="apply">Подтвердить</string>
 
 </resources>

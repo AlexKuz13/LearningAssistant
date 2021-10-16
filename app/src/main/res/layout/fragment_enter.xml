@@ -82,6 +82,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -114,16 +115,29 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_enter_vk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:backgroundTint="@color/blue_VK"
+        android:text="@string/enter_vk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
+        android:backgroundTint="@color/white"
         android:contentDescription="@string/login_button_desc"
         android:src="@drawable/ic_arrow_next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/purple_500" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

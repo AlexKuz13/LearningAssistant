@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.main.TaskBottomSheet">
+
+    <TextView
+        android:id="@+id/school_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="@string/School_subject"
+        android:textColor="@color/darkGray"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/subject_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_subject">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/subject_chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:checkedChip="@+id/all_subjects_chip"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/all_subjects_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all_subjects"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/maths_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/maths"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/russian_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject_russian"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/literature_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/literature"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/english_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject_english"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/physics_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/physics"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chemistry_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chemistry"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/geograph_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/geograph"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/history_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/obshestvo_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/obshestvo"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/geom_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/geom"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/algebra_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/algebra"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/inform_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/inform"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/biology_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/biology"
+                    app:chipCornerRadius="@dimen/chip_corner_radius" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/school_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/school_class"
+        android:textColor="@color/darkGray"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subject_scrollView" />
+
+
+    <LinearLayout
+        android:id="@+id/class_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/school_class">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/class_chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:checkedChip="@+id/all_classes_chip"
+            app:selectionRequired="true"
+
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/all_classes_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_classes"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class1_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_1"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class2_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_2"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class3_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_3"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class4_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_4"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class5_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_5"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class6_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_6"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class7_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_7"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class8_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_8"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class9_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_9"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class10_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_10"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/class11_chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_11"
+                app:chipCornerRadius="@dimen/chip_corner_radius" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        android:backgroundTint="@color/purple_500"
+        android:text="@string/apply"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_linear_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

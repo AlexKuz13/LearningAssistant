@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_mainFragment_to_chatsFragment"
             app:destination="@id/chatsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_taskBottomSheet"
+            app:destination="@id/taskBottomSheet" />
 
     </fragment>
     <dialog
@@ -92,7 +95,7 @@
     </fragment>
     <dialog
         android:id="@+id/ratingFragment"
-        android:name="com.example.learningassistant.ui.fragments.messages.RatingFragment"
+        android:name="com.example.learningassistant.ui.fragments.rating.RatingFragment"
         android:label="fragment_rating"
         tools:layout="@layout/fragment_rating" >
         <action
@@ -127,10 +130,21 @@
         android:id="@+id/changeNameFragment"
         android:name="com.example.learningassistant.ui.fragments.change_name.ChangeNameFragment"
         android:label="fragment_change_name"
-        tools:layout="@layout/fragment_change_name" >
+        tools:layout="@layout/fragment_change_name">
         <action
             android:id="@+id/action_changeNameFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/taskBottomSheet"
+        android:name="com.example.learningassistant.ui.fragments.main.TaskBottomSheet"
+        android:label="task_bottom_sheet"
+        tools:layout="@layout/task_bottom_sheet">
+        <action
+            android:id="@+id/action_taskBottomSheet_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
+    </dialog>
 
 </navigation>
