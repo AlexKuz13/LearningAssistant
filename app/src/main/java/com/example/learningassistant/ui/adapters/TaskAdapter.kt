@@ -1,9 +1,6 @@
 package com.example.learningassistant.ui.adapters
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +15,10 @@ import com.example.learningassistant.database.DB
 import com.example.learningassistant.database.UID
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
-import com.example.learningassistant.utilits.*
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.asTime
+import com.example.learningassistant.utilits.downloadAndSetImage
+import com.example.learningassistant.utilits.showToast
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.task_item.view.*
 import java.text.DecimalFormat
@@ -74,7 +74,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         holder.taskProfileFullname.text = user.fullName
         holder.taskStarRating.text = DecimalFormat("#.##").format(user.rating).toString()
         holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
-        holder.taskTopicName.text = mlistTasksCache[position].topic
+        //holder.taskTopicName.text = mlistTasksCache[position].topic
         holder.taskDescriptionText.text = mlistTasksCache[position].description
         holder.taskBtnHelp.setOnClickListener {
             APP_ACTIVITY.navController.navigate(

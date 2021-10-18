@@ -38,7 +38,7 @@
     <string name="hint_et_code">- - - - - -</string>
 
     <!-- Task Item -->
-    <string name="task_topic">Тема:</string>
+    <string name="task_topic">Предмет:</string>
     <string name="task_description">Описание:</string>
     <string name="create_task">Попросить помощь</string>
     <string name="create_task_hint_description">Опишите свое задание</string>
@@ -70,7 +70,7 @@
     <integer name="com_vk_sdk_AppId">7933261</integer>
 
     <!-- Task Bottom Sheet -->
-    <string name="School_subject">Предмет</string>
+    <string name="school_subject">Предмет</string>
     <string name="all_subjects">Все</string>
     <string name="maths">Математика</string>
     <string name="subject_russian">Русский язык</string>
@@ -100,4 +100,36 @@
     <string name="all_classes">Все</string>
     <string name="apply">Подтвердить</string>
 
+
+    <!-- Create task Subject Dropdown Menu -->
+    <string-array name="subject_array">
+        <item>Математика</item>
+        <item>Русский язык</item>
+        <item>Литература</item>
+        <item>Английский язык</item>
+        <item>Физика</item>
+        <item>Химия</item>
+        <item>География</item>
+        <item>История</item>
+        <item>Обществознание</item>
+        <item>Геометрия</item>
+        <item>Алгебра</item>
+        <item>Информатика</item>
+        <item>Биология</item>
+    </string-array>
+
+    <!-- Create task Class Dropdown Menu -->
+    <string-array name="class_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
 </resources>

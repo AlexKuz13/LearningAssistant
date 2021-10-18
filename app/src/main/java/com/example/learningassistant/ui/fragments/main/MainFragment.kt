@@ -1,7 +1,6 @@
 package com.example.learningassistant.ui.fragments.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,7 +77,6 @@ class MainFragment : Fragment() {
         mObserverTasks = Observer {
             val list = it
             mAdapter.setList(list)
-            Log.d("TAG", list[0].description)
             mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
         mViewModel.listTasks.observe(this, mObserverTasks)

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/large_margin"
         android:layout_marginTop="@dimen/large_margin"
-        android:text="@string/School_subject"
+        android:text="@string/school_subject"
         android:textColor="@color/darkGray"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold"

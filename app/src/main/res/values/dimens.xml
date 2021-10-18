@@ -25,4 +25,8 @@
     <dimen name="placeholder_desc_height">60dp</dimen>
     <dimen name="placeholder_rating_width">50dp</dimen>
     <dimen name="placeholder_name_width">200dp</dimen>
+
+    <!-- Create Task Fragment -->
+    <dimen name="create_task_desc_height">200dp</dimen>
+    <dimen name="task_dropdown_height">250dp</dimen>
 </resources>

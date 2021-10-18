@@ -6,43 +6,56 @@
     android:layout_height="wrap_content"
     tools:context=".ui.fragments.create_tasks.CreateTaskFragment">
 
-    <TextView
-        android:id="@+id/create_task_topic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_margin"
-        android:text="@string/task_topic"
-        android:textColor="@color/black"
-        android:textSize="@dimen/large_text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/create_task_et_topic"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/create_task_topic_subject"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:autofillHints=""
-        android:backgroundTint="@color/white"
-        android:hint="@string/create_task_name_topic"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/black_cursor"
-        android:textSize="@dimen/normal_text"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/create_task_topic"
+        android:layout_margin="@dimen/normal_margin"
+        android:hint="@string/school_subject"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/create_task_topic"
-        app:layout_constraintTop_toTopOf="@id/create_task_topic" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/tv_subject_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dropDownHeight="@dimen/task_dropdown_height"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/create_task_topic_class"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        android:hint="@string/school_class"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_task_topic_subject">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/tv_class_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dropDownHeight="@dimen/task_dropdown_height"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <View
         android:id="@+id/create_task_separator"
         style="@style/separator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_task_et_topic" />
+        app:layout_constraintTop_toBottomOf="@id/create_task_topic_class" />
 
     <TextView
         android:id="@+id/create_task_description"
@@ -50,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:text="@string/task_description"
-        android:textColor="@color/black"
+        android:textColor="@color/darker"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +72,7 @@
     <EditText
         android:id="@+id/create_task_et_description"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/create_task_desc_height"
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginEnd="@dimen/normal_margin"
         android:autofillHints=""
@@ -67,7 +80,7 @@
         android:gravity="start|top"
         android:hint="@string/create_task_hint_description"
         android:inputType="textMultiLine"
-        android:textColor="@color/black"
+        android:textColor="@color/darker"
         android:textCursorDrawable="@drawable/black_cursor"
         android:textSize="@dimen/normal_text"
         app:layout_constraintBottom_toTopOf="@id/btn_submit_task"
@@ -82,6 +95,7 @@
         android:layout_margin="@dimen/normal_margin"
         android:backgroundTint="@color/teal_700"
         android:text="@string/create_task_submit"
+        android:textAllCaps="false"
         android:textSize="@dimen/small_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
