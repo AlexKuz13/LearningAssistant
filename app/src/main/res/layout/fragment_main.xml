@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.main.MainFragment">
 
     <com.todkars.shimmer.ShimmerRecyclerView
@@ -12,7 +13,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/very_small_margin"
         android:layout_marginEnd="@dimen/very_small_margin"
+        android:clipToPadding="false"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/recycler_padding_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +28,8 @@
         android:id="@+id/btn_create_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:backgroundTint="@color/teal_700"
         android:src="@drawable/ic_btn_action_menu_change_name"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +40,8 @@
         android:id="@+id/btn_task_bottom_sheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_margin"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:backgroundTint="@color/teal_700"
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="parent"

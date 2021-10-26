@@ -78,6 +78,7 @@ class MainFragment : Fragment() {
             val list = it
             mAdapter.setList(list)
             mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+
         }
         mViewModel.listTasks.observe(this, mObserverTasks)
     }
@@ -89,6 +90,7 @@ class MainFragment : Fragment() {
     private fun hideShimmerEffect() {
         mBinding.taskRecyclerView.hideShimmer()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
 import com.example.learningassistant.database.*
 import com.example.learningassistant.databinding.FragmentMessagesBinding
+import com.example.learningassistant.databinding.ToolbarInfoBinding
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.Message
 import com.example.learningassistant.models.User
@@ -17,22 +19,22 @@ import com.example.learningassistant.ui.adapters.MessagesAdapter
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.AppTextWatcher
-import com.example.learningassistant.utilits.downloadAndSetImage
 import com.example.learningassistant.utilits.showToast
 import com.google.firebase.firestore.ListenerRegistration
 import com.theartofdev.edmodo.cropper.CropImage
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.toolbar_info.view.*
+
 
 
 class MessagesFragment : BaseFragment() {
+
+    private val args by navArgs<MessagesFragmentArgs>()
 
     private var _binding: FragmentMessagesBinding? = null
     private val mBinding get() = _binding!!
     private lateinit var mAdapter: MessagesAdapter
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mToolbarInfo: View
+    private lateinit var toolbarInfo: View
+    private lateinit var toolbarInfoBinding: ToolbarInfoBinding
     private lateinit var mlistenerToolbar: ListenerRegistration
     private lateinit var menuRating: Menu
     private lateinit var human: User
@@ -50,7 +52,7 @@ class MessagesFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMessagesBinding.inflate(layoutInflater, container, false)
-        human = arguments?.getSerializable("User") as User
+        human = args.user
         mViewModel = ViewModelProvider(this, MessagesViewModelFactory(human.id)).get(
             MessagesFragmentViewModel::class.java
         )
@@ -68,7 +70,7 @@ class MessagesFragment : BaseFragment() {
 
 
     private fun initFields() {
-        bundle.putSerializable("User", human)
+        // bundle.putSerializable("User", human)
 
         mBinding.chatInputMessage.addTextChangedListener(AppTextWatcher {
             val string = mBinding.chatInputMessage.text.toString()
@@ -134,8 +136,9 @@ class MessagesFragment : BaseFragment() {
     }
 
     private fun initToolbar() {
-        mToolbarInfo = APP_ACTIVITY.main_toolbar.toolbar_info
-        mToolbarInfo.visibility = View.VISIBLE
+        toolbarInfoBinding = APP_ACTIVITY.mBinding.toolbarInfo
+        toolbarInfo = toolbarInfoBinding.root
+        toolbarInfo.visibility = View.VISIBLE
 
         mlistenerToolbar =
             DB.collection(COLL_USERS).document(human.id).addSnapshotListener { value, error ->
@@ -144,23 +147,13 @@ class MessagesFragment : BaseFragment() {
                 }
                 value?.let {
                     mUser = it.toObject(User::class.java) ?: User()
-                    initInfoToolbar(mUser)
+                    toolbarInfoBinding.user = mUser
+                    toolbarInfoBinding.from =
+                        APP_ACTIVITY.resources.getString(R.string.messages_fragment)
                 }
             }
     }
 
-
-    private fun initInfoToolbar(mUser: User) {
-        mToolbarInfo.toolbar_chat_fullname.text = mUser.fullName
-        mToolbarInfo.toolbar_chat_image.downloadAndSetImage(mUser.photoUrl)
-        mToolbarInfo.toolbar_chat_status.text = mUser.status
-        mToolbarInfo.toolbar_chat_image.setOnClickListener {
-            APP_ACTIVITY.navController.navigate(
-                R.id.action_messagesFragment_to_settingsFragment,
-                bundle
-            )
-        }
-    }
 
     private fun initRecyclerView() {
         mRecyclerView = mBinding.chatRecyclerView
@@ -195,7 +188,7 @@ class MessagesFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mToolbarInfo.visibility = View.GONE
+        toolbarInfo.visibility = View.GONE
         mlistenerToolbar.remove()
         mViewModel.listMessages.removeObserver(mObserverMessages)
         _binding = null

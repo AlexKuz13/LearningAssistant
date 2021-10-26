@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(mToolbar)
         mNavDrawer = NavDrawer(mToolbar)
         mDrawerLayout = mBinding.drawerLayout
-        Log.d("AR", "SDD")
+
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         if (AppPreference.getInitUser()) {
             AppFirebaseRepository().initRefs()

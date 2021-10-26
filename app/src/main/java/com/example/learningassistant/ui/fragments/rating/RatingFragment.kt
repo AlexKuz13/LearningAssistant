@@ -10,7 +10,7 @@ import com.example.learningassistant.databinding.FragmentRatingBinding
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
-import kotlinx.android.synthetic.main.fragment_rating.*
+
 
 
 class RatingFragment : DialogFragment() {
@@ -35,8 +35,9 @@ class RatingFragment : DialogFragment() {
         super.onResume()
 
         mBinding.btnRate.setOnClickListener {
-            mViewModel = ViewModelProvider(this, RatingViewModelFactory(user.id, ratingBar.rating))
-                .get(RatingFragmentViewModel::class.java)
+            mViewModel =
+                ViewModelProvider(this, RatingViewModelFactory(user.id, mBinding.ratingBar.rating))
+                    .get(RatingFragmentViewModel::class.java)
             mViewModel.rateUser {
                 showToast("Спасибо за оценку!")
                 //menuRating.clear()

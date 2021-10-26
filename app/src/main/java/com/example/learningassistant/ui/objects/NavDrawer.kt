@@ -1,8 +1,6 @@
 package com.example.learningassistant.ui.objects
 
-import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -10,16 +8,19 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
 import com.example.learningassistant.database.AUTH
 import com.example.learningassistant.database.USER
-import com.example.learningassistant.utilits.*
+import com.example.learningassistant.databinding.HeaderBinding
+import com.example.learningassistant.ui.fragments.main.MainFragmentDirections
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.AppStates
+import com.example.learningassistant.utilits.downloadAndSetImage
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.header.view.*
+
 
 class NavDrawer(private var toolbar: Toolbar) {
     lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mNavigationView: NavigationView
     private lateinit var mToggle: ActionBarDrawerToggle
-    private lateinit var mHeader: View
+    private lateinit var headerBinding: HeaderBinding
 
     fun create() {
         initView()
@@ -27,10 +28,10 @@ class NavDrawer(private var toolbar: Toolbar) {
     }
 
     fun updateHeader() {
-        mHeader = mNavigationView.getHeaderView(0)
-        mHeader.menu_profile_fullname.text = USER.fullName
-        mHeader.menu_profile_photo.downloadAndSetImage(USER.photoUrl)
-        mHeader.menu_profile_email.text = USER.email
+        headerBinding = HeaderBinding.bind(mNavigationView.getHeaderView(0))
+        headerBinding.menuProfileFullname.text = USER.fullName
+        headerBinding.menuProfileEmail.text = USER.email
+        headerBinding.menuProfilePhoto.downloadAndSetImage(USER.photoUrl)
     }
 
     private fun initView() {
@@ -58,9 +59,8 @@ class NavDrawer(private var toolbar: Toolbar) {
     fun onNavMenuSelected(item: MenuItem) {
         when (item.itemId) {
             R.id.nav_settings -> {
-                val bundle = Bundle()
-                bundle.putSerializable("User",USER)
-                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_settingsFragment,bundle)
+                val action = MainFragmentDirections.actionMainFragmentToSettingsFragment(USER)
+                APP_ACTIVITY.navController.navigate(action)
             }
             R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_chatsFragment)
             R.id.nav_logout -> {

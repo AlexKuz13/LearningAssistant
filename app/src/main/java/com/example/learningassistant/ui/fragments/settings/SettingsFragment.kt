@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.database.FOLDER_PROFILE_IMAGE
+import com.example.learningassistant.database.REF_STORAGE_ROOT
+import com.example.learningassistant.database.UID
+import com.example.learningassistant.database.USER
 import com.example.learningassistant.databinding.FragmentSettingsBinding
-import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.downloadAndSetImage
@@ -19,6 +23,8 @@ import com.theartofdev.edmodo.cropper.CropImageView
 
 
 class SettingsFragment : BaseFragment() {
+
+    private val args by navArgs<SettingsFragmentArgs>()
 
     private var _binding: FragmentSettingsBinding? = null
     private val mBinding get() = _binding!!
@@ -31,7 +37,7 @@ class SettingsFragment : BaseFragment() {
     ): View {
         _binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_settings, container, false)
-        mBinding.user = arguments?.getSerializable("User") as User
+        mBinding.user = args.user
         return mBinding.root
     }
 
@@ -46,7 +52,7 @@ class SettingsFragment : BaseFragment() {
             mBinding.userBoolean = true
             mBinding.settingsChangePhoto.setOnClickListener { changePhotoUser() }
             mBinding.settingsLayoutInfo.setOnClickListener {
-                APP_ACTIVITY.navController.navigate(R.id.action_settingsFragment_to_changeInfoFragment)
+                findNavController().navigate(R.id.action_settingsFragment_to_changeInfoFragment)
             }
         }
     }
@@ -83,7 +89,7 @@ class SettingsFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.settings_menu_change_name -> APP_ACTIVITY.navController.navigate(R.id.action_settingsFragment_to_changeNameFragment)
+            R.id.settings_menu_change_name -> findNavController().navigate(R.id.action_settingsFragment_to_changeNameFragment)
         }
         return super.onOptionsItemSelected(item)
     }

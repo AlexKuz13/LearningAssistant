@@ -12,6 +12,7 @@
     <color name="light_grey2">#F3ECEC</color>
     <color name="dark_grey">#433E3E</color>
     <color name="blue_VK">#2787F5</color>
+    <color name="yellow">#FFEB3B</color>
 
     <color name="lightGray">#F9F9F9</color>
     <color name="mediumGray">#D1D1D1</color>
@@ -21,7 +22,15 @@
     <color name="dark">#313C44</color>
     <color name="darker">#151B20</color>
 
+    <color name="backgroundColor">@color/lightGray</color>
     <color name="placeholderColor">@color/mediumGray</color>
 
+    // Custom CardView Style
+    <color name="strokeColor">@color/lightMediumGray</color>
+    <color name="cardBackgroundColor">@color/white</color>
+    <color name="cardBackgroundLightColor">#106200EA</color>
+    <color name="titleColor">@color/darker</color>
+    <color name="btnMyColor">@color/gray</color>
+    <color name="descriptionColor">@color/darkGray</color>
 
 </resources>

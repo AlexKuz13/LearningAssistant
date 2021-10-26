@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.database.USER
 import com.example.learningassistant.databinding.FragmentChangeInfoBinding
 import com.example.learningassistant.ui.fragments.settings.BaseChangeFragment
-import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
 
 
@@ -43,9 +43,9 @@ class ChangeInfoFragment : BaseChangeFragment() {
             mViewModel.changeInfo {
                 showToast("Данные обновлены")
                 USER.info = info
-                APP_ACTIVITY.navController.popBackStack()
+                findNavController().popBackStack()
             }
-        } else APP_ACTIVITY.navController.popBackStack()
+        } else findNavController().popBackStack()
     }
 
 

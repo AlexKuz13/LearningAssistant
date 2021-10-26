@@ -28,7 +28,7 @@
     <string name="settings_info_signature">Напишите немного о себе</string>
     <string name="info">О себе</string>
     <string name="change_name">Изменить имя</string>
-    <string name="ratingValue" formatted="false">%.2f</string>
+    <string name="ratingValue" formatted="false">%.1f</string>
     <string name="complWorkValue" formatted="false">%d</string>
 
     <!-- register and entercode fragment -->
@@ -38,7 +38,8 @@
     <string name="hint_et_code">- - - - - -</string>
 
     <!-- Task Item -->
-    <string name="task_topic">Предмет:</string>
+    <string name="task_subject">Предмет:</string>
+    <string name="task_class">Класс:</string>
     <string name="task_description">Описание:</string>
     <string name="create_task">Попросить помощь</string>
     <string name="create_task_hint_description">Опишите свое задание</string>
@@ -99,7 +100,10 @@
     <string name="class_11">11</string>
     <string name="all_classes">Все</string>
     <string name="apply">Подтвердить</string>
+    <string name="btn_my">Моё</string>
 
+    <string name="main_fragment">main</string>
+    <string name="messages_fragment">messages</string>
 
     <!-- Create task Subject Dropdown Menu -->
     <string-array name="subject_array">

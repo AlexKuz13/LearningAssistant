@@ -1,118 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/block_task"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/normal_margin"
-    android:background="@drawable/task_background">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/task_profile_photo"
-        android:layout_width="@dimen/size_circle_image"
-        android:layout_height="@dimen/size_circle_image"
-        android:layout_margin="@dimen/small_margin"
-        android:src="@drawable/ic_default_profile_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/task_profile_fullname"
-        style="@style/text_nav_menu_header"
-        android:layout_marginTop="@dimen/normal_margin"
-        android:textSize="@dimen/normal_text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/task_profile_photo"
-        app:layout_constraintTop_toTopOf="@id/task_profile_photo"
-        tools:text="@string/nav_menu_header_defalt_fullname" />
+        <variable
+            name="task"
+            type="com.example.learningassistant.models.Task" />
 
-    <ImageView
-        android:id="@+id/star_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/normal_margin"
-        android:src="@drawable/ic_star_rating"
-        app:layout_constraintBottom_toBottomOf="@id/task_profile_fullname"
-        app:layout_constraintEnd_toStartOf="@id/task_profile_rating"
-        app:layout_constraintTop_toTopOf="@id/task_profile_fullname" />
+        <variable
+            name="user"
+            type="com.example.learningassistant.models.User" />
 
-    <TextView
-        android:id="@+id/task_profile_rating"
-        style="@style/text_nav_menu_header"
-        android:layout_marginEnd="@dimen/normal_margin"
-        android:textSize="@dimen/normal_text"
-        app:layout_constraintBottom_toBottomOf="@id/star_rating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/star_rating"
-        tools:text="5.0" />
+        <variable
+            name="userBoolean"
+            type="Boolean" />
 
-    <TextView
-        android:id="@+id/task_time"
-        style="@style/text_nav_menu_header"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:textSize="@dimen/normal_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_description_text"
-        tools:text="23:31" />
+        <variable
+            name="from"
+            type="String" />
+    </data>
 
-    <TextView
-        android:id="@+id/task_topic"
-        style="@style/text_nav_menu_header"
-        android:layout_marginTop="@dimen/small_margin"
-        android:text="@string/task_topic"
-        android:textSize="@dimen/large_text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_profile_photo" />
-
-    <TextView
-        android:id="@+id/task_topic_name"
-        style="@style/text_nav_menu_header"
-        android:maxWidth="290dp"
-        android:textSize="@dimen/large_text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/task_topic"
-        app:layout_constraintTop_toTopOf="@id/task_topic"
-        tools:text="Уравнения математической физики" />
-
-    <TextView
-        android:id="@+id/task_description"
-        style="@style/text_nav_menu_header"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:text="@string/task_description"
-        android:textSize="@dimen/normal_text"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_topic_name" />
-
-    <TextView
-        android:id="@+id/task_description_text"
-        style="@style/text_nav_menu_header"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/block_task"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginEnd="@dimen/normal_margin"
-        android:padding="5dp"
-        android:textSize="@dimen/small_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_description"
-        tools:text="Отчет должен содержать: Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:" />
-
-    <Button
-        android:id="@+id/btn_task_help"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/small_margin"
-        android:backgroundTint="@color/white"
-        android:text="@string/btn_help"
-        android:textColor="@color/purple_500"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_description_text" />
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:layout_marginBottom="@dimen/very_small_margin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/strokeColor"
+            app:strokeWidth="@dimen/stroke_width">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardBackgroundColor">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/task_profile_photo"
+                    android:layout_width="@dimen/size_circle_image"
+                    android:layout_height="@dimen/size_circle_image"
+                    android:layout_margin="@dimen/small_margin"
+                    loadImageFromUrl="@{user.photoUrl}"
+                    fromFragment="@{from}"
+                    onImageClickListener="@{user}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:tint="@color/descriptionColor" />
+
+                <TextView
+                    android:id="@+id/task_profile_fullname"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/normal_text"
+                    android:text="@{user.fullName}"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/task_profile_photo"
+                    app:layout_constraintTop_toTopOf="@id/task_profile_photo"
+                    tools:text="@string/nav_menu_header_defalt_fullname" />
+
+                <ImageView
+                    android:id="@+id/star_rating"
+                    android:layout_width="@dimen/size_star_task"
+                    android:layout_height="@dimen/size_star_task"
+                    android:layout_marginEnd="@dimen/normal_margin"
+                    android:src="@drawable/ic_star_rating"
+                    app:layout_constraintBottom_toBottomOf="@id/task_profile_fullname"
+                    app:layout_constraintEnd_toStartOf="@id/task_profile_rating"
+                    app:layout_constraintTop_toTopOf="@id/task_profile_fullname"
+                    app:tint="@color/yellow" />
+
+                <TextView
+                    android:id="@+id/task_profile_rating"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginEnd="@dimen/normal_margin"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/normal_text"
+                    android:text="@{String.format(@string/ratingValue,user.rating)}"
+                    app:layout_constraintBottom_toBottomOf="@id/star_rating"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/star_rating"
+                    tools:text="5.0" />
+
+                <TextView
+                    android:id="@+id/task_time"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginStart="@dimen/normal_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="@dimen/normal_text"
+                    setTimeTask="@{task.timeStamp.toString()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_description_text"
+                    tools:text="23:31" />
+
+                <TextView
+                    android:id="@+id/task_subject"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:text="@string/task_subject"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_profile_photo" />
+
+                <TextView
+                    android:id="@+id/task_subject_name"
+                    style="@style/text_nav_menu_header"
+                    android:maxWidth="200dp"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="@dimen/normal_text"
+                    android:text="@{task.school_subject}"
+                    app:layout_constraintBottom_toBottomOf="@id/task_subject"
+                    app:layout_constraintStart_toEndOf="@id/task_subject"
+                    app:layout_constraintTop_toTopOf="@id/task_subject"
+                    tools:text="Английский язык" />
+
+                <TextView
+                    android:id="@+id/task_class"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:text="@string/task_class"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/task_subject_name"
+                    app:layout_constraintTop_toBottomOf="@id/task_profile_photo" />
+
+                <TextView
+                    android:id="@+id/task_class_value"
+                    style="@style/text_nav_menu_header"
+                    android:maxWidth="200dp"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="@dimen/normal_text"
+                    android:text="@{task.school_class}"
+                    app:layout_constraintBottom_toBottomOf="@id/task_subject"
+                    app:layout_constraintStart_toEndOf="@id/task_class"
+                    app:layout_constraintTop_toTopOf="@id/task_subject"
+                    tools:text="11" />
+
+                <TextView
+                    android:id="@+id/task_description"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:text="@string/task_description"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_subject_name" />
+
+                <TextView
+                    android:id="@+id/task_description_text"
+                    style="@style/text_nav_menu_header"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="@dimen/normal_margin"
+                    android:layout_marginEnd="@dimen/normal_margin"
+                    android:padding="5dp"
+                    android:text="@{task.description}"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="@dimen/small_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_description"
+                    tools:text="Отчет должен содержать: Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:Отчет должен содержать:" />
+
+                <Button
+                    android:id="@+id/btn_task_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/small_margin"
+                    android:text="@string/btn_help"
+                    android:textAllCaps="false"
+                    visibilityButton="@{!userBoolean}"
+                    android:textSize="@dimen/small_text"
+                    onBtnHelpClickListener="@{user}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_description_text" />
+
+                <Button
+                    android:id="@+id/btn_my_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/small_margin"
+                    android:backgroundTint="@color/btnMyColor"
+                    android:clickable="false"
+                    visibilityButton="@{userBoolean}"
+                    android:textSize="@dimen/small_text"
+                    android:text="@string/btn_my"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/task_description_text" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

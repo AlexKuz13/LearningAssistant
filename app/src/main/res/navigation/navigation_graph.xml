@@ -92,6 +92,9 @@
         <action
             android:id="@+id/action_messagesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.example.learningassistant.models.User" />
     </fragment>
     <dialog
         android:id="@+id/ratingFragment"
@@ -106,7 +109,7 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.learningassistant.ui.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_changeInfoFragment"
             app:destination="@id/changeInfoFragment" />
@@ -116,6 +119,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.example.learningassistant.models.User" />
     </fragment>
     <fragment
         android:id="@+id/changeInfoFragment"

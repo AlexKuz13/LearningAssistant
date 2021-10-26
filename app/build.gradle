@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.2"
 
     buildFeatures {
         dataBinding = true
@@ -86,6 +87,9 @@ dependencies {
 
     //VK
     implementation 'com.vk:androidsdk:2.1.1'
+
+    // Image Loading library Coil
+    implementation "io.coil-kt:coil:0.13.0"
 
     //Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
