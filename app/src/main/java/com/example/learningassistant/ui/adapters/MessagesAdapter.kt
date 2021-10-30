@@ -1,54 +1,68 @@
 package com.example.learningassistant.ui.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.learningassistant.R
-import com.example.learningassistant.database.TYPE_IMAGE
-import com.example.learningassistant.database.TYPE_TEXT
+import com.example.learningassistant.data.database.COLL_USERS
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.TYPE_IMAGE
+import com.example.learningassistant.data.database.UID
+import com.example.learningassistant.databinding.MessageItemBinding
 import com.example.learningassistant.models.Message
+import com.example.learningassistant.models.User
+import com.example.learningassistant.utilits.showToast
 
 
-class MessagesAdapter : RecyclerView.Adapter<MessagesAdapter.SingleChatHolder>() {
+class MessagesAdapter : RecyclerView.Adapter<MessagesAdapter.MessageHolder>() {
 
-    private var mlistMessagesCache = emptyList<Message>()
+    private var mListMessagesCache = emptyList<Message>()
 
-    class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
-//        val blockUserMessage: ConstraintLayout = view.block_user_message
-//        val chatUserMessage: TextView = view.chat_user_message
-//        val chatUserMessageTime: TextView = view.chat_user_message_time
-//
-//        val blockReceivingMessage: ConstraintLayout = view.block_receiving_message
-//        val chatReceivingMessage: TextView = view.chat_receiving_message
-//        val chatReceivingMessageTime: TextView = view.chat_receiving_message_time
-//
-//
-//        val blockUserImageMessage: ConstraintLayout = view.block_user_image
-//        val chatUserImageMessage: ImageView = view.chat_user_image
-//        val chatUserImageTime: TextView = view.chat_user_image_time
-//
-//        val blockReceivingImageMessage: ConstraintLayout = view.block_receiving_image
-//        val chatReceivingImageMessage: ImageView = view.chat_receiving_image
-//        val chatReceivingImageTime: TextView = view.chat_receiving_image_time
+    class MessageHolder(private val binding: MessageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SingleChatHolder {
-        return SingleChatHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.message_item, parent, false)
-        )
-    }
-
-    override fun onBindViewHolder(holder: SingleChatHolder, position: Int) {
-        when (mlistMessagesCache[position].type_mes) {
-            TYPE_TEXT -> drawMessageText(holder, position)
-            TYPE_IMAGE -> drawMessageImage(holder, position)
+        fun bind(message: Message, user: Boolean, msgTxt: Boolean) {
+            binding.message = message
+            binding.userBoolean = user
+            binding.msgTxt = msgTxt
+            binding.executePendingBindings()
         }
+
+        companion object {
+            fun from(parent: ViewGroup): MessageHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = MessageItemBinding.inflate(layoutInflater, parent, false)
+                return MessageHolder(binding)
+            }
+        }
+
     }
 
-    private fun drawMessageText(holder: SingleChatHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageHolder {
+        return MessageHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: MessageHolder, position: Int) {
+        val currentMessage = mListMessagesCache[position]
+
+
+        DB.collection(COLL_USERS).document(currentMessage.from)
+            .get()
+            .addOnSuccessListener {
+                val taskUser = it.toObject(User::class.java) ?: User()
+                var userBoolean = false
+                var msgText = true
+                if (taskUser.id == UID) userBoolean = true
+                if (currentMessage.type_mes == TYPE_IMAGE) msgText = false
+                holder.bind(currentMessage, userBoolean, msgText)
+            }
+            .addOnFailureListener { showToast(it.message.toString()) }
+//        when (currentMessage.type_mes) {
+//            TYPE_TEXT -> drawMessageText(holder, position)
+//            TYPE_IMAGE -> drawMessageImage(holder, position)
+//        }
+    }
+
+    //  private fun drawMessageText(holder: SingleChatHolder, position: Int) {
 //        holder.blockReceivingImageMessage.visibility = View.GONE
 //        holder.blockUserImageMessage.visibility = View.GONE
 //        if (mlistMessagesCache[position].from == UID) {
@@ -64,9 +78,9 @@ class MessagesAdapter : RecyclerView.Adapter<MessagesAdapter.SingleChatHolder>()
 //            holder.chatReceivingMessageTime.text = mlistMessagesCache[position]
 //                .timeStamp.toString().asTimeMessage()
 //        }
-    }
+    //  }
 
-    private fun drawMessageImage(holder: SingleChatHolder, position: Int) {
+    //  private fun drawMessageImage(holder: SingleChatHolder, position: Int) {
 //        holder.blockUserMessage.visibility = View.GONE
 //        holder.blockReceivingMessage.visibility = View.GONE
 //        if (mlistMessagesCache[position].from == UID) {
@@ -88,12 +102,12 @@ class MessagesAdapter : RecyclerView.Adapter<MessagesAdapter.SingleChatHolder>()
 //                .timeStamp.toString().asTimeMessage()
 //
 //        }
-    }
+    //  }
 
-    override fun getItemCount(): Int = mlistMessagesCache.size
+    override fun getItemCount(): Int = mListMessagesCache.size
 
     fun setList(list: List<Message>) {
-        mlistMessagesCache = list
+        mListMessagesCache = list
         notifyDataSetChanged()
     }
 

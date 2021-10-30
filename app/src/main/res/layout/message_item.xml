@@ -1,147 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="message"
+            type="com.example.learningassistant.models.Message" />
+
+        <variable
+            name="userBoolean"
+            type="Boolean" />
+
+        <variable
+            name="msgTxt"
+            type="Boolean" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/block_user_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/task_background_user"
-        android:textAlignment="viewEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/chat_user_message"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/block_user_message"
+            visibilityImage="@{msgTxt}"
+            visibilityMessage="@{userBoolean}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="300dp"
-            android:minWidth="50dp"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Привет, я Саша. Я жесткий!" />
-
-        <TextView
-            android:id="@+id/chat_user_message_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:padding="3dp"
-            android:textColor="@color/dark_grey"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chat_user_message"
-            tools:text="16:29" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/block_receiving_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="100dp"
-        android:background="@drawable/task_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/chat_receiving_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxWidth="300dp"
-            android:minWidth="50dp"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Привет, я Саша. Я жесткий!" />
-
-        <TextView
-            android:id="@+id/chat_receiving_message_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:padding="3dp"
-            android:textColor="@color/dark_grey"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chat_receiving_message"
-            tools:text="16:43" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/block_receiving_image"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_margin="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/chat_receiving_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_margin="@dimen/very_small_margin"
+            android:backgroundTint="@color/msgUserBackgroundColor"
+            android:textAlignment="viewEnd"
+            app:cardCornerRadius="@dimen/small_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/strokeColor"
+            app:strokeWidth="@dimen/stroke_width">
 
-        <TextView
-            android:id="@+id/chat_receiving_image_time"
-            android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/chat_user_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/message_max_width"
+                    android:minWidth="@dimen/message_min_width"
+                    android:padding="@dimen/very_small_margin"
+                    android:text="@{message.text}"
+                    android:textColor="@color/msgTextColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Привет, я Саша. Я жесткий!" />
+
+                <TextView
+                    android:id="@+id/chat_user_message_time"
+                    setTimeMessage="@{message.timeStamp.toString()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/very_small_margin"
+                    android:padding="@dimen/time_msg_text_padding"
+                    android:textColor="@color/msgTimeTextColor"
+                    android:textSize="@dimen/time_msg_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chat_user_message"
+                    tools:text="16:29" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/block_receiving_message"
+            visibilityImage="@{msgTxt}"
+            visibilityMessage="@{!userBoolean}"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:gravity="end"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/chat_receiving_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="16:43" />
+            android:layout_margin="@dimen/small_margin"
+            android:backgroundTint="@color/msgReceiveBackgroundColor"
+            app:cardCornerRadius="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/strokeColor"
+            app:strokeWidth="@dimen/stroke_width">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/block_user_image"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_margin="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/chat_receiving_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/message_max_width"
+                    android:minWidth="@dimen/message_min_width"
+                    android:padding="@dimen/very_small_margin"
+                    android:text="@{message.text}"
+                    android:textColor="@color/msgTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Привет, я Саша. Я жесткий!" />
 
-        <ImageView
-            android:id="@+id/chat_user_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+                <TextView
+                    android:id="@+id/chat_receiving_message_time"
+                    setTimeMessage="@{message.timeStamp.toString()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/very_small_margin"
+                    android:padding="@dimen/time_msg_text_padding"
+                    android:textColor="@color/msgTimeTextColor"
+                    android:textSize="@dimen/time_msg_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chat_receiving_message"
+                    tools:text="16:43" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/block_receiving_image"
+            visibilityImage="@{!msgTxt}"
+            visibilityMessage="@{!userBoolean}"
+            android:layout_width="@dimen/message_image_size"
+            android:layout_height="@dimen/message_image_size"
+            android:layout_margin="@dimen/small_margin"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/chat_receiving_image"
+                    loadImageFromUrl="@{message.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/chat_receiving_image_time"
+                    setTimeMessage="@{message.timeStamp.toString()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/very_small_margin"
+                    android:gravity="end"
+                    android:textColor="@color/msgImageTimeColor"
+                    app:layout_constraintBottom_toBottomOf="@+id/chat_receiving_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="16:43" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/block_user_image"
+            visibilityImage="@{!msgTxt}"
+            visibilityMessage="@{userBoolean}"
+            android:layout_width="@dimen/message_image_size"
+            android:layout_height="@dimen/message_image_size"
+            android:layout_margin="@dimen/small_margin"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/chat_user_image_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:gravity="end"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/chat_user_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="16:29" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/chat_user_image"
+                    loadImageFromUrl="@{message.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/chat_user_image_time"
+                    setTimeMessage="@{message.timeStamp.toString()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/very_small_margin"
+                    android:layout_marginBottom="@dimen/very_small_margin"
+                    android:background="@color/msgImageTimeBackground"
+                    android:gravity="end"
+                    android:padding="@dimen/time_msg_text_padding"
+                    android:textColor="@color/msgImageTimeColor"
+                    android:textSize="@dimen/time_msg_text_size"
+                    app:layout_constraintBottom_toBottomOf="@+id/chat_user_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="16:29" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

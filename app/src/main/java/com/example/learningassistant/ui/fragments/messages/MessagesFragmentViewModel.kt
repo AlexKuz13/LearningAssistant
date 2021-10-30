@@ -3,10 +3,10 @@ package com.example.learningassistant.ui.fragments.messages
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.learningassistant.database.CHAT_REPOSITORY
-import com.example.learningassistant.database.MESSAGE_REPOSITORY
-import com.example.learningassistant.database.firebase.AppFirebaseChat
-import com.example.learningassistant.database.firebase.AppFirebaseMessage
+import com.example.learningassistant.data.database.CHAT_REPOSITORY
+import com.example.learningassistant.data.database.MESSAGE_REPOSITORY
+import com.example.learningassistant.data.database.firebase.AppFirebaseChat
+import com.example.learningassistant.data.database.firebase.AppFirebaseMessage
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.Message
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +22,7 @@ class MessagesFragmentViewModel(interlocutorId: String) : ViewModel() {
         listMessages = MESSAGE_REPOSITORY.allMsgFromChat
     }
 
-    fun sendTxtMessage(message: Message, onSuccess: () -> Unit) {
+    fun sendMessage(message: Message, onSuccess: () -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             MESSAGE_REPOSITORY.sendMessage(message) {
                 onSuccess()

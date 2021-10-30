@@ -1,51 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/chat_profile"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/ripple_effect"
-    android:backgroundTint="@color/light_grey"
-    android:clickable="true"
-    android:focusable="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/chat_profile_photo"
-        android:layout_width="@dimen/size_circle_image"
-        android:layout_height="@dimen/size_circle_image"
-        android:layout_margin="@dimen/small_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/chat_profile_fullname"
-        style="@style/text_nav_menu_header"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/normal_text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/chat_profile_photo"
-        app:layout_constraintTop_toTopOf="@id/chat_profile_photo"
-        tools:text="@string/nav_menu_header_defalt_fullname" />
+        <variable
+            name="user"
+            type="com.example.learningassistant.models.User" />
 
-    <TextView
-        android:id="@+id/chat_profile_message"
-        style="@style/text_nav_menu_header"
-        android:layout_marginBottom="5dp"
-        android:ellipsize="end"
-        android:maxWidth="250dp"
-        android:maxLines="1"
-        tools:text="Hello developer. please check this message for long length. max length to 50 characters"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/normal_text"
-        app:layout_constraintBottom_toBottomOf="@id/chat_profile_photo"
-        app:layout_constraintStart_toEndOf="@id/chat_profile_photo" />
+        <variable
+            name="chat"
+            type="com.example.learningassistant.models.Chat" />
+    </data>
 
-    <View
-        style="@style/separator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chat_profile_photo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chat_profile"
+        onChatClickListener="@{user}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:background="@drawable/ripple_effect"
+        android:backgroundTint="@color/backgroundColor"
+        android:clickable="true"
+        android:focusable="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/strokeColor"
+            app:strokeWidth="@dimen/stroke_width">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardBackgroundColor">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_profile_photo"
+                    loadImageFromUrl="@{user.photoUrl}"
+                    android:layout_width="@dimen/size_circle_image"
+                    android:layout_height="@dimen/size_circle_image"
+                    android:layout_margin="@dimen/small_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/chat_profile_fullname"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginTop="@dimen/very_small_margin"
+                    android:text="@{user.fullName}"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/chat_profile_photo"
+                    app:layout_constraintTop_toTopOf="@id/chat_profile_photo"
+                    tools:text="@string/nav_menu_header_defalt_fullname" />
+
+                <TextView
+                    android:id="@+id/chat_profile_message"
+                    style="@style/text_nav_menu_header"
+                    android:layout_marginBottom="@dimen/very_small_margin"
+                    android:ellipsize="end"
+                    android:maxWidth="@dimen/chat_last_msg_width"
+                    android:maxLines="1"
+                    android:text="@{chat.last_message}"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="@dimen/normal_text"
+                    app:layout_constraintBottom_toBottomOf="@id/chat_profile_photo"
+                    app:layout_constraintStart_toEndOf="@id/chat_profile_photo"
+                    tools:text="Hello developer. please check this message for long length. max length to 50 characters" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

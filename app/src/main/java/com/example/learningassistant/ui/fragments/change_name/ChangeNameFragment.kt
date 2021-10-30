@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.learningassistant.R
-import com.example.learningassistant.database.USER
+import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.FragmentChangeNameBinding
 import com.example.learningassistant.ui.fragments.settings.BaseChangeFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY

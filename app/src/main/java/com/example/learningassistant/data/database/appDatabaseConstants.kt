@@ -1,8 +1,11 @@
-package com.example.learningassistant.database
+package com.example.learningassistant.data.database
 
 import android.annotation.SuppressLint
-import com.example.learningassistant.database.intefaces.*
-import com.example.learningassistant.models.*
+import com.example.learningassistant.data.database.intefaces.*
+import com.example.learningassistant.models.Chat
+import com.example.learningassistant.models.Message
+import com.example.learningassistant.models.Rating
+import com.example.learningassistant.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
@@ -44,3 +47,6 @@ const val CHILD_STATUS = "status"
 const val CHILD_RATING = "rating"
 const val CHILD_COMPLETEWORKS = "completeWorks"
 const val CHILD_TIMESTAMP = "timeStamp"
+
+const val TASK_SCHOOL_SUBJECT = "school_subject"
+const val TASK_SCHOOL_CLASS = "school_class"

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
-import com.example.learningassistant.database.COLL_USERS
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.UID
+import com.example.learningassistant.data.database.COLL_USERS
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.databinding.TaskItemBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
@@ -53,32 +53,6 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
             }
             .addOnFailureListener { showToast(it.message.toString()) }
     }
-
-
-//    private fun initHolder(user: User, holder: TaskHolder, position: Int) {
-//        val bundle = Bundle()
-//        bundle.putSerializable("User", user)
-//        holder.taskProfilePhoto.downloadAndSetImage(user.photoUrl)
-//        holder.taskProfilePhoto.setOnClickListener {
-//            APP_ACTIVITY.navController.navigate(
-//                R.id.action_mainFragment_to_settingsFragment,
-//                bundle
-//            )
-//        }
-//        holder.taskProfileFullname.text = user.fullName
-//        holder.taskStarRating.text = DecimalFormat("#.##").format(user.rating).toString()
-//        holder.taskTime.text = mlistTasksCache[position].timeStamp.toString().asTime()
-//        holder.taskSubjectName.text = mlistTasksCache[position].school_subject
-//        holder.taskClassValue.text = mlistTasksCache[position].school_class
-//        holder.taskDescriptionText.text = mlistTasksCache[position].description
-//        holder.taskBtnHelp.setOnClickListener {
-//            APP_ACTIVITY.navController.navigate(
-//                R.id.action_mainFragment_to_messagesFragment,
-//                bundle
-//            )
-//        }
-//        initMyOrNo(position, holder)
-//    }
 
 
     override fun getItemCount(): Int = mListTasksCache.size

@@ -1,7 +1,6 @@
-package com.example.learningassistant.database.intefaces
+package com.example.learningassistant.data.database.intefaces
 
 import android.net.Uri
-import com.example.learningassistant.models.User
 import com.google.firebase.storage.StorageReference
 
 interface DatabaseStorage {

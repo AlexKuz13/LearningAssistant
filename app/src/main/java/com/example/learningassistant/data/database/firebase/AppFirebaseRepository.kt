@@ -1,10 +1,10 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
-import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.REF_STORAGE_ROOT
-import com.example.learningassistant.database.UID
-import com.example.learningassistant.database.intefaces.DatabaseRepository
+import com.example.learningassistant.data.database.AUTH
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.REF_STORAGE_ROOT
+import com.example.learningassistant.data.database.UID
+import com.example.learningassistant.data.database.intefaces.DatabaseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage

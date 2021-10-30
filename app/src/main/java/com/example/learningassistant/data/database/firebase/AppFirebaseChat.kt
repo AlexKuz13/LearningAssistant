@@ -1,11 +1,11 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.CHAT
-import com.example.learningassistant.database.COLL_CHATS_ROSTER
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.UID
-import com.example.learningassistant.database.intefaces.DatabaseChatRepository
+import com.example.learningassistant.data.database.CHAT
+import com.example.learningassistant.data.database.COLL_CHATS_ROSTER
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.UID
+import com.example.learningassistant.data.database.intefaces.DatabaseChatRepository
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.utilits.INTERLOCUTOR
 import com.example.learningassistant.utilits.showToast

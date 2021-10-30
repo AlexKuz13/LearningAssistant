@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.learningassistant.R
-import com.example.learningassistant.database.FOLDER_PROFILE_IMAGE
-import com.example.learningassistant.database.REF_STORAGE_ROOT
-import com.example.learningassistant.database.UID
-import com.example.learningassistant.database.USER
+import com.example.learningassistant.data.database.FOLDER_PROFILE_IMAGE
+import com.example.learningassistant.data.database.REF_STORAGE_ROOT
+import com.example.learningassistant.data.database.UID
+import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.FragmentSettingsBinding
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY

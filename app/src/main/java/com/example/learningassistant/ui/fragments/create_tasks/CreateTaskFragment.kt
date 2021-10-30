@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.learningassistant.R
-import com.example.learningassistant.database.TYPE_TEXT
-import com.example.learningassistant.database.UID
+import com.example.learningassistant.data.database.TYPE_TEXT
+import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.databinding.FragmentCreateTaskBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.utilits.APP_ACTIVITY

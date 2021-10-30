@@ -2,11 +2,11 @@ package com.example.learningassistant.ui.fragments.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.learningassistant.database.REPOSITORY
-import com.example.learningassistant.database.UID
-import com.example.learningassistant.database.USER_REPOSITORY
-import com.example.learningassistant.database.firebase.AppFirebaseRepository
-import com.example.learningassistant.database.firebase.AppFirebaseUser
+import com.example.learningassistant.data.database.REPOSITORY
+import com.example.learningassistant.data.database.UID
+import com.example.learningassistant.data.database.USER_REPOSITORY
+import com.example.learningassistant.data.database.firebase.AppFirebaseRepository
+import com.example.learningassistant.data.database.firebase.AppFirebaseUser
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
 import kotlinx.coroutines.Dispatchers

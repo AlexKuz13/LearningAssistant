@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_grey"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.chats.ChatsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/task_recycler_view"
+
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:id="@+id/chat_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginStart="@dimen/very_small_margin"
+        android:layout_marginEnd="@dimen/very_small_margin"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/chat_item" />
-
+        app:shimmer_recycler_item_count="10"
+        app:shimmer_recycler_layout="@layout/placeholder_chat_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

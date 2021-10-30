@@ -104,6 +104,7 @@
 
     <string name="main_fragment">main</string>
     <string name="messages_fragment">messages</string>
+    <string name="image">Изображение</string>
 
     <!-- Create task Subject Dropdown Menu -->
     <string-array name="subject_array">

@@ -11,6 +11,7 @@ import com.example.learningassistant.R
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.fragments.main.MainFragmentDirections
 import com.example.learningassistant.ui.fragments.messages.MessagesFragmentDirections
+import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.asTime
 import com.squareup.picasso.Picasso
 
@@ -62,7 +63,7 @@ class TaskRowBinding {
                                     MessagesFragmentDirections.actionMessagesFragmentToSettingsFragment(
                                         user
                                     )
-                                imageView.findNavController().navigate(action)
+                                APP_ACTIVITY.navController.navigate(action)
                             }
                         }
                     } catch (e: Exception) {

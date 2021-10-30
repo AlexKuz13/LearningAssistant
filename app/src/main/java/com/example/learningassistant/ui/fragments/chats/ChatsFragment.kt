@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learningassistant.databinding.FragmentChatsBinding
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.ui.adapters.ChatAdapter
@@ -17,8 +17,7 @@ class ChatsFragment : BaseFragment() {
 
     private var _binding: FragmentChatsBinding? = null
     private val mBinding get() = _binding!!
-    private lateinit var mAdapter: ChatAdapter
-    private lateinit var mRecyclerView: RecyclerView
+    private val mAdapter by lazy { ChatAdapter() }
     lateinit var mViewModel: ChatsFragmentViewModel
     lateinit var mObserverChats: Observer<List<Chat>>
 
@@ -41,19 +40,24 @@ class ChatsFragment : BaseFragment() {
 
 
     private fun initRecyclerView() {
-        mRecyclerView = mBinding.taskRecyclerView
-        mAdapter = ChatAdapter()
-        mRecyclerView.adapter = mAdapter
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.isNestedScrollingEnabled = false
+        mBinding.chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mBinding.chatRecyclerView.adapter = mAdapter
 
         mObserverChats = Observer {
             val list = it
             mAdapter.setList(list)
-            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+            mBinding.chatRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
         mViewModel.listChats.observe(this, mObserverChats)
 
+    }
+
+    private fun showShimmerEffect() {
+        mBinding.chatRecyclerView.showShimmer()
+    }
+
+    private fun hideShimmerEffect() {
+        mBinding.chatRecyclerView.hideShimmer()
     }
 
     override fun onDestroyView() {

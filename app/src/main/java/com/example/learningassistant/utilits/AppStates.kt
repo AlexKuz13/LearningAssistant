@@ -1,6 +1,6 @@
 package com.example.learningassistant.utilits
 
-import com.example.learningassistant.database.*
+import com.example.learningassistant.data.database.*
 
 enum class AppStates(val status: String) {
     ONLINE("В сети"),

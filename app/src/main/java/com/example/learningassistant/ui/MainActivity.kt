@@ -9,15 +9,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.learningassistant.R
-import com.example.learningassistant.database.firebase.AppFirebaseRepository
+import com.example.learningassistant.data.database.firebase.AppFirebaseRepository
 import com.example.learningassistant.databinding.ActivityMainBinding
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.google.android.material.navigation.NavigationView
 import com.vk.api.sdk.utils.VKUtils
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var _binding: ActivityMainBinding? = null

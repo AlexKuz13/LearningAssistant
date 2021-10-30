@@ -1,9 +1,9 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.COLL_USERS
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.intefaces.DatabaseUserRepository
+import com.example.learningassistant.data.database.COLL_USERS
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.intefaces.DatabaseUserRepository
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
 

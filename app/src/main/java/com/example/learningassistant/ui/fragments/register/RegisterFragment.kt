@@ -8,11 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.data.database.*
 import com.example.learningassistant.databinding.FragmentRegisterBinding
 import com.example.learningassistant.models.User
-import com.example.learningassistant.ui.fragments.enter.EnterFragmentViewModel
-import com.example.learningassistant.ui.fragments.enter.EnterViewModelFactory
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.utilits.*
 import kotlinx.coroutines.launch

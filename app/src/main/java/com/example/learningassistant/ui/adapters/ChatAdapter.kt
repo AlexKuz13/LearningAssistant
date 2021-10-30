@@ -1,12 +1,11 @@
 package com.example.learningassistant.ui.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.learningassistant.R
-import com.example.learningassistant.database.COLL_USERS
-import com.example.learningassistant.database.DB
+import com.example.learningassistant.data.database.COLL_USERS
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.databinding.ChatItemBinding
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
@@ -16,45 +15,37 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
     private var mlistChatCache = emptyList<Chat>()
 
-    class ChatHolder(view: View) : RecyclerView.ViewHolder(view) {
-//        val chatProfile: ConstraintLayout = view.chat_profile
-//        val chatProfilePhoto: CircleImageView = view.chat_profile_photo
-//        val chatProfileFullname: TextView = view.chat_profile_fullname
-//        val chatProfileMessage: TextView = view.chat_profile_message
+    class ChatHolder(private val binding: ChatItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(chat: Chat, user: User) {
+            binding.user = user
+            binding.chat = chat
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ChatHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ChatItemBinding.inflate(layoutInflater, parent, false)
+                return ChatHolder(binding)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatHolder {
-        return ChatHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.chat_item, parent, false)
-        )
+        return ChatHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ChatHolder, position: Int) {
-        var ChatUser: User
-        DB.collection(COLL_USERS).document(mlistChatCache[position].id)
+        val currentChat = mlistChatCache[position]
+        DB.collection(COLL_USERS).document(currentChat.id)
             .get()
             .addOnSuccessListener {
-                ChatUser = it.toObject(User::class.java) ?: User()
-                initHolder(ChatUser, holder, position)
+                val chatUser = it.toObject(User::class.java) ?: User()
+                holder.bind(currentChat, chatUser)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
     }
 
-
-    private fun initHolder(user: User, holder: ChatHolder, position: Int) {
-//        holder.chatProfilePhoto.downloadAndSetImage(user.photoUrl)
-//        holder.chatProfile.setOnClickListener {
-//            val bundle = Bundle()
-//            bundle.putSerializable("User", user)
-//            APP_ACTIVITY.navController.navigate(
-//                R.id.action_chatsFragment_to_messagesFragment,
-//                bundle
-//            )
-//        }
-//        holder.chatProfileFullname.text = user.fullName
-//        holder.chatProfileMessage.text = mlistChatCache[position].last_message
-    }
 
     override fun getItemCount(): Int = mlistChatCache.size
 

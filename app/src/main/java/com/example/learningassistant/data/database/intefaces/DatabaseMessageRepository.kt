@@ -1,4 +1,4 @@
-package com.example.learningassistant.database.intefaces
+package com.example.learningassistant.data.database.intefaces
 
 import androidx.lifecycle.LiveData
 import com.example.learningassistant.models.Message

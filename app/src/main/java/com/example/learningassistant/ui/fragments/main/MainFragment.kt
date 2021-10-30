@@ -7,16 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learningassistant.R
-import com.example.learningassistant.database.USER
+import com.example.learningassistant.data.SubjectAndClass
+import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.FragmentMainBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.adapters.TaskAdapter
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
@@ -24,7 +27,8 @@ class MainFragment : Fragment() {
     private val mAdapter by lazy { TaskAdapter() }
     lateinit var mViewModel: MainFragmentViewModel
     lateinit var mObserverUser: Observer<User>
-    lateinit var mObserverTasks: Observer<List<Task>>
+    private lateinit var mObserverTasks: Observer<List<Task>>
+    lateinit var mObserverSubjectAndClass: Observer<SubjectAndClass>
 
 
     override fun onCreateView(
@@ -73,14 +77,20 @@ class MainFragment : Fragment() {
         mBinding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         //showShimmerEffect()
 
-
         mObserverTasks = Observer {
             val list = it
             mAdapter.setList(list)
             mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
 
         }
-        mViewModel.listTasks.observe(this, mObserverTasks)
+
+        mObserverSubjectAndClass = Observer {
+            mViewModel.listTasks(listOf(it.schoolSubject, it.schoolClass))
+                .observe(this, mObserverTasks)
+        }
+
+        mViewModel.readSubjectAndClass.asLiveData().observe(this, mObserverSubjectAndClass)
+
     }
 
     private fun showShimmerEffect() {
@@ -94,7 +104,7 @@ class MainFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mViewModel.listTasks.removeObserver(mObserverTasks)
+        mViewModel.readSubjectAndClass.asLiveData().removeObserver(mObserverSubjectAndClass)
         mViewModel.currentUser.removeObserver(mObserverUser)
         _binding = null
     }

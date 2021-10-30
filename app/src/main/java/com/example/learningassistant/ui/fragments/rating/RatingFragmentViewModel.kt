@@ -2,8 +2,8 @@ package com.example.learningassistant.ui.fragments.rating
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.learningassistant.database.MESSAGE_REPOSITORY
-import com.example.learningassistant.database.firebase.AppFirebaseMessage
+import com.example.learningassistant.data.database.MESSAGE_REPOSITORY
+import com.example.learningassistant.data.database.firebase.AppFirebaseMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

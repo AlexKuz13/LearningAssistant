@@ -6,8 +6,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
-import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.database.USER
+import com.example.learningassistant.data.database.AUTH
+import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.HeaderBinding
 import com.example.learningassistant.ui.fragments.main.MainFragmentDirections
 import com.example.learningassistant.utilits.APP_ACTIVITY

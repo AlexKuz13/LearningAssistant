@@ -1,10 +1,10 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.CHILD_TIMESTAMP
-import com.example.learningassistant.database.COLL_MESSAGES
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.UID
+import com.example.learningassistant.data.database.CHILD_TIMESTAMP
+import com.example.learningassistant.data.database.COLL_MESSAGES
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.models.Message
 import com.example.learningassistant.utilits.showToast
 import com.google.firebase.firestore.EventListener

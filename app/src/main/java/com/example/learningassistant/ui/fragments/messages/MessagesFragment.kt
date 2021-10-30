@@ -7,9 +7,9 @@ import android.view.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learningassistant.R
-import com.example.learningassistant.database.*
+import com.example.learningassistant.data.database.*
 import com.example.learningassistant.databinding.FragmentMessagesBinding
 import com.example.learningassistant.databinding.ToolbarInfoBinding
 import com.example.learningassistant.models.Chat
@@ -24,16 +24,14 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.theartofdev.edmodo.cropper.CropImage
 
 
-
 class MessagesFragment : BaseFragment() {
 
     private val args by navArgs<MessagesFragmentArgs>()
 
     private var _binding: FragmentMessagesBinding? = null
     private val mBinding get() = _binding!!
-    private lateinit var mAdapter: MessagesAdapter
-    private lateinit var mRecyclerView: RecyclerView
     private lateinit var toolbarInfo: View
+    private val mAdapter by lazy { MessagesAdapter() }
     private lateinit var toolbarInfoBinding: ToolbarInfoBinding
     private lateinit var mlistenerToolbar: ListenerRegistration
     private lateinit var menuRating: Menu
@@ -87,8 +85,8 @@ class MessagesFragment : BaseFragment() {
 
         mBinding.chatBtnSendMessage.setOnClickListener {
             val message = mBinding.chatInputMessage.text.toString()
-            initMessage(message)
-            mViewModel.sendTxtMessage(MESSAGE) {
+            initTxtMessage(message)
+            mViewModel.sendMessage(MESSAGE) {
                 initChat(message)
                 mViewModel.addChat(CHAT) {
                     mBinding.chatInputMessage.setText("")
@@ -103,7 +101,7 @@ class MessagesFragment : BaseFragment() {
         CHAT.timeStamp = System.currentTimeMillis()
     }
 
-    private fun initMessage(msgTxt: String) {
+    private fun initTxtMessage(msgTxt: String) {
         MESSAGE = Message()
         MESSAGE.from = UID
         MESSAGE.text = msgTxt
@@ -111,6 +109,13 @@ class MessagesFragment : BaseFragment() {
         MESSAGE.type_mes = TYPE_TEXT
     }
 
+    private fun initImageMessage(url: String) {
+        MESSAGE = Message()
+        MESSAGE.from = UID
+        MESSAGE.imageUrl = url
+        MESSAGE.timeStamp = System.currentTimeMillis()
+        MESSAGE.type_mes = TYPE_IMAGE
+    }
 
     private fun attachFile() {
         CropImage.activity()
@@ -129,7 +134,13 @@ class MessagesFragment : BaseFragment() {
                 .child(messageKey)
             putImageToStorage(uri, path) {
                 getUrlFromStorage(path) {
-                    sendMessageAsImage(human.id, it, messageKey)
+                    initImageMessage(it)
+                    mViewModel.sendMessage(MESSAGE) {
+                        initChat(requireActivity().resources.getString(R.string.image))
+                        mViewModel.addChat(CHAT) {
+                            showToast("Изображение отправлено")
+                        }
+                    }
                 }
             }
         }
@@ -156,16 +167,14 @@ class MessagesFragment : BaseFragment() {
 
 
     private fun initRecyclerView() {
-        mRecyclerView = mBinding.chatRecyclerView
-        mAdapter = MessagesAdapter()
-        mRecyclerView.adapter = mAdapter
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.isNestedScrollingEnabled = false
+        mBinding.messageRecyclerView.adapter = mAdapter
+        mBinding.messageRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
 
         mObserverMessages = Observer {
             val list = it
             mAdapter.setList(list)
-            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+            mBinding.messageRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
         mViewModel.listMessages.observe(this, mObserverMessages)
 
@@ -184,6 +193,14 @@ class MessagesFragment : BaseFragment() {
             )
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showShimmerEffect() {
+        mBinding.messageRecyclerView.showShimmer()
+    }
+
+    private fun hideShimmerEffect() {
+        mBinding.messageRecyclerView.hideShimmer()
     }
 
     override fun onDestroyView() {

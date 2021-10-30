@@ -1,13 +1,14 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
 import androidx.lifecycle.LiveData
-import com.example.learningassistant.database.AUTH
-import com.example.learningassistant.database.COLL_USERS
-import com.example.learningassistant.database.DB
-import com.example.learningassistant.database.UID
+import com.example.learningassistant.data.database.COLL_USERS
+import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.ListenerRegistration
 
 class UserLiveData : LiveData<User>() {
 

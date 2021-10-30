@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/size_circle_image"
+        android:layout_height="@dimen/size_circle_image"
+        android:layout_margin="@dimen/small_margin"
+        android:background="@color/placeholderColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="@dimen/placeholder_chat_name_width"
+        android:layout_height="@dimen/placeholder_chat_name_height"
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:background="@color/placeholderColor"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@id/view" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="@dimen/placeholder_chat_msg_width"
+        android:layout_height="@dimen/placeholder_chat_msg_height"
+        android:layout_marginBottom="@dimen/very_small_margin"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:background="@color/placeholderColor"
+        app:layout_constraintStart_toEndOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="@id/view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

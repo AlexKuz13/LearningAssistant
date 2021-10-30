@@ -32,6 +32,7 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:backgroundTint="@color/teal_700"
         android:src="@drawable/ic_btn_action_menu_change_name"
+        app:borderWidth="@dimen/stroke_width"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />
@@ -44,6 +45,7 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:backgroundTint="@color/teal_700"
         android:src="@drawable/ic_search"
+        app:borderWidth="@dimen/stroke_width"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tint="@color/white" />

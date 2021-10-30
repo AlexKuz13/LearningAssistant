@@ -1,8 +1,8 @@
-package com.example.learningassistant.database.firebase
+package com.example.learningassistant.data.database.firebase
 
 import android.net.Uri
-import com.example.learningassistant.database.USER
-import com.example.learningassistant.database.intefaces.DatabaseStorage
+import com.example.learningassistant.data.database.USER
+import com.example.learningassistant.data.database.intefaces.DatabaseStorage
 import com.example.learningassistant.utilits.showToast
 import com.google.firebase.storage.StorageReference
 
