@@ -41,7 +41,7 @@ class ChangeInfoFragment : BaseChangeFragment() {
                 ChangeInfoFragmentViewModel::class.java
             )
             mViewModel.changeInfo {
-                showToast("Данные обновлены")
+                showToast(resources.getString(R.string.data_update))
                 USER.info = info
                 findNavController().popBackStack()
             }

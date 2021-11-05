@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--Nav Menu Strings-->
+    <string name="nav_menu_messages">Des postes</string>
+    <string name="nav_menu_settings">Paramètres</string>
+    <string name="nav_menu_exit">Sortir</string>
+
+    <!-- Fragments Titles -->
+    <string name="fragment_chats">Des postes</string>
+    <string name="fragment_settings">Paramètres</string>
+    <string name="fragment_settings_user">Utilisateur</string>
+
+
+    <!-- Register fragment -->
+    <string name="register_completed">Inscription terminée avec succès!</string>
+    <string name="register_enter_name">Entrez votre nom</string>
+    <string name="register_enter_surname">Entrez votre nom de famille</string>
+    <string name="register_enter_email">Entrer votre Email</string>
+    <string name="register_enter_password">Tapez votre mot de passe</string>
+    <string name="register_repeat_password">Répétez votre mot de passe</string>
+    <string name="register_different_passwords">Vous avez entré des mots de passe différents</string>
+
+    <!-- Settings fragment -->
+    <string name="settings_header_status">En ligne</string>
+    <string name="account">Compte</string>
+    <string name="hint_email">Votre adresse postale</string>
+    <string name="your_rating">Votre note</string>
+    <string name="rating">Évaluation</string>
+    <string name="number_completed_works">Nombre d\'\"aides\"</string>
+    <string name="info">À propos de moi</string>
+    <string name="change_name">Changer de nom</string>
+    <string name="language">Langue</string>
+    <string name="hint_user_email">Adresse postale</string>
+    <string name="settings_default_info">Pas encore défini</string>
+    <string name="settings_info_signature">Écrivez un peu sur vous-même</string>
+    <string name="choose_language">Choisissez la langue:</string>
+
+
+    <!-- Task Item -->
+    <string name="task_subject">Matière scolaire:</string>
+    <string name="task_class">Classer:</string>
+    <string name="task_description">La description:</string>
+    <string name="create_task">Demander de l\'aide</string>
+    <string name="create_task_hint_description">Décrivez votre mission</string>
+    <string name="create_task_submit">Poster</string>
+    <string name="create_task_name_topic">Nom du sujet</string>
+    <string name="btn_help">Aider</string>
+
+    <!-- Single chat -->
+    <string name="message_hint">Un message</string>
+    <string name="edit_rating">Taux</string>
+    <string name="sent_image">Image envoyée</string>
+    <string name="thank_rate">Merci pour votre évaluation!</string>
+
+
+    <!-- Enter and Register Fragments -->
+    <string name="password">Mot de passe</string>
+    <string name="enter">Connexion</string>
+    <string name="login_button_desc">Login button</string>
+    <string name="image_lock_desc">Image lock</string>
+    <string name="have_yet_acc">Vous avez déjà un compte?</string>
+    <string name="repeat_password">Répéter le mot de passe</string>
+    <string name="register">Enregistrement</string>
+    <string name="name">Nom</string>
+    <string name="surname">Nom de famille</string>
+    <string name="enter_vk">Connectez-vous avec VK</string>
+    <string name="text_register_now">S\'inscrire</string>
+    <string name="dont_have_acc">Vous n\'avez pas de compte?</string>
+
+
+    <integer name="com_vk_sdk_AppId">7933261</integer>
+
+    <!-- Task Bottom Sheet -->
+    <string name="school_subject">Matière scolaire</string>
+    <string name="all_subjects">Tout</string>
+    <string name="subject_russian">Langue russe</string>
+    <string name="literature">Littérature</string>
+    <string name="subject_english">L\' Anglais</string>
+    <string name="physics">La physique</string>
+    <string name="chemistry">Chimie</string>
+    <string name="geograph">Géographie</string>
+    <string name="maths">Mathématiques</string>
+    <string name="algebra">Algèbre</string>
+    <string name="inform">L\'informatique</string>
+    <string name="history">Histoire</string>
+    <string name="obshestvo">Études sociales</string>
+    <string name="geom">Géométrie</string>
+    <string name="biology">La biologie</string>
+    <string name="school_class">Classer</string>
+    <string name="all_classes">Tout</string>
+    <string name="apply">Confirmer</string>
+    <string name="btn_my">Mon</string>
+
+    <string name="main_fragment">main</string>
+    <string name="messages_fragment">messages</string>
+    <string name="image">L\' image</string>
+
+    <!-- Toast messages -->
+    <string name="data_update">Les données ont été mises à jour</string>
+    <string name="check_empty_fields">Les champs ne peuvent pas être vides</string>
+    <string name="fill_fields">Remplissez les champs!</string>
+
+
+    <!-- Create task Subject Dropdown Menu -->
+    <string-array name="subject_array">
+        <item>Mathématiques</item>
+        <item>Langue russe</item>
+        <item>Littérature</item>
+        <item>L\' Anglais</item>
+        <item>La physique</item>
+        <item>Chimie</item>
+        <item>Géographie</item>
+        <item>Histoire</item>
+        <item>Études sociales</item>
+        <item>Géométrie</item>
+        <item>Algèbre</item>
+        <item>L\'informatique</item>
+        <item>La biologie</item>
+    </string-array>
+
+    <!-- Create task Class Dropdown Menu -->
+    <string-array name="class_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+
+
+</resources>

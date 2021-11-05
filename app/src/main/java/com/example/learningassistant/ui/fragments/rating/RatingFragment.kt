@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.learningassistant.R
 import com.example.learningassistant.databinding.FragmentRatingBinding
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.APP_ACTIVITY
@@ -25,7 +26,7 @@ class RatingFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRatingBinding.inflate(layoutInflater, container, false)
-        user = arguments?.getSerializable("User") as User
+        //   user = arguments?.getSerializable("User") as User
         return mBinding.root
     }
 
@@ -39,7 +40,7 @@ class RatingFragment : DialogFragment() {
                 ViewModelProvider(this, RatingViewModelFactory(user.id, mBinding.ratingBar.rating))
                     .get(RatingFragmentViewModel::class.java)
             mViewModel.rateUser {
-                showToast("Спасибо за оценку!")
+                showToast(resources.getString(R.string.thank_rate))
                 //menuRating.clear()
                 APP_ACTIVITY.navController.popBackStack()
             }

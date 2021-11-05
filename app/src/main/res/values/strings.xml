@@ -1,126 +1,148 @@
 <resources>
-    <string name="app_name">Learning Assistant</string>
+    <string name="app_name" translatable="false">Learning Assistant</string>
 
 
     <!--Nav Menu Strings-->
-    <string name="nav_menu_messages">Сообщения</string>
-    <string name="nav_menu_settings">Настройки</string>
-    <string name="nav_menu_exit">Выход</string>
-    <string name="nav_menu_header_defalt_fullname">Name Surname</string>
-    <string name="nav_menu_header_phone">+79650000000</string>
+    <string name="nav_menu_messages">Messages</string>
+    <string name="nav_menu_settings">Settings</string>
+    <string name="nav_menu_exit">Exit</string>
+    <string name="nav_menu_header_defalt_fullname" translatable="false">Name Surname</string>
+    <string name="nav_menu_header_phone" translatable="false">+79650000000</string>
+
+    <!-- Fragments Titles -->
+    <string name="fragment_chats">"Messages"</string>
+    <string name="fragment_settings">"Settings"</string>
+    <string name="fragment_settings_user">"User"</string>
+
 
     <!-- Navigation strings -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
+    <!-- Register fragment -->
+    <string name="register_completed">Registration completed successfully!</string>
+    <string name="register_enter_name">Enter your Name</string>
+    <string name="register_enter_surname">Enter your Surname</string>
+    <string name="register_enter_email">Enter your Email</string>
+    <string name="register_enter_password">Enter your password</string>
+    <string name="register_repeat_password">Repeat your password</string>
+    <string name="register_different_passwords">You entered different passwords</string>
 
     <!-- Settings fragment -->
-    <string name="settings_header_status">В сети</string>
-    <string name="account">Аккаунт</string>
-    <string name="hint_email">Ваш почтовый адрес</string>
-    <string name="hint_user_email">Почтовый адрес</string>
-    <string name="default_rating">0.0</string>
-    <string name="your_rating">Ваш рейтинг</string>
-    <string name="rating">Рейтинг</string>
-    <string name="_0">0</string>
-    <string name="number_completed_works">Количество \"помощей\"</string>
-    <string name="settings_default_info">Не задано</string>
-    <string name="settings_info_signature">Напишите немного о себе</string>
-    <string name="info">О себе</string>
-    <string name="change_name">Изменить имя</string>
-    <string name="ratingValue" formatted="false">%.1f</string>
-    <string name="complWorkValue" formatted="false">%d</string>
+    <string name="settings_header_status">Online</string>
+    <string name="account">Account</string>
+    <string name="hint_email">Your mailing address</string>
+    <string name="hint_user_email">Mailing address</string>
+    <string name="default_rating" translatable="false">0.0</string>
+    <string name="your_rating">Your rating</string>
+    <string name="rating">Rating</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="number_completed_works">Number of \"help\"</string>
+    <string name="settings_default_info">Not set</string>
+    <string name="settings_info_signature">Write a little about yourself</string>
+    <string name="info">About me</string>
+    <string name="change_name">Change name</string>
+    <string name="ratingValue" formatted="false" translatable="false">%.1f</string>
+    <string name="complWorkValue" formatted="false" translatable="false">%d</string>
+    <string name="lang_russian" translatable="false">Русский</string>
+    <string name="lang_english" translatable="false">English</string>
+    <string name="lang_french" translatable="false">Français</string>
+    <string name="lang_german" translatable="false">Deutsch</string>
+    <string name="language">Language</string>
+    <string name="choose_language">Choose language:</string>
 
-    <!-- register and entercode fragment -->
-    <string name="register_enter_phone">Введите ваш номер телефона</string>
-    <string name="enter_code_phrase">Введите код</string>
-    <string name="code_sent_phone">Код отправлен на ваш телефон</string>
-    <string name="hint_et_code">- - - - - -</string>
 
     <!-- Task Item -->
-    <string name="task_subject">Предмет:</string>
-    <string name="task_class">Класс:</string>
-    <string name="task_description">Описание:</string>
-    <string name="create_task">Попросить помощь</string>
-    <string name="create_task_hint_description">Опишите свое задание</string>
-    <string name="create_task_submit">Разместить</string>
-    <string name="create_task_name_topic">Название темы</string>
-    <string name="btn_help">Помочь</string>
+    <string name="task_subject">School subject:</string>
+    <string name="task_class">Class:</string>
+    <string name="task_description">Description:</string>
+    <string name="create_task">Ask for help</string>
+    <string name="create_task_hint_description">Describe your assignment</string>
+    <string name="create_task_submit">Post</string>
+    <string name="create_task_name_topic">Topic name</string>
+    <string name="btn_help">Help</string>
 
     <!-- Single chat -->
-    <string name="messagehint">Message</string>
-    <string name="edit_rating">Оценить</string>
+    <string name="message_hint">Message</string>
+    <string name="edit_rating">Rate</string>
+    <string name="sent_image">Image sent</string>
+    <string name="thank_rate">Thank you for rating!</string>
 
 
-    <!-- New update -->
-    <string name="email">Email</string>
-    <string name="password">Пароль</string>
-    <string name="enter">Вход</string>
+    <!-- Enter and Register Fragments -->
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="enter">Log in</string>
     <string name="login_button_desc">Login button</string>
-    <string name="text_register_now">Зарегистрироваться</string>
-    <string name="dont_have_acc">У вас нет аккаунта?</string>
+    <string name="dont_have_acc">Don\'t have an account?</string>
     <string name="image_lock_desc">Image lock</string>
-    <string name="have_yet_acc">Уже есть аккаунт?</string>
-    <string name="repeat_password">Повторите пароль</string>
-    <string name="register">Регистрация</string>
-    <string name="name">Имя</string>
-    <string name="surname">Фамилия</string>
-    <string name="enter_vk">Зайти с помощью VK</string>
+    <string name="have_yet_acc">Already have an account?</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="register">registration</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="enter_vk">Login with VK</string>
 
 
     <integer name="com_vk_sdk_AppId">7933261</integer>
 
     <!-- Task Bottom Sheet -->
-    <string name="school_subject">Предмет</string>
-    <string name="all_subjects">Все</string>
-    <string name="maths">Математика</string>
-    <string name="subject_russian">Русский язык</string>
-    <string name="literature">Литература</string>
-    <string name="subject_english">Английский язык</string>
-    <string name="physics">Физика</string>
-    <string name="chemistry">Химия</string>
-    <string name="geograph">География</string>
-    <string name="history">История</string>
-    <string name="obshestvo">Обществознание</string>
-    <string name="geom">Геометрия</string>
-    <string name="algebra">Алгебра</string>
-    <string name="inform">Информатика</string>
-    <string name="biology">Биология</string>
-    <string name="school_class">Класс</string>
-    <string name="class_1">1</string>
-    <string name="class_2">2</string>
-    <string name="class_3">3</string>
-    <string name="class_4">4</string>
-    <string name="class_5">5</string>
-    <string name="class_6">6</string>
-    <string name="class_7">7</string>
-    <string name="class_8">8</string>
-    <string name="class_9">9</string>
-    <string name="class_10">10</string>
-    <string name="class_11">11</string>
-    <string name="all_classes">Все</string>
-    <string name="apply">Подтвердить</string>
-    <string name="btn_my">Моё</string>
+    <string name="school_subject">School subject</string>
+    <string name="all_subjects">All</string>
+    <string name="maths">Maths</string>
+    <string name="subject_russian">Russian language</string>
+    <string name="literature">Literature</string>
+    <string name="subject_english">English</string>
+    <string name="physics">Physics</string>
+    <string name="chemistry">Chemistry</string>
+    <string name="geograph">Geography</string>
+    <string name="history">History</string>
+    <string name="obshestvo">Social Studies</string>
+    <string name="geom">Geometry</string>
+    <string name="algebra">Algebra</string>
+    <string name="inform">Computer science</string>
+    <string name="biology">Biology</string>
+    <string name="school_class">Class</string>
+    <string name="class_1" translatable="false">1</string>
+    <string name="class_2" translatable="false">2</string>
+    <string name="class_3" translatable="false">3</string>
+    <string name="class_4" translatable="false">4</string>
+    <string name="class_5" translatable="false">5</string>
+    <string name="class_6" translatable="false">6</string>
+    <string name="class_7" translatable="false">7</string>
+    <string name="class_8" translatable="false">8</string>
+    <string name="class_9" translatable="false">9</string>
+    <string name="class_10" translatable="false">10</string>
+    <string name="class_11" translatable="false">11</string>
+    <string name="all_classes">All</string>
+    <string name="apply">Confirm</string>
+    <string name="btn_my">My</string>
 
     <string name="main_fragment">main</string>
     <string name="messages_fragment">messages</string>
-    <string name="image">Изображение</string>
+    <string name="image">Image</string>
+
+    <!-- Toast messages -->
+    <string name="data_update">Data has been updated</string>
+    <string name="check_empty_fields">Fields cannot be empty</string>
+    <string name="fill_fields">Fill in the fields!</string>
+
 
     <!-- Create task Subject Dropdown Menu -->
     <string-array name="subject_array">
-        <item>Математика</item>
-        <item>Русский язык</item>
-        <item>Литература</item>
-        <item>Английский язык</item>
-        <item>Физика</item>
-        <item>Химия</item>
-        <item>География</item>
-        <item>История</item>
-        <item>Обществознание</item>
-        <item>Геометрия</item>
-        <item>Алгебра</item>
-        <item>Информатика</item>
-        <item>Биология</item>
+        <item>Maths</item>
+        <item>Russian language</item>
+        <item>Literature</item>
+        <item>English</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Social Studies</item>
+        <item>Geometry</item>
+        <item>Algebra</item>
+        <item>Computer science</item>
+        <item>Biology</item>
     </string-array>
 
     <!-- Create task Class Dropdown Menu -->
@@ -137,4 +159,5 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+    <string name="text_register_now">Sign up</string>
 </resources>

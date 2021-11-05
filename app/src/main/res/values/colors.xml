@@ -34,6 +34,7 @@
     <color name="btnMyColor">@color/gray</color>
     <color name="descriptionColor">@color/darkGray</color>
 
+    // Message Style
     <color name="msgUserBackgroundColor">@color/teal_200</color>
     <color name="msgReceiveBackgroundColor">@color/mediumGray</color>
     <color name="msgTextColor">@color/black</color>

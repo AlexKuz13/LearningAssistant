@@ -2,18 +2,22 @@ package com.example.learningassistant.ui
 
 import android.os.Bundle
 import android.util.Log
-
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.learningassistant.R
 import com.example.learningassistant.data.database.firebase.AppFirebaseRepository
 import com.example.learningassistant.databinding.ActivityMainBinding
+import com.example.learningassistant.ui.fragments.settings.SettingsFragmentViewModel
 import com.example.learningassistant.ui.objects.AppPreference
 import com.example.learningassistant.ui.objects.NavDrawer
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.observeOnce
+import com.example.learningassistant.utilits.setLocal
 import com.google.android.material.navigation.NavigationView
 import com.vk.api.sdk.utils.VKUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,11 +32,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var mNavDrawer: NavDrawer
     lateinit var mDrawerLayout: DrawerLayout
 
+    private lateinit var settingsViewModel: SettingsFragmentViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setTheme(R.style.Theme_LearningAssistant)
+        setTheme(R.style.Theme_LearningAssistant)
         _binding = ActivityMainBinding.inflate(layoutInflater)
+        initLanguage()
 
         setContentView(mBinding.root)
 
@@ -47,6 +54,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         initFields()
         mNavDrawer.create()
 
+    }
+
+    private fun initLanguage() {
+        settingsViewModel = ViewModelProvider(this).get(SettingsFragmentViewModel::class.java)
+        settingsViewModel.readLangCodeAndId.asLiveData().observeOnce(this, {
+            setLocal(it.langCode, this)
+        })
     }
 
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.learningassistant.R
 import com.example.learningassistant.databinding.FragmentChatsBinding
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.ui.adapters.ChatAdapter
@@ -34,7 +35,7 @@ class ChatsFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        APP_ACTIVITY.title = "Сообщения"
+        APP_ACTIVITY.title = resources.getString(R.string.fragment_chats)
         initRecyclerView()
     }
 

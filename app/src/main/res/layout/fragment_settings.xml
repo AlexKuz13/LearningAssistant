@@ -19,7 +19,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey"
+        android:background="@color/backgroundColor"
         tools:context=".ui.fragments.settings.SettingsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -184,6 +184,31 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settings_layout_language"
+            style="@style/settings_buttons"
+            android:visibility="@{userBoolean ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_layout_info">
+
+            <TextView
+                android:id="@+id/settings_language"
+                style="@style/text_settings_layouts"
+                android:maxWidth="350dp"
+                android:text="Русский"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/language"
+                style="@style/settings_text_layouts_signature"
+                android:text="@string/language"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settings_language" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <View
             style="@style/separator"
             app:layout_constraintEnd_toEndOf="parent"
@@ -203,6 +228,12 @@
             app:layout_constraintBottom_toBottomOf="@id/settings_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_header" />
+
+        <View
+            style="@style/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_layout_language" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

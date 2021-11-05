@@ -43,7 +43,7 @@ class CreateTaskFragment : DialogFragment() {
         mBinding.btnSubmitTask.setOnClickListener {
             initTask()
             if (task.description.isEmpty()) {
-                showToast("Заполните поля")
+                showToast(resources.getString(R.string.fill_fields))
             } else {
                 mViewModel = ViewModelProvider(this, CreateTaskViewModelFactory(task)).get(
                     CreateTaskFragmentViewModel::class.java

@@ -33,7 +33,7 @@
         <item name="android:layout_marginTop">14dp</item>
         <item name="android:clickable">true</item>
         <item name="android:background">@drawable/ripple_effect</item>
-        <item name="android:backgroundTint">@color/light_grey</item>
+        <item name="android:backgroundTint">@color/backgroundColor</item>
     </style>
 
     <!-- Text in Layouts Settings -->
@@ -86,6 +86,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/normal_margin</item>
         <item name="android:textColorHint">@color/purple_700</item>
+    </style>
+
+
+    <!-- RadioButtons Language in Language Bottom Sheet -->
+    <style name="LanguageRBStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/normal_margin</item>
+        <item name="android:paddingEnd">@dimen/normal_margin</item>
+        <item name="android:textSize">@dimen/normal_text</item>
     </style>
 
 

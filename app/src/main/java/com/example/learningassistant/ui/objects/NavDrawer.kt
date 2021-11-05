@@ -75,7 +75,7 @@ class NavDrawer(private var toolbar: Toolbar) {
 
     fun disableDrawer() {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
         toolbar.setNavigationOnClickListener {
             APP_ACTIVITY.navController.popBackStack()
         }
@@ -87,5 +87,7 @@ class NavDrawer(private var toolbar: Toolbar) {
         toolbar.setNavigationOnClickListener {
             mDrawerLayout.openDrawer(GravityCompat.START)
         }
+        mNavigationView.menu.clear()
+        mNavigationView.inflateMenu(R.menu.nav_menu)
     }
 }

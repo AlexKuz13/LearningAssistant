@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:hint="@string/messagehint"
+            android:hint="@string/message_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:textColor="@color/black"

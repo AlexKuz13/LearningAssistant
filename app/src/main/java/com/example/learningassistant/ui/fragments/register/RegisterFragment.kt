@@ -46,7 +46,7 @@ class RegisterFragment : Fragment() {
                         RegisterFragmentViewModel::class.java
                     )
                     mViewModel.createDatabase {
-                        showToast("Регистрация прошла успешно!")
+                        showToast(resources.getString(R.string.register_completed))
                         AppPreference.setInitUser(true)
                         APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_mainFragment)
                     }
@@ -58,18 +58,18 @@ class RegisterFragment : Fragment() {
 
     private fun checkFields(onSuccess: () -> Unit) {
         when {
-            mBinding.registerInputName.text.isEmpty() -> showToast("Введите Имя")
-            mBinding.registerInputSurname.text.isEmpty() -> showToast("Введите Фамилию")
-            mBinding.registerInputEmail.text.isEmpty() -> showToast("Введите Email")
-            mBinding.registerInputPassword.text.isEmpty() -> showToast("Введите Пароль")
-            mBinding.registerRepeatPassword.text.isEmpty() -> showToast("Повторите Пароль")
+            mBinding.registerInputName.text.isEmpty() -> showToast(resources.getString(R.string.register_enter_name))
+            mBinding.registerInputSurname.text.isEmpty() -> showToast(resources.getString(R.string.register_enter_surname))
+            mBinding.registerInputEmail.text.isEmpty() -> showToast(resources.getString(R.string.register_enter_email))
+            mBinding.registerInputPassword.text.isEmpty() -> showToast(resources.getString(R.string.register_enter_password))
+            mBinding.registerRepeatPassword.text.isEmpty() -> showToast(resources.getString(R.string.register_repeat_password))
             mBinding.registerInputPassword.text.toString() != mBinding.registerRepeatPassword.text.toString() ->
-                showToast("Вы ввели разные пароли!")
+                showToast(resources.getString(R.string.register_different_passwords))
             else -> onSuccess()
         }
     }
 
-    private suspend fun readData() {
+    private fun readData() {
         val fullName =
             mBinding.registerInputName.text.toString() + " " + mBinding.registerInputSurname.text.toString()
         USER = User()

@@ -48,7 +48,7 @@ class EnterFragment : Fragment() {
 
     private fun login() {
         if (mBinding.loginInputEmail.text.isEmpty() || mBinding.loginInputPassword.text.isEmpty()) {
-            showToast("Заполните поля!")
+            showToast(resources.getString(R.string.fill_fields))
         } else {
             val email = mBinding.loginInputEmail.text.toString()
             val password = mBinding.loginInputPassword.text.toString()
@@ -56,7 +56,6 @@ class EnterFragment : Fragment() {
                 EnterFragmentViewModel::class.java
             )
             mViewModel.initDatabase {
-                showToast("Добро пожаловать")
                 AppPreference.setInitUser(true)
                 APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_mainFragment)
             }

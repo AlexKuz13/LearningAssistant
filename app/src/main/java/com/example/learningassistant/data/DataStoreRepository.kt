@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 
 
@@ -28,9 +29,14 @@ class DataStoreRepository @Inject constructor(
         val schoolClass = stringPreferencesKey(PREFERENCES_SCHOOL_CLASS)
         val schoolClassId = intPreferencesKey(PREFERENCES_SCHOOL_CLASS_ID)
 
+        val langCode = stringPreferencesKey(PREFERENCES_LANG_CODE)
+        val langRBId = intPreferencesKey(PREFERENCES_LANG_RB_ID)
+        val language = stringPreferencesKey(PREFERENCES_LANGUAGE)
+
     }
 
     private val dataStore: DataStore<Preferences> = context.dataStore
+    private val listOfLang = listOf("en", "ru", "de", "fr")
 
     suspend fun saveSubjectAndClass(
         schoolSubject: String,
@@ -69,7 +75,42 @@ class DataStoreRepository @Inject constructor(
             )
         }
 
+    suspend fun saveLangCodeAndId(
+        langCode: String,
+        langRBId: Int,
+        language: String
+    ) {
+        dataStore.edit { preferences ->
+            preferences[PreferenceKeys.langCode] = langCode
+            preferences[PreferenceKeys.langRBId] = langRBId
+            preferences[PreferenceKeys.language] = language
+        }
+    }
 
+
+    val readLangCodeAndId: Flow<LangCodeAndId> = dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }
+        .map { preferences ->
+            var bool = false
+            listOfLang.forEach { if (Locale.getDefault().language.contains(it, false)) bool = true }
+            val langCode =
+                preferences[PreferenceKeys.langCode] ?: if (bool)
+                    Locale.getDefault().language else DEFAULT_LANG_CODE
+            val langRBId = preferences[PreferenceKeys.langRBId] ?: 0
+            val language = preferences[PreferenceKeys.language] ?: if (bool)
+                Locale.getDefault().displayLanguage else DEFAULT_LANGUAGE
+            LangCodeAndId(
+                langCode,
+                langRBId,
+                language
+            )
+        }
 }
 
 data class SubjectAndClass(
@@ -77,4 +118,10 @@ data class SubjectAndClass(
     val schoolSubjectId: Int,
     val schoolClass: String,
     val schoolClassId: Int
+)
+
+data class LangCodeAndId(
+    val langCode: String,
+    val langRBId: Int,
+    val language: String
 )

@@ -38,7 +38,7 @@ class ChangeNameFragment : BaseChangeFragment() {
         val name = mBinding.etChangeName.text.toString()
         val surname = mBinding.etChangeSurname.text.toString()
         if (name.isEmpty() || surname.isEmpty()) {
-            showToast("Поля не могут быть пустыми")
+            showToast(resources.getString(R.string.check_empty_fields))
         } else {
             val fullName = "$name $surname"
             if (fullName != USER.fullName) {
@@ -46,7 +46,7 @@ class ChangeNameFragment : BaseChangeFragment() {
                     ChangeNameFragmentViewModel::class.java
                 )
                 mViewModel.changeName {
-                    showToast("Данные обновлены")
+                    showToast(resources.getString(R.string.data_update))
                     APP_ACTIVITY.mNavDrawer.updateHeader()
                     APP_ACTIVITY.navController.popBackStack()
                 }

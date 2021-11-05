@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.learningassistant.ui.fragments.main.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_enterFragment"
@@ -66,13 +66,13 @@
         <action
             android:id="@+id/action_createTaskFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/navigation_graph"/>
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true" />
     </dialog>
     <fragment
         android:id="@+id/chatsFragment"
         android:name="com.example.learningassistant.ui.fragments.chats.ChatsFragment"
-        android:label="fragment_chats"
+        android:label="@string/nav_menu_messages"
         tools:layout="@layout/fragment_chats">
         <action
             android:id="@+id/action_chatsFragment_to_mainFragment"
@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.learningassistant.ui.fragments.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/nav_menu_settings"
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_changeInfoFragment"
@@ -122,6 +122,9 @@
         <argument
             android:name="user"
             app:argType="com.example.learningassistant.models.User" />
+        <action
+            android:id="@+id/action_settingsFragment_to_languageBottomSheet"
+            app:destination="@id/languageBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/changeInfoFragment"
@@ -150,7 +153,18 @@
             android:id="@+id/action_taskBottomSheet_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/languageBottomSheet"
+        android:name="com.example.learningassistant.ui.fragments.settings.LanguageBottomSheet"
+        android:label="language_bottom_sheet"
+        tools:layout="@layout/language_bottom_sheet">
+        <action
+            android:id="@+id/action_languageBottomSheet_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/settingsFragment"
+            app:popUpToInclusive="true" />
     </dialog>
 
 </navigation>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.learningassistant.R
@@ -17,11 +18,13 @@ import com.example.learningassistant.databinding.FragmentSettingsBinding
 import com.example.learningassistant.ui.fragments.BaseFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.downloadAndSetImage
+import com.example.learningassistant.utilits.observeOnce
 import com.example.learningassistant.utilits.showToast
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SettingsFragment : BaseFragment() {
 
     private val args by navArgs<SettingsFragmentArgs>()
@@ -38,21 +41,31 @@ class SettingsFragment : BaseFragment() {
         _binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_settings, container, false)
         mBinding.user = args.user
+        mViewModel = ViewModelProvider(this).get(SettingsFragmentViewModel::class.java)
         return mBinding.root
     }
 
     override fun onResume() {
         super.onResume()
         if (mBinding.user != USER) {
-            APP_ACTIVITY.title = "Пользователь"
+            APP_ACTIVITY.title = resources.getString(R.string.fragment_settings_user)
             mBinding.userBoolean = false
         } else {
-            APP_ACTIVITY.title = "Настройки"
+            APP_ACTIVITY.title = resources.getString(R.string.fragment_settings)
             setHasOptionsMenu(true)
             mBinding.userBoolean = true
+
+            mViewModel.readLangCodeAndId.asLiveData().observeOnce(this, {
+                mBinding.settingsLanguage.text = it.language.capitalize()
+
+            })
+
             mBinding.settingsChangePhoto.setOnClickListener { changePhotoUser() }
             mBinding.settingsLayoutInfo.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsFragment_to_changeInfoFragment)
+            }
+            mBinding.settingsLayoutLanguage.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_languageBottomSheet)
             }
         }
     }
@@ -73,18 +86,17 @@ class SettingsFragment : BaseFragment() {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(UID)
-            mViewModel = ViewModelProvider(this,SettingsViewModelFactory(uri,path)).get(
-                SettingsFragmentViewModel::class.java)
-            mViewModel.updatePhoto {
+
+            mViewModel.updatePhoto(uri, path) {
                 mBinding.settingsHeaderProfilePhoto.downloadAndSetImage(USER.photoUrl)
-                showToast("Данные обновлены")
+                showToast(resources.getString(R.string.data_update))
                 APP_ACTIVITY.mNavDrawer.updateHeader()
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.settings_action_menu,menu)
+        inflater.inflate(R.menu.settings_action_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

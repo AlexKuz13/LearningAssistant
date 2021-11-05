@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/black_cursor.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_arrow_next.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_attach.xml" value="0.1375" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_btn_action_menu.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_btn_action_menu_change_name.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_confirm_change.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_default_profile_photo.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_lock_register.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_nav_menu.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_send.xml" value="0.1375" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_star_rating.xml" value="0.1375" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_unlock_register.xml" value="0.1375" />
@@ -11,18 +22,22 @@
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/register_edittext.xml" value="0.1375" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/task_background.xml" value="0.1375" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/task_background_user.xml" value="0.1375" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/activity_main.xml" value="0.13677536231884058" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/chat_item.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_chats.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_main.xml" value="0.2" />
-        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_settings.xml" value="0.12135416666666667" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_settings.xml" value="0.2" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/header.xml" value="0.1" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/language_bottom_sheet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/message_item.xml" value="0.4" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/placeholder_chat_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/placeholder_message_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/placeholder_row_layout.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/task_bottom_sheet.xml" value="0.1490036231884058" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/task_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/task_item.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/toolbar_info.xml" value="0.2" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/settings_action_menu.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/user_rating.xml" value="0.20854700854700856" />
       </map>
     </option>
   </component>

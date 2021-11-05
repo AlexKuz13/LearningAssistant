@@ -1,5 +1,6 @@
 package com.example.learningassistant.utilits
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.inputmethod.InputMethodManager
@@ -7,6 +8,9 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.example.learningassistant.R
 import com.example.learningassistant.ui.MainActivity
 import com.squareup.picasso.Picasso
@@ -49,4 +53,23 @@ fun String.asTimeMessage(): String {
     val time = Date(this.toLong())
     val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     return timeFormat.format(time)
+}
+
+
+fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+    observe(lifecycleOwner, object : Observer<T> {
+        override fun onChanged(t: T?) {
+            removeObserver(this)
+            observer.onChanged(t)
+        }
+    })
+}
+
+fun setLocal(langCode: String, activity: Activity) {
+    val locale = Locale(langCode)
+    Locale.setDefault(locale)
+    val res = activity.resources
+    val config = res.configuration
+    config.setLocale(locale)
+    res.updateConfiguration(config, res.displayMetrics)
 }

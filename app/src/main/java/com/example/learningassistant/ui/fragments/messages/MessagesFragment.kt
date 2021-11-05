@@ -138,7 +138,7 @@ class MessagesFragment : BaseFragment() {
                     mViewModel.sendMessage(MESSAGE) {
                         initChat(requireActivity().resources.getString(R.string.image))
                         mViewModel.addChat(CHAT) {
-                            showToast("Изображение отправлено")
+                            showToast(resources.getString(R.string.sent_image))
                         }
                     }
                 }

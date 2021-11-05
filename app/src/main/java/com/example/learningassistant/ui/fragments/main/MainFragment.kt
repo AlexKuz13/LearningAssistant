@@ -66,7 +66,7 @@ class MainFragment : Fragment() {
 
     private fun initFields() {
         APP_ACTIVITY.mToolbar.visibility = View.VISIBLE
-        APP_ACTIVITY.title = "Learning Assistant"
+        APP_ACTIVITY.title = resources.getString(R.string.app_name)
         APP_ACTIVITY.mNavDrawer.enableDrawer()
         APP_ACTIVITY.mNavDrawer.updateHeader()
     }
