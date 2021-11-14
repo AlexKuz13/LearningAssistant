@@ -33,6 +33,8 @@ class DataStoreRepository @Inject constructor(
         val langRBId = intPreferencesKey(PREFERENCES_LANG_RB_ID)
         val language = stringPreferencesKey(PREFERENCES_LANGUAGE)
 
+        val darkTheme = booleanPreferencesKey(PREFERENCES_DARK_THEME)
+
     }
 
     private val dataStore: DataStore<Preferences> = context.dataStore
@@ -111,6 +113,30 @@ class DataStoreRepository @Inject constructor(
                 language
             )
         }
+
+
+    suspend fun saveDarkTheme(
+        boolean: Boolean
+    ) {
+        dataStore.edit { preferences ->
+            preferences[PreferenceKeys.darkTheme] = boolean
+        }
+    }
+
+    val readDarkTheme: Flow<Boolean> = dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }
+        .map { preferences ->
+            val darkTheme =
+                preferences[PreferenceKeys.darkTheme] ?: false
+            darkTheme
+        }
+
 }
 
 data class SubjectAndClass(

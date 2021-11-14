@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -7,41 +7,60 @@
         <variable
             name="user"
             type="com.example.learningassistant.models.User" />
-    </data> -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_view_header_height"
-    android:background="@drawable/learningassistantheader">
+        <variable
+            name="nightMode"
+            type="Boolean" />
+    </data>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/menu_profile_photo"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_view_header_height"
+        android:background="@drawable/learningassistantheader">
 
-        android:layout_width="@dimen/size_large_circle_image"
-        android:layout_height="@dimen/size_large_circle_image"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/header_image_margin_top"
-        android:src="@drawable/ic_default_profile_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/menu_profile_photo"
+            loadImageFromUrl="@{user.photoUrl}"
+            android:layout_width="@dimen/size_large_circle_image"
+            android:layout_height="@dimen/size_large_circle_image"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/header_image_margin_top"
+            android:src="@drawable/ic_default_profile_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/menu_profile_fullname"
-        style="@style/text_nav_menu_header"
-        android:layout_marginTop="@dimen/small_margin"
-        android:fontFamily="@font/baloo"
-        android:textSize="@dimen/large_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_profile_photo" />
+        <TextView
+            android:id="@+id/menu_profile_fullname"
+            style="@style/text_nav_menu_header"
+            android:layout_marginTop="@dimen/small_margin"
+            android:fontFamily="@font/baloo"
+            android:text="@{user.fullName}"
+            android:textSize="@dimen/large_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_profile_photo" />
 
-    <TextView
-        android:id="@+id/menu_profile_email"
-        style="@style/text_nav_menu_header"
-        android:fontFamily="@font/baloo"
-        android:textSize="@dimen/normal_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_profile_fullname" />
+        <TextView
+            android:id="@+id/menu_profile_email"
+            style="@style/text_nav_menu_header"
+            android:fontFamily="@font/baloo"
+            android:text="@{user.email}"
+            android:textSize="@dimen/normal_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_profile_fullname" />
 
+        <ImageView
+            android:id="@+id/btn_changeMode"
+            android:layout_width="@dimen/size_change_mode"
+            android:layout_height="@dimen/size_change_mode"
+            android:layout_margin="@dimen/normal_margin"
+            android:clickable="true"
+            android:focusable="true"
+            app:drawableDay="@{@drawable/ic_day_mode}"
+            app:drawableNight="@{@drawable/ic_night_mode}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:night="@{!nightMode}"
+            app:tint="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.learningassistant.R
-import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.LanguageBottomSheetBinding
 import com.example.learningassistant.utilits.DEFAULT_LANGUAGE
 import com.example.learningassistant.utilits.DEFAULT_LANG_CODE
@@ -76,9 +75,7 @@ class LanguageBottomSheet : BottomSheetDialogFragment() {
 
         mBinding.applyBtn.setOnClickListener {
             settingsFragmentViewModel.saveLangCodeAndId(langCode, langRBId, language)
-            val action =
-                LanguageBottomSheetDirections.actionLanguageBottomSheetToSettingsFragment(USER)
-            findNavController().navigate(action)
+            findNavController().navigate(R.id.action_languageBottomSheet_to_mainFragment)
         }
 
         return mBinding.root

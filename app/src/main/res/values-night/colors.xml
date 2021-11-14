@@ -23,7 +23,7 @@
     <color name="dark">#313C44</color>
     <color name="darker">#151B20</color>
 
-    <color name="backgroundColor">@color/lightGray</color>
+    <color name="backgroundColor">@color/dark</color>
     <color name="placeholderColor">@color/mediumGray</color>
 
     // Custom CardView Style
@@ -47,5 +47,4 @@
     <color name="thumbColor">@color/gray</color>
     <color name="checkedTrackColor">#509C27B0</color>
     <color name="trackColor">#50888888</color>
-
 </resources>

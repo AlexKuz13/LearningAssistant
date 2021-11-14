@@ -12,7 +12,6 @@ import com.example.learningassistant.databinding.HeaderBinding
 import com.example.learningassistant.ui.fragments.main.MainFragmentDirections
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.AppStates
-import com.example.learningassistant.utilits.downloadAndSetImage
 import com.google.android.material.navigation.NavigationView
 
 
@@ -20,7 +19,7 @@ class NavDrawer(private var toolbar: Toolbar) {
     lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mNavigationView: NavigationView
     private lateinit var mToggle: ActionBarDrawerToggle
-    private lateinit var headerBinding: HeaderBinding
+    lateinit var headerBinding: HeaderBinding
 
     fun create() {
         initView()
@@ -28,15 +27,13 @@ class NavDrawer(private var toolbar: Toolbar) {
     }
 
     fun updateHeader() {
-        headerBinding = HeaderBinding.bind(mNavigationView.getHeaderView(0))
-        headerBinding.menuProfileFullname.text = USER.fullName
-        headerBinding.menuProfileEmail.text = USER.email
-        headerBinding.menuProfilePhoto.downloadAndSetImage(USER.photoUrl)
+        headerBinding.user = USER
     }
 
     private fun initView() {
         mDrawerLayout = APP_ACTIVITY.mDrawerLayout
         mNavigationView = APP_ACTIVITY.mBinding.navView
+        headerBinding = HeaderBinding.bind(mNavigationView.getHeaderView(0))
     }
 
     private fun initNavDrawer() {

@@ -33,6 +33,7 @@ class SettingsFragment : BaseFragment() {
     private val mBinding get() = _binding!!
     private lateinit var mViewModel: SettingsFragmentViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

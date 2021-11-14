@@ -13,6 +13,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="useMaterialThemeColors">true</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
 
@@ -22,4 +24,11 @@
         <item name="android:windowTranslucentNavigation">true</item>
 
     </style>
+
+    <style name="CustomSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="thumbTint">@color/thumb_background_color</item>
+        <item name="trackTint">@color/track_background_color</item>
+    </style>
+
+
 </resources>

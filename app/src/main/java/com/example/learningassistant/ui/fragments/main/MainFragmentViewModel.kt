@@ -23,6 +23,7 @@ class MainFragmentViewModel @Inject constructor(
 
     var readSubjectAndClass = dataStoreRepository.readSubjectAndClass
 
+
     val currentUser: LiveData<User>
 
 
@@ -64,4 +65,6 @@ class MainFragmentViewModel @Inject constructor(
             schoolClassId
         )
     }
+
+
 }
