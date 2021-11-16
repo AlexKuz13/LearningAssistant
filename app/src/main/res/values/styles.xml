@@ -5,7 +5,7 @@
     <style name="mainToolbar">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/purple_500</item>
+        <item name="android:background">@color/toolbarBackground</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
@@ -70,7 +70,7 @@
     <style name="separator">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/grey</item>
+        <item name="android:background">@color/gray</item>
         <item name="android:layout_marginTop">@dimen/small_margin</item>
         <item name="android:layout_marginStart">@dimen/normal_margin</item>
         <item name="android:layout_marginEnd">@dimen/normal_margin</item>
@@ -85,7 +85,7 @@
     <!-- Rating Bar User-->
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/purple_200</item>
-        <item name="colorControlActivated">@color/purple_500</item>
+        <item name="colorControlActivated">@color/ratingColor</item>
     </style>
 
     <!-- Text input layout in Enter and Register fragments -->

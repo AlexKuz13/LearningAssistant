@@ -3,15 +3,12 @@
     <color name="purple_200">#E1BEE7</color>
     <color name="purple_500">#9C27B0</color>
     <color name="purple_700">#7B1FA2</color>
+    <color name="purple_900">#570679</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="teal_800">#015554</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#8E8686</color>
-    <color name="light_grey">#EDDFDF</color>
-    <color name="light_grey2">#F3ECEC</color>
-    <color name="dark_grey">#433E3E</color>
     <color name="blue_VK">#2787F5</color>
     <color name="yellow">#FFEB3B</color>
 
@@ -23,22 +20,22 @@
     <color name="dark">#313C44</color>
     <color name="darker">#151B20</color>
 
-    <color name="backgroundColor">@color/dark</color>
-    <color name="placeholderColor">@color/mediumGray</color>
+    <color name="backgroundColor">@color/darker</color>
+    <color name="placeholderColor">@color/dark</color>
 
     // Custom CardView Style
-    <color name="strokeColor">@color/lightMediumGray</color>
-    <color name="cardBackgroundColor">@color/white</color>
+    <color name="strokeColor">@color/mediumGray</color>
+    <color name="cardBackgroundColor">@color/dark</color>
     <color name="cardBackgroundLightColor">#106200EA</color>
-    <color name="titleColor">@color/darker</color>
+    <color name="titleColor">@color/mediumGray</color>
     <color name="btnMyColor">@color/gray</color>
-    <color name="descriptionColor">@color/darkGray</color>
+    <color name="descriptionColor">@color/mediumGray</color>
 
     // Message Style
     <color name="msgUserBackgroundColor">@color/teal_200</color>
     <color name="msgReceiveBackgroundColor">@color/mediumGray</color>
     <color name="msgTextColor">@color/black</color>
-    <color name="msgTimeTextColor">@color/dark_grey</color>
+    <color name="msgTimeTextColor">@color/darkGray</color>
     <color name="msgImageTimeColor">@color/lightGray</color>
     <color name="msgImageTimeBackground">#66000000</color>
 
@@ -47,4 +44,12 @@
     <color name="thumbColor">@color/gray</color>
     <color name="checkedTrackColor">#509C27B0</color>
     <color name="trackColor">#50888888</color>
+
+    <color name="toolbarBackground">@color/purple_700</color>
+    <color name="editTextBackgroundTask">@color/backgroundColor</color>
+    <color name="editTextBackground">@color/white</color>
+    <color name="cursorColor">@color/white</color>
+    <color name="changeNightModeTint">@color/lightGray</color>
+    <color name="ratingColor">@color/purple_700</color>
+
 </resources>

@@ -3,6 +3,7 @@
 <layout>
 
     <data>
+
         <variable
             name="user"
             type="com.example.learningassistant.models.User" />
@@ -13,7 +14,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey"
+        android:background="@color/backgroundColor"
         tools:context=".ui.fragments.change_name.ChangeNameFragment">
 
 
@@ -23,12 +24,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/normal_margin"
             android:autofillHints=""
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/editTextBackground"
             android:inputType="textPersonName"
             android:maxLines="1"
-            android:padding="7dp"
+            android:padding="@dimen/very_small_margin"
             android:text="@{user.fullName.split(&quot; &quot;)[0]}"
-            android:textColor="@color/black"
+            android:textColor="@color/titleColor"
             android:textCursorDrawable="@drawable/black_cursor"
             android:textSize="@dimen/large_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,12 +43,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/normal_margin"
             android:autofillHints=""
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/editTextBackground"
             android:inputType="textPersonName"
             android:maxLines="1"
-            android:padding="7dp"
+            android:padding="@dimen/very_small_margin"
             android:text="@{user.fullName.split(&quot; &quot;)[1]}"
-            android:textColor="@color/black"
+            android:textColor="@color/titleColor"
             android:textCursorDrawable="@drawable/black_cursor"
             android:textSize="@dimen/large_text"
             app:layout_constraintEnd_toEndOf="parent"

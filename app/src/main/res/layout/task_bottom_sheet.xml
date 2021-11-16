@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.main.TaskBottomSheet">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_marginStart="@dimen/large_margin"
         android:layout_marginTop="@dimen/large_margin"
         android:text="@string/school_subject"
-        android:textColor="@color/darkGray"
+        android:textColor="@color/titleColor"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +168,7 @@
         android:layout_marginStart="@dimen/large_margin"
         android:layout_marginTop="@dimen/small_margin"
         android:text="@string/school_class"
-        android:textColor="@color/darkGray"
+        android:textColor="@color/titleColor"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -299,7 +300,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/teal_700"
         android:text="@string/apply"
         android:textAllCaps="false"
         android:textColor="@color/white"

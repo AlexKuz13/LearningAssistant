@@ -26,7 +26,7 @@
             android:id="@+id/settings_header"
             android:layout_width="match_parent"
             android:layout_height="@dimen/settings_header_height"
-            android:background="@color/purple_500"
+            android:background="@color/toolbarBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/settings_header_fullname"
                 style="@style/text_nav_menu_header"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/very_small_margin"
                 android:text="@{user.fullName}"
                 android:textSize="@dimen/normal_text"
                 app:layout_constraintStart_toEndOf="@+id/settings_header_profile_photo"
@@ -68,8 +68,8 @@
             android:layout_marginEnd="@dimen/normal_margin"
             android:src="@drawable/ic_camera"
             android:visibility="@{userBoolean ? View.VISIBLE : View.GONE}"
-            app:civ_border_color="@color/purple_500"
-            app:civ_border_width="2dp"
+            app:civ_border_color="@color/toolbarBackground"
+            app:civ_border_width="@dimen/stroke_width"
             app:civ_circle_background_color="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/settings_header"
             app:layout_constraintEnd_toEndOf="parent"

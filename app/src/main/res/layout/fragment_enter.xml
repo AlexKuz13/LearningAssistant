@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
-            android:padding="10dp"
+            android:padding="@dimen/small_margin"
             android:text="@string/dont_have_acc"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_text" />
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
             android:foreground="?attr/selectableItemBackground"
-            android:padding="10dp"
+            android:padding="@dimen/small_margin"
             android:text="@string/text_register_now"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_text"
@@ -122,6 +122,8 @@
         android:layout_marginTop="@dimen/normal_margin"
         android:backgroundTint="@color/blue_VK"
         android:text="@string/enter_vk"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear_layout" />

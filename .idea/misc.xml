@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alexandr/.gradle/caches/transforms-3/ecd32db34a9a22b07d9ee5d611fc0884/transformed/material-1.4.0/res/drawable/ic_mtrl_chip_checked_black.xml" value="0.278515625" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable-v21/ripple_effect.xml" value="0.153125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/black_cursor.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2703125" />
@@ -27,6 +29,7 @@
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/chat_item.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_chats.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_main.xml" value="0.2" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_rating.xml" value="0.26640625" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/header.xml" value="0.1" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/language_bottom_sheet.xml" value="0.25416666666666665" />

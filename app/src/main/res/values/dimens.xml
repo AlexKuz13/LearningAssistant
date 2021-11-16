@@ -6,7 +6,7 @@
     <dimen name="normal_margin">16dp</dimen>
     <dimen name="small_margin">10dp</dimen>
 
-    <dimen name="recycler_padding_bottom">60dp</dimen>
+    <dimen name="recycler_padding_bottom">65dp</dimen>
 
     <!-- TextSize -->
     <dimen name="large_text">20sp</dimen>

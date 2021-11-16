@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                Log.d("dfdfd", it)
 //            }
 //        }
-
         AppPreference.getPreference(this) // заменить на dataStore
         initFields()
         mNavDrawer.create()

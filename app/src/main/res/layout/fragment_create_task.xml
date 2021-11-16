@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    android:background="@color/backgroundColor"
     android:layout_height="wrap_content"
     tools:context=".ui.fragments.create_tasks.CreateTaskFragment">
 
@@ -23,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:dropDownHeight="@dimen/task_dropdown_height"
-            android:inputType="none" />
+            android:inputType="none"
+            tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:dropDownHeight="@dimen/task_dropdown_height"
-            android:inputType="none" />
+            android:inputType="none"
+            tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:text="@string/task_description"
-        android:textColor="@color/darker"
+        android:textColor="@color/titleColor"
         android:textSize="@dimen/normal_text"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,11 +79,11 @@
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginEnd="@dimen/normal_margin"
         android:autofillHints=""
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/editTextBackgroundTask"
         android:gravity="start|top"
         android:hint="@string/create_task_hint_description"
         android:inputType="textMultiLine"
-        android:textColor="@color/darker"
+        android:textColor="@color/descriptionColor"
         android:textCursorDrawable="@drawable/black_cursor"
         android:textSize="@dimen/normal_text"
         app:layout_constraintBottom_toTopOf="@id/btn_submit_task"
@@ -95,11 +98,10 @@
         android:layout_margin="@dimen/normal_margin"
         android:backgroundTint="@color/teal_700"
         android:text="@string/create_task_submit"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="@dimen/small_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

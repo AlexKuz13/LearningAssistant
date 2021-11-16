@@ -60,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:night="@{!nightMode}"
-            app:tint="@color/white" />
+            app:tint="@color/changeNightModeTint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

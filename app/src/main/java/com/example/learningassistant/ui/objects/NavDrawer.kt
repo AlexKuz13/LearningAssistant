@@ -72,7 +72,7 @@ class NavDrawer(private var toolbar: Toolbar) {
 
     fun disableDrawer() {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         toolbar.setNavigationOnClickListener {
             APP_ACTIVITY.navController.popBackStack()
         }

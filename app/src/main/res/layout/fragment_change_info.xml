@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_grey"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.change_info.ChangeInfoFragment">
 
     <EditText
@@ -19,11 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:autofillHints=""
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/editTextBackground"
         android:inputType="textMultiLine"
-        android:padding="7dp"
+        android:padding="@dimen/very_small_margin"
         android:text="@{user.info}"
-        android:textColor="@color/black"
+        android:textColor="@color/titleColor"
         android:textCursorDrawable="@drawable/black_cursor"
         android:textSize="@dimen/large_text"
         app:layout_constraintEnd_toEndOf="parent"

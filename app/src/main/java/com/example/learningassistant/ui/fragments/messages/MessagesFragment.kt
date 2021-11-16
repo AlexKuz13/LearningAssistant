@@ -60,10 +60,9 @@ class MessagesFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        initRecyclerView()
         initFields()
         initToolbar()
-        initRecyclerView()
-
     }
 
 

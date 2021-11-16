@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500">
+        android:background="@color/toolbarBackground">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/toolbar_chat_image"
