@@ -2,6 +2,7 @@ package com.example.learningassistant.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.data.database.COLL_USERS
 import com.example.learningassistant.data.database.DB
@@ -10,6 +11,7 @@ import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.databinding.MessageItemBinding
 import com.example.learningassistant.models.Message
 import com.example.learningassistant.models.User
+import com.example.learningassistant.utilits.diffutils.MessageDiffUtil
 import com.example.learningassistant.utilits.showToast
 
 
@@ -56,59 +58,16 @@ class MessagesAdapter : RecyclerView.Adapter<MessagesAdapter.MessageHolder>() {
                 holder.bind(currentMessage, userBoolean, msgText)
             }
             .addOnFailureListener { showToast(it.message.toString()) }
-//        when (currentMessage.type_mes) {
-//            TYPE_TEXT -> drawMessageText(holder, position)
-//            TYPE_IMAGE -> drawMessageImage(holder, position)
-//        }
     }
 
-    //  private fun drawMessageText(holder: SingleChatHolder, position: Int) {
-//        holder.blockReceivingImageMessage.visibility = View.GONE
-//        holder.blockUserImageMessage.visibility = View.GONE
-//        if (mlistMessagesCache[position].from == UID) {
-//            holder.blockUserMessage.visibility = View.VISIBLE
-//            holder.blockReceivingMessage.visibility = View.GONE
-//            holder.chatUserMessage.text = mlistMessagesCache[position].text
-//            holder.chatUserMessageTime.text = mlistMessagesCache[position]
-//                .timeStamp.toString().asTimeMessage()
-//        } else {
-//            holder.blockUserMessage.visibility = View.GONE
-//            holder.blockReceivingMessage.visibility = View.VISIBLE
-//            holder.chatReceivingMessage.text = mlistMessagesCache[position].text
-//            holder.chatReceivingMessageTime.text = mlistMessagesCache[position]
-//                .timeStamp.toString().asTimeMessage()
-//        }
-    //  }
-
-    //  private fun drawMessageImage(holder: SingleChatHolder, position: Int) {
-//        holder.blockUserMessage.visibility = View.GONE
-//        holder.blockReceivingMessage.visibility = View.GONE
-//        if (mlistMessagesCache[position].from == UID) {
-//            holder.blockReceivingImageMessage.visibility = View.GONE
-//            holder.blockUserImageMessage.visibility = View.VISIBLE
-//            holder.chatUserImageMessage.downloadAndSetImage(
-//                mlistMessagesCache[position].imageUrl
-//            )
-//            holder.chatUserImageTime.text = mlistMessagesCache[position]
-//                .timeStamp.toString().asTimeMessage()
-//
-//        } else {
-//            holder.blockReceivingImageMessage.visibility = View.VISIBLE
-//            holder.blockUserImageMessage.visibility = View.GONE
-//            holder.chatReceivingImageMessage.downloadAndSetImage(
-//                mlistMessagesCache[position].imageUrl
-//            )
-//            holder.chatReceivingImageTime.text = mlistMessagesCache[position]
-//                .timeStamp.toString().asTimeMessage()
-//
-//        }
-    //  }
 
     override fun getItemCount(): Int = mListMessagesCache.size
 
     fun setList(list: List<Message>) {
+        val messagesDiffUtil = MessageDiffUtil(mListMessagesCache, list)
+        val diffUtilResult = DiffUtil.calculateDiff(messagesDiffUtil)
         mListMessagesCache = list
-        notifyDataSetChanged()
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 
 }

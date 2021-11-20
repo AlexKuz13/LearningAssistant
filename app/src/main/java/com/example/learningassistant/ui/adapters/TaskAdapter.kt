@@ -2,6 +2,7 @@ package com.example.learningassistant.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.R
 import com.example.learningassistant.data.database.COLL_USERS
@@ -11,6 +12,7 @@ import com.example.learningassistant.databinding.TaskItemBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.diffutils.TaskDiffUtil
 import com.example.learningassistant.utilits.showToast
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
@@ -58,7 +60,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     override fun getItemCount(): Int = mListTasksCache.size
 
     fun setList(list: List<Task>) {
+        val tasksDiffUtil = TaskDiffUtil(mListTasksCache, list)
+        val diffUtilResult = DiffUtil.calculateDiff(tasksDiffUtil)
         mListTasksCache = list
-        notifyDataSetChanged()
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }

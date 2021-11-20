@@ -2,18 +2,20 @@ package com.example.learningassistant.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningassistant.data.database.COLL_USERS
 import com.example.learningassistant.data.database.DB
 import com.example.learningassistant.databinding.ChatItemBinding
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.User
+import com.example.learningassistant.utilits.diffutils.ChatDiffUtil
 import com.example.learningassistant.utilits.showToast
 
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
-    private var mlistChatCache = emptyList<Chat>()
+    private var mListChatCache = emptyList<Chat>()
 
     class ChatHolder(private val binding: ChatItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(chat: Chat, user: User) {
@@ -36,7 +38,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
     }
 
     override fun onBindViewHolder(holder: ChatHolder, position: Int) {
-        val currentChat = mlistChatCache[position]
+        val currentChat = mListChatCache[position]
         DB.collection(COLL_USERS).document(currentChat.id)
             .get()
             .addOnSuccessListener {
@@ -47,10 +49,12 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
     }
 
 
-    override fun getItemCount(): Int = mlistChatCache.size
+    override fun getItemCount(): Int = mListChatCache.size
 
     fun setList(list: List<Chat>) {
-        mlistChatCache = list
-        notifyDataSetChanged()
+        val chatsDiffUtil = ChatDiffUtil(mListChatCache, list)
+        val diffUtilResult = DiffUtil.calculateDiff(chatsDiffUtil)
+        mListChatCache = list
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }
