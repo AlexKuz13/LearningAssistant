@@ -2,27 +2,29 @@ package com.example.learningassistant.ui.fragments.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.learningassistant.data.database.REPOSITORY
 import com.example.learningassistant.data.database.UID
-import com.example.learningassistant.data.database.USER_REPOSITORY
 import com.example.learningassistant.data.database.firebase.AppFirebaseRepository
 import com.example.learningassistant.data.database.firebase.AppFirebaseUser
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegisterFragmentViewModel(val user: User) : ViewModel() {
+@HiltViewModel
+class RegisterFragmentViewModel @Inject constructor(
+    private val appFirebaseUser: AppFirebaseUser,
+    private val appFirebaseRepository: AppFirebaseRepository
+) : ViewModel() {
 
-    fun createDatabase(onSuccess: () -> Unit) {
-        REPOSITORY = AppFirebaseRepository()
-        USER_REPOSITORY = AppFirebaseUser()
-        REPOSITORY.createDatabase(email = user.email, password = user.password, {
+    fun createDatabase(user: User, onSuccess: () -> Unit) {
+        appFirebaseRepository.createDatabase(email = user.email, password = user.password, {
             viewModelScope.launch(Dispatchers.IO) {
                 user.id = UID
-                (USER_REPOSITORY as AppFirebaseUser).insertUser(user)
+                appFirebaseUser.insertUser(user)
                 {
-                    REPOSITORY.connectToDatabase(
+                    appFirebaseRepository.connectToDatabase(
                         email = user.email,
                         password = user.password,
                         { onSuccess() },

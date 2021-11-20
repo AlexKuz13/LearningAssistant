@@ -3,8 +3,6 @@ package com.example.learningassistant.ui.fragments.main
 import androidx.lifecycle.*
 import com.example.learningassistant.data.DataStoreRepository
 import com.example.learningassistant.data.SubjectAndClass
-import com.example.learningassistant.data.database.TASK_REPOSITORY
-import com.example.learningassistant.data.database.USER_REPOSITORY
 import com.example.learningassistant.data.database.firebase.AppFirebaseTask
 import com.example.learningassistant.data.database.firebase.AppFirebaseUser
 import com.example.learningassistant.models.Task
@@ -16,7 +14,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainFragmentViewModel @Inject constructor(
-    private val dataStoreRepository: DataStoreRepository
+    private val dataStoreRepository: DataStoreRepository,
+    appFirebaseUser: AppFirebaseUser,
+    private val appFirebaseTask: AppFirebaseTask
 ) : ViewModel() {
 
     private lateinit var subjectAndClass: SubjectAndClass
@@ -24,14 +24,7 @@ class MainFragmentViewModel @Inject constructor(
     var readSubjectAndClass = dataStoreRepository.readSubjectAndClass
 
 
-    val currentUser: LiveData<User>
-
-
-    init {
-        USER_REPOSITORY = AppFirebaseUser() // через Hilt внедрить попробовать
-        TASK_REPOSITORY = AppFirebaseTask()
-        currentUser = USER_REPOSITORY.currentUser
-    }
+    val currentUser: LiveData<User> = appFirebaseUser.currentUser
 
 
     fun saveSubjectAndClass() =
@@ -48,7 +41,7 @@ class MainFragmentViewModel @Inject constructor(
 
 
     fun listTasks(filter: List<String>): LiveData<List<Task>> {
-        return AppFirebaseTask().allTasks(listOf(filter[0], filter[1]))
+        return appFirebaseTask.allTasks(listOf(filter[0], filter[1]))
     }
 
 

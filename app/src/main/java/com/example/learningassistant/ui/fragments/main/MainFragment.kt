@@ -80,7 +80,7 @@ class MainFragment : Fragment() {
         mObserverTasks = Observer {
             val list = it
             mAdapter.setList(list)
-            mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)  // что за лесенка обсерверов бля
+            mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
 
         mObserverSubjectAndClass = Observer {

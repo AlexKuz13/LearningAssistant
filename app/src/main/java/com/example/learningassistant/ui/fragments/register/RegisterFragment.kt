@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.learningassistant.R
-import com.example.learningassistant.data.database.*
+import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.FragmentRegisterBinding
 import com.example.learningassistant.models.User
 import com.example.learningassistant.ui.objects.AppPreference
-import com.example.learningassistant.utilits.*
+import com.example.learningassistant.utilits.APP_ACTIVITY
+import com.example.learningassistant.utilits.showToast
 import kotlinx.coroutines.launch
 
 class RegisterFragment : Fragment() {
@@ -28,6 +29,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
+        mViewModel = ViewModelProvider(this).get(RegisterFragmentViewModel::class.java)
         return mBinding.root
     }
 
@@ -39,13 +41,7 @@ class RegisterFragment : Fragment() {
             checkFields {
                 lifecycleScope.launch {
                     readData()
-                    mViewModel = ViewModelProvider(
-                        this@RegisterFragment,
-                        RegisterViewModelFactory(USER)
-                    ).get(
-                        RegisterFragmentViewModel::class.java
-                    )
-                    mViewModel.createDatabase {
+                    mViewModel.createDatabase(USER) {
                         showToast(resources.getString(R.string.register_completed))
                         AppPreference.setInitUser(true)
                         APP_ACTIVITY.navController.navigate(R.id.action_registerFragment_to_mainFragment)

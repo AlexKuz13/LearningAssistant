@@ -29,9 +29,7 @@ class CreateTaskFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCreateTaskBinding.inflate(layoutInflater, container, false)
-        mViewModel = ViewModelProvider(this, CreateTaskViewModelFactory(task)).get(
-            CreateTaskFragmentViewModel::class.java
-        )
+        mViewModel = ViewModelProvider(this).get(CreateTaskFragmentViewModel::class.java)
         return mBinding.root
     }
 
@@ -45,10 +43,7 @@ class CreateTaskFragment : DialogFragment() {
             if (task.description.isEmpty()) {
                 showToast(resources.getString(R.string.fill_fields))
             } else {
-                mViewModel = ViewModelProvider(this, CreateTaskViewModelFactory(task)).get(
-                    CreateTaskFragmentViewModel::class.java
-                )
-                mViewModel.insertTask {
+                mViewModel.insertTask(task) {
                     APP_ACTIVITY.navController.navigate(R.id.action_createTaskFragment_to_mainFragment)
                 }
             }

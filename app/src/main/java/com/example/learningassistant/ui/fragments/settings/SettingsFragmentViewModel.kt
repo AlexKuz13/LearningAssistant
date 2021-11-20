@@ -7,8 +7,8 @@ import com.example.learningassistant.data.DataStoreRepository
 import com.example.learningassistant.data.database.CHILD_PHOTO_URL
 import com.example.learningassistant.data.database.STORAGE
 import com.example.learningassistant.data.database.USER
-import com.example.learningassistant.data.database.USER_REPOSITORY
 import com.example.learningassistant.data.database.firebase.AppFirebaseStorage
+import com.example.learningassistant.data.database.firebase.AppFirebaseUser
 import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsFragmentViewModel @Inject constructor(
-    private val dataStoreRepository: DataStoreRepository
+    private val dataStoreRepository: DataStoreRepository,
+    private val appFirebaseUser: AppFirebaseUser
 ) : ViewModel() {
 
 
@@ -32,7 +33,7 @@ class SettingsFragmentViewModel @Inject constructor(
             STORAGE.putImageToStorage(uri, path)
             STORAGE.getUrlFromStorage(path) {
                 viewModelScope.launch(Dispatchers.IO) {
-                    USER_REPOSITORY.updateUser(USER, hashMapOf(CHILD_PHOTO_URL to USER.photoUrl)) {
+                    appFirebaseUser.updateUser(USER, hashMapOf(CHILD_PHOTO_URL to USER.photoUrl)) {
                         onSuccess()
                     }
                 }

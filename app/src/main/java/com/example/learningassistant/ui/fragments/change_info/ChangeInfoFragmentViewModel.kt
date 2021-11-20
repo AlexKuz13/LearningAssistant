@@ -4,15 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.learningassistant.data.database.CHIlD_INFO
 import com.example.learningassistant.data.database.USER
-import com.example.learningassistant.data.database.USER_REPOSITORY
+import com.example.learningassistant.data.database.firebase.AppFirebaseUser
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChangeInfoFragmentViewModel(val info: String) :ViewModel(){
+@HiltViewModel
+class ChangeInfoFragmentViewModel @Inject constructor(
+    private val appFirebaseUser: AppFirebaseUser
+) : ViewModel() {
 
-    fun changeInfo(onSuccess:()->Unit){
+    fun changeInfo(info: String, onSuccess: () -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            USER_REPOSITORY.updateUser(USER,hashMapOf(CHIlD_INFO to info)) {
+            appFirebaseUser.updateUser(USER, hashMapOf(CHIlD_INFO to info)) {
                 USER.info = info
                 onSuccess()
             }

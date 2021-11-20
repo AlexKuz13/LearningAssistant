@@ -6,8 +6,11 @@ import com.example.learningassistant.data.database.DB
 import com.example.learningassistant.data.database.intefaces.DatabaseUserRepository
 import com.example.learningassistant.models.User
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
 
-class AppFirebaseUser : DatabaseUserRepository {
+@ViewModelScoped
+class AppFirebaseUser @Inject constructor() : DatabaseUserRepository {
 
     private val liveDataUser = UserLiveData()
 

@@ -6,13 +6,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.learningassistant.R
-import com.example.learningassistant.data.database.AUTH
 import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.HeaderBinding
 import com.example.learningassistant.ui.fragments.main.MainFragmentDirections
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.AppStates
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class NavDrawer(private var toolbar: Toolbar) {
@@ -62,7 +62,7 @@ class NavDrawer(private var toolbar: Toolbar) {
             R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_chatsFragment)
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)
-                AUTH.signOut()
+                FirebaseAuth.getInstance().signOut() // заменить возможно на appFirebaseRepository
                 AppPreference.setInitUser(false)
                 APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_enterFragment)
             }

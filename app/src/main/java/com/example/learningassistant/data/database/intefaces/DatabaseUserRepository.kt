@@ -2,7 +2,9 @@ package com.example.learningassistant.data.database.intefaces
 
 import androidx.lifecycle.LiveData
 import com.example.learningassistant.models.User
+import dagger.hilt.android.scopes.ViewModelScoped
 
+@ViewModelScoped
 interface DatabaseUserRepository {
 
     val currentUser: LiveData<User>

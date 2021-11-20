@@ -12,8 +12,9 @@ import com.example.learningassistant.data.database.USER
 import com.example.learningassistant.databinding.FragmentChangeInfoBinding
 import com.example.learningassistant.ui.fragments.settings.BaseChangeFragment
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ChangeInfoFragment : BaseChangeFragment() {
 
     private var _binding: FragmentChangeInfoBinding? = null
@@ -29,6 +30,7 @@ class ChangeInfoFragment : BaseChangeFragment() {
         _binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_change_info, container, false)
         mBinding.user = USER
+        mViewModel = ViewModelProvider(this).get(ChangeInfoFragmentViewModel::class.java)
         return mBinding.root
     }
 
@@ -37,10 +39,7 @@ class ChangeInfoFragment : BaseChangeFragment() {
         super.change()
         val info = mBinding.etChangeInfo.text.toString()
         if (info != USER.info) {
-            mViewModel = ViewModelProvider(this, ChangeInfoViewModelFactory(info)).get(
-                ChangeInfoFragmentViewModel::class.java
-            )
-            mViewModel.changeInfo {
+            mViewModel.changeInfo(info) {
                 showToast(resources.getString(R.string.data_update))
                 USER.info = info
                 findNavController().popBackStack()

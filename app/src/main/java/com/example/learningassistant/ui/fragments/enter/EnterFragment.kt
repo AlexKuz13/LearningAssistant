@@ -17,8 +17,9 @@ import com.vk.api.sdk.VK
 import com.vk.api.sdk.auth.VKAccessToken
 import com.vk.api.sdk.auth.VKAuthCallback
 import com.vk.api.sdk.auth.VKScope
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class EnterFragment : Fragment() {
 
     private var _binding: FragmentEnterBinding? = null
@@ -31,6 +32,7 @@ class EnterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEnterBinding.inflate(layoutInflater, container, false)
+        mViewModel = ViewModelProvider(this).get(EnterFragmentViewModel::class.java)
         return mBinding.root
     }
 
@@ -52,14 +54,10 @@ class EnterFragment : Fragment() {
         } else {
             val email = mBinding.loginInputEmail.text.toString()
             val password = mBinding.loginInputPassword.text.toString()
-            mViewModel = ViewModelProvider(this, EnterViewModelFactory(email, password)).get(
-                EnterFragmentViewModel::class.java
-            )
-            mViewModel.initDatabase {
+            mViewModel.initDatabase(email, password) {
                 AppPreference.setInitUser(true)
                 APP_ACTIVITY.navController.navigate(R.id.action_enterFragment_to_mainFragment)
             }
-
         }
     }
 

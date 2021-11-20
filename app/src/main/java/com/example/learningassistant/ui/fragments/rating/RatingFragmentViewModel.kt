@@ -7,7 +7,7 @@ import com.example.learningassistant.data.database.firebase.AppFirebaseMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RatingFragmentViewModel(val interlocutor: String, val rating: Float) : ViewModel() {
+class RatingFragmentViewModel(interlocutor: String, val rating: Float) : ViewModel() {
 
     init {
         MESSAGE_REPOSITORY = AppFirebaseMessage(interlocutor)

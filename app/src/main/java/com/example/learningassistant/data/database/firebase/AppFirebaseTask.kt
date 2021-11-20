@@ -6,8 +6,11 @@ import com.example.learningassistant.data.database.DB
 import com.example.learningassistant.data.database.intefaces.DatabaseTaskRepository
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
 
-class AppFirebaseTask : DatabaseTaskRepository {
+@ViewModelScoped
+class AppFirebaseTask @Inject constructor() : DatabaseTaskRepository {
 
 
     override fun allTasks(filter: List<String>): LiveData<List<Task>> {

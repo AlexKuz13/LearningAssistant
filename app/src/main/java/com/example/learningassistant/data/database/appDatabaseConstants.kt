@@ -1,16 +1,17 @@
 package com.example.learningassistant.data.database
 
 import android.annotation.SuppressLint
-import com.example.learningassistant.data.database.intefaces.*
+import com.example.learningassistant.data.database.intefaces.DatabaseChatRepository
+import com.example.learningassistant.data.database.intefaces.DatabaseMessageRepository
+import com.example.learningassistant.data.database.intefaces.DatabaseStorage
 import com.example.learningassistant.models.Chat
 import com.example.learningassistant.models.Message
 import com.example.learningassistant.models.Rating
 import com.example.learningassistant.models.User
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 
-lateinit var AUTH: FirebaseAuth
+//lateinit var AUTH: FirebaseAuth
 @SuppressLint("StaticFieldLeak")
 lateinit var DB: FirebaseFirestore
 lateinit var USER: User
@@ -21,9 +22,9 @@ lateinit var CHAT: Chat
 lateinit var UID: String
 lateinit var REF_STORAGE_ROOT: StorageReference
 
-lateinit var REPOSITORY:DatabaseRepository
-lateinit var USER_REPOSITORY: DatabaseUserRepository
-lateinit var TASK_REPOSITORY: DatabaseTaskRepository
+//lateinit var REPOSITORY:DatabaseRepository
+//lateinit var USER_REPOSITORY: DatabaseUserRepository
+//lateinit var TASK_REPOSITORY: DatabaseTaskRepository
 lateinit var CHAT_REPOSITORY: DatabaseChatRepository
 lateinit var MESSAGE_REPOSITORY: DatabaseMessageRepository
 lateinit var STORAGE:DatabaseStorage

@@ -13,8 +13,9 @@ import com.example.learningassistant.databinding.FragmentChangeNameBinding
 import com.example.learningassistant.ui.fragments.settings.BaseChangeFragment
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ChangeNameFragment : BaseChangeFragment() {
 
     private var _binding: FragmentChangeNameBinding? = null
@@ -30,6 +31,7 @@ class ChangeNameFragment : BaseChangeFragment() {
         _binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_change_name, container, false)
         mBinding.user = USER
+        mViewModel = ViewModelProvider(this).get(ChangeNameFragmentViewModel::class.java)
         return mBinding.root
     }
 
@@ -42,10 +44,7 @@ class ChangeNameFragment : BaseChangeFragment() {
         } else {
             val fullName = "$name $surname"
             if (fullName != USER.fullName) {
-                mViewModel = ViewModelProvider(this, ChangeNameViewModelFactory(fullName)).get(
-                    ChangeNameFragmentViewModel::class.java
-                )
-                mViewModel.changeName {
+                mViewModel.changeName(fullName) {
                     showToast(resources.getString(R.string.data_update))
                     APP_ACTIVITY.mNavDrawer.updateHeader()
                     APP_ACTIVITY.navController.popBackStack()
