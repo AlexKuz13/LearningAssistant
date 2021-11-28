@@ -17,6 +17,11 @@ class AppFirebaseTask @Inject constructor() : DatabaseTaskRepository {
         return TaskLiveData(filter)
     }
 
+    override fun allMyTasks(): LiveData<List<Task>> {
+        return MyTaskLiveData()
+    }
+
+
     override suspend fun insertTask(task: Task, onSuccess: () -> Unit) {
         val taskKey = DB.collection(COLL_TASKS).document().id
         DB.collection(COLL_TASKS).document(taskKey).set(task)

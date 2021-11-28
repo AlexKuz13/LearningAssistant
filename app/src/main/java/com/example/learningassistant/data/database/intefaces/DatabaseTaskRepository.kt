@@ -8,5 +8,6 @@ import dagger.hilt.android.scopes.ViewModelScoped
 interface DatabaseTaskRepository {
 
     fun allTasks(filter: List<String>): LiveData<List<Task>>
+    fun allMyTasks(): LiveData<List<Task>>
     suspend fun insertTask(task: Task, onSuccess: () -> Unit)
 }

@@ -5,6 +5,7 @@
     <string name="nav_menu_messages">Сообщения</string>
     <string name="nav_menu_settings">Настройки</string>
     <string name="nav_menu_exit">Выход</string>
+    <string name="nav_menu_my_tasks">Мои задания</string>
 
     <!-- Fragments Titles -->
     <string name="fragment_chats">"Сообщения"</string>
@@ -136,4 +137,6 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+    <string name="fragment_my_tasks">Мои задания</string>
+
 </resources>

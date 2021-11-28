@@ -27,6 +27,7 @@ class MainFragment : Fragment() {
     private val mAdapter by lazy { TaskAdapter() }
     lateinit var mViewModel: MainFragmentViewModel
     lateinit var mObserverUser: Observer<User>
+
     private lateinit var mObserverTasks: Observer<List<Task>>
     lateinit var mObserverSubjectAndClass: Observer<SubjectAndClass>
 
@@ -38,6 +39,7 @@ class MainFragment : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         mViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+
         return mBinding.root
     }
 
@@ -75,7 +77,7 @@ class MainFragment : Fragment() {
     private fun initRecyclerView() {
         mBinding.taskRecyclerView.adapter = mAdapter
         mBinding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        //showShimmerEffect()
+        // showShimmerEffect()
 
         mObserverTasks = Observer {
             val list = it
@@ -91,6 +93,37 @@ class MainFragment : Fragment() {
         mViewModel.readSubjectAndClass.asLiveData().observe(this, mObserverSubjectAndClass)
 
     }
+
+//    private fun requestData() {
+//
+//        mObserverSubjectAndClass = Observer {
+//            mViewModel.getTasks(listOf(it.schoolSubject, it.schoolClass))
+//            mViewModel.tasksData
+//                .observe(viewLifecycleOwner, { data ->
+//                    when (data) {
+//                        is NetworkResult.Success -> {
+//                            hideShimmerEffect()
+//                            data.data?.let { it1 -> mAdapter.setList(it1) }
+//                            mBinding.taskRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+//                        }
+//                        is NetworkResult.Error -> {
+//                            hideShimmerEffect()
+//                            Toast.makeText(
+//                                requireContext(),
+//                                data.message.toString(),
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                        }
+//                        is NetworkResult.Loading -> {
+//                            showShimmerEffect()
+//                        }
+//                    }
+//                })
+//        }
+//
+//        mViewModel.readSubjectAndClass.asLiveData()
+//            .observe(viewLifecycleOwner, mObserverSubjectAndClass)
+//    }
 
     private fun showShimmerEffect() {
         mBinding.taskRecyclerView.showShimmer()

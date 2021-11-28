@@ -160,4 +160,6 @@
         <item>11</item>
     </string-array>
     <string name="text_register_now">Sign up</string>
+    <string name="nav_menu_my_tasks">My tasks</string>
+    <string name="fragment_my_tasks">My tasks</string>
 </resources>

@@ -1,5 +1,9 @@
 package com.example.learningassistant.ui.fragments.main
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.example.learningassistant.data.DataStoreRepository
 import com.example.learningassistant.data.SubjectAndClass
@@ -16,8 +20,9 @@ import javax.inject.Inject
 class MainFragmentViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository,
     appFirebaseUser: AppFirebaseUser,
-    private val appFirebaseTask: AppFirebaseTask
-) : ViewModel() {
+    private val appFirebaseTask: AppFirebaseTask,
+    application: Application
+) : AndroidViewModel(application) {
 
     private lateinit var subjectAndClass: SubjectAndClass
 
@@ -40,9 +45,37 @@ class MainFragmentViewModel @Inject constructor(
         }
 
 
+    // var tasksData: MutableLiveData<NetworkResult<List<Task>?>> = MutableLiveData()
+
     fun listTasks(filter: List<String>): LiveData<List<Task>> {
         return appFirebaseTask.allTasks(listOf(filter[0], filter[1]))
     }
+
+//    fun getTasks(filter: List<String>) = viewModelScope.launch {
+//        getTasksSafeCall(filter)
+//    }
+
+//    private fun getTasksSafeCall(filter: List<String>) {
+//        tasksData.value = NetworkResult.Loading()
+//        if (hasInternetConnection()){
+//            try {
+//                val data = appFirebaseTask.allTasks(listOf(filter[0], filter[1]))
+//                tasksData.value = handleTasksData(data)
+//            } catch (e:Exception){
+//                tasksData.value = NetworkResult.Error("Tasks not found ")
+//            }
+//        } else{
+//            tasksData.value = NetworkResult.Error("No Internet Connection")
+//        }
+//    }
+//
+//    private fun handleTasksData(data: LiveData<List<Task>>): NetworkResult<List<Task>?> {
+//        return when {
+//            data.value.isNullOrEmpty() -> NetworkResult.Error("Tasks not ")
+//            else ->
+//               NetworkResult.Success(data.value)
+//        }
+//    }
 
 
     fun saveSubjectAndClassTemp(
@@ -57,6 +90,20 @@ class MainFragmentViewModel @Inject constructor(
             schoolClass,
             schoolClassId
         )
+    }
+
+
+    private fun hasInternetConnection(): Boolean {
+        val connectivityManager =
+            getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return when {
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            else -> false
+        }
     }
 
 

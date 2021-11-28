@@ -134,4 +134,6 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+    <string name="nav_menu_my_tasks">Meine Aufgaben</string>
+    <string name="fragment_my_tasks">Meine Aufgaben</string>
 </resources>

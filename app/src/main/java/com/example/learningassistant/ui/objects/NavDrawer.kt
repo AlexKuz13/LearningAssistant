@@ -59,6 +59,7 @@ class NavDrawer(private var toolbar: Toolbar) {
                 val action = MainFragmentDirections.actionMainFragmentToSettingsFragment(USER)
                 APP_ACTIVITY.navController.navigate(action)
             }
+            R.id.nav_my_tasks -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_myTasksFragment)
             R.id.nav_messages -> APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_chatsFragment)
             R.id.nav_logout -> {
                 AppStates.updateState(AppStates.OFFLINE)

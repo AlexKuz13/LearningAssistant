@@ -14,8 +14,9 @@ import com.example.learningassistant.databinding.FragmentCreateTaskBinding
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CreateTaskFragment : DialogFragment() {
 
 
