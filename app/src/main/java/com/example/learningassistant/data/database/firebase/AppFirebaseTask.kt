@@ -3,6 +3,7 @@ package com.example.learningassistant.data.database.firebase
 import androidx.lifecycle.LiveData
 import com.example.learningassistant.data.database.COLL_TASKS
 import com.example.learningassistant.data.database.DB
+import com.example.learningassistant.data.database.UID
 import com.example.learningassistant.data.database.intefaces.DatabaseTaskRepository
 import com.example.learningassistant.models.Task
 import com.example.learningassistant.utilits.showToast
@@ -29,5 +30,25 @@ class AppFirebaseTask @Inject constructor() : DatabaseTaskRepository {
                 onSuccess()
             }
             .addOnFailureListener { showToast(it.message.toString()) }
+    }
+
+    override suspend fun deleteAllMyTasks(onSuccess: () -> Unit) {
+        DB.collection(COLL_TASKS).get().addOnSuccessListener {
+            for (tasks in it.documents) {
+                val myTask = tasks.toObject(Task::class.java)
+                if (myTask?.from == UID) DB.collection(COLL_TASKS).document(tasks.id).delete()
+                    .addOnSuccessListener { onSuccess() }
+                    .addOnFailureListener { showToast(it.message.toString()) }
+            }
+        }
+    }
+
+    override suspend fun deleteMyTask(task: Task) {
+        DB.collection(COLL_TASKS).get().addOnSuccessListener {
+            for (tasks in it.documents) {
+                val myTask = tasks.toObject(Task::class.java) ?: Task()
+                if (myTask == task) DB.collection(COLL_TASKS).document(tasks.id).delete()
+            }
+        }
     }
 }

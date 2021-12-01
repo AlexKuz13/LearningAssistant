@@ -16,6 +16,8 @@
         <item name="popupMenuBackground">@color/backgroundColor</item>
         <item name="useMaterialThemeColors">true</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="actionModeBackground">@color/contextualActionBarColor</item>
     </style>
 
 
@@ -24,6 +26,10 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
+    </style>
+
+    <style name="CustomActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="background">@color/actionBarBackgroundColor</item>
     </style>
 
     <!--

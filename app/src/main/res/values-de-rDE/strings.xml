@@ -2,12 +2,14 @@
 <resources>
     <!--Nav Menu Strings-->
     <string name="nav_menu_messages">Beiträge</string>
+    <string name="nav_menu_my_tasks">Meine Aufgaben</string>
     <string name="nav_menu_settings">Einstellungen</string>
     <string name="nav_menu_exit">Ausgabe</string>
 
     <!-- Fragments Titles -->
     <string name="fragment_chats">Beiträge</string>
     <string name="fragment_settings">Einstellungen</string>
+    <string name="fragment_my_tasks">Meine Aufgaben</string>
 
     <!-- Register fragment -->
     <string name="register_completed">Registrierung erfolgreich abgeschlossen!</string>
@@ -134,6 +136,8 @@
         <item>10</item>
         <item>11</item>
     </string-array>
-    <string name="nav_menu_my_tasks">Meine Aufgaben</string>
-    <string name="fragment_my_tasks">Meine Aufgaben</string>
+
+    <!-- My Tasks Fragment -->
+    <string name="all_tasks_removed">Alle Aufgaben wurden gelöscht</string>
+    <string name="delete_all">Alles löschen</string>
 </resources>

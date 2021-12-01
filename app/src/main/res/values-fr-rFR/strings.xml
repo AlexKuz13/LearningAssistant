@@ -4,12 +4,14 @@
 
     <!--Nav Menu Strings-->
     <string name="nav_menu_messages">Des postes</string>
+    <string name="nav_menu_my_tasks">Mes tâches</string>
     <string name="nav_menu_settings">Paramètres</string>
     <string name="nav_menu_exit">Sortir</string>
 
     <!-- Fragments Titles -->
     <string name="fragment_chats">Des postes</string>
     <string name="fragment_settings">Paramètres</string>
+    <string name="fragment_my_tasks">Mes tâches</string>
     <string name="fragment_settings_user">Utilisateur</string>
 
 
@@ -134,8 +136,10 @@
         <item>10</item>
         <item>11</item>
     </string-array>
-    <string name="nav_menu_my_tasks">Mes tâches</string>
-    <string name="fragment_my_tasks">Mes tâches</string>
+
+    <!-- My Tasks Fragment -->
+    <string name="all_tasks_removed">Toutes les tâches ont été supprimées</string>
+    <string name="delete_all">Tout supprimer</string>
 
 
 </resources>

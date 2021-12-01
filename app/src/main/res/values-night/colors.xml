@@ -52,4 +52,10 @@
     <color name="changeNightModeTint">@color/lightGray</color>
     <color name="ratingColor">@color/purple_700</color>
 
+    <!-- Action mode -->
+    <color name="statusBarColor">@color/black</color>
+    <color name="contextualStatusBarColor">@color/black</color>
+    <color name="contextualActionBarColor">@color/darker</color>
+    <color name="actionBarBackgroundColor">@color/darker</color>
+
 </resources>

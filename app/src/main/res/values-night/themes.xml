@@ -15,7 +15,11 @@
         <item name="popupMenuBackground">@color/backgroundColor</item>
         <item name="useMaterialThemeColors">true</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="actionBarStyle">@style/CustomDarkActionBarStyle</item>
+        <item name="actionModeBackground">@color/contextualActionBarColor</item>
     </style>
 
-
+    <style name="CustomDarkActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="background">@color/actionBarBackgroundColor</item>
+    </style>
 </resources>

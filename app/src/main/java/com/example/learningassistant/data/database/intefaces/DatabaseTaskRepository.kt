@@ -10,4 +10,6 @@ interface DatabaseTaskRepository {
     fun allTasks(filter: List<String>): LiveData<List<Task>>
     fun allMyTasks(): LiveData<List<Task>>
     suspend fun insertTask(task: Task, onSuccess: () -> Unit)
+    suspend fun deleteAllMyTasks(onSuccess: () -> Unit)
+    suspend fun deleteMyTask(task: Task)
 }

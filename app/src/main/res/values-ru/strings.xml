@@ -10,6 +10,7 @@
     <!-- Fragments Titles -->
     <string name="fragment_chats">"Сообщения"</string>
     <string name="fragment_settings">"Настройки"</string>
+    <string name="fragment_my_tasks">Мои задания</string>
     <string name="fragment_settings_user">"Пользователь"</string>
 
     <!-- Register fragment -->
@@ -137,6 +138,9 @@
         <item>10</item>
         <item>11</item>
     </string-array>
-    <string name="fragment_my_tasks">Мои задания</string>
+
+    <!-- My Tasks Fragment -->
+    <string name="all_tasks_removed">Все задания удалены</string>
+    <string name="delete_all">Удалить все</string>
 
 </resources>

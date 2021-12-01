@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_btn_action_menu_change_name.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_confirm_change.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_default_profile_photo.xml" value="0.2703125" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_delete.xml" value="0.278515625" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_lock_register.xml" value="0.2703125" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/drawable/ic_nav_menu.xml" value="0.2703125" />
@@ -42,6 +43,8 @@
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/task_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/task_item.xml" value="0.264" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/layout/toolbar_info.xml" value="0.2" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/my_tasks_contextual_menu.xml" value="0.26640625" />
+        <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/my_tasks_delete_menu.xml" value="0.266015625" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/nav_menu.xml" value="0.16875" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/settings_action_menu.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/Alexandr/AndroidStudioProjects/LearningAssistant/app/src/main/res/menu/user_rating.xml" value="0.20854700854700856" />
