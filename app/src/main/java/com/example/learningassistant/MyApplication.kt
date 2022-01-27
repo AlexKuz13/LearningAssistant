@@ -1,9 +1,11 @@
 package com.example.learningassistant
 
 import android.app.Application
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.asLiveData
 import com.example.learningassistant.data.DataStoreRepository
+import com.example.learningassistant.utilits.APP_ACTIVITY
 import com.example.learningassistant.utilits.restartActivity
 import dagger.hilt.android.HiltAndroidApp
 
@@ -18,15 +20,16 @@ class MyApplication : Application() {
 
         dataStoreRepository = DataStoreRepository(this)
 
-        dataStoreRepository.readDarkTheme.asLiveData().observeForever() { darkTheme ->
+        dataStoreRepository.readDarkTheme.asLiveData().observeForever { darkTheme ->
             if (darkTheme != null) {
                 if (darkTheme) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
+                APP_ACTIVITY.navController.popBackStack()
+                restartActivity()
             }
-            restartActivity()
         }
     }
 
