@@ -5,21 +5,15 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 
 
-class HeaderMenuBinding {
+@BindingAdapter("night", "drawableNight", "drawableDay")
+fun onNightModeClickListener(
+    imageView: ImageView,
+    night: Boolean,
+    drawableNight: Drawable,
+    drawableDay: Drawable
+) {
+    if (night)
+        imageView.setImageDrawable(drawableNight)
+    else imageView.setImageDrawable(drawableDay)
 
-    companion object {
-        @BindingAdapter("night", "drawableNight", "drawableDay")
-        @JvmStatic
-        fun onNightModeClickListener(
-            imageView: ImageView,
-            night: Boolean,
-            drawableNight: Drawable,
-            drawableDay: Drawable
-        ) {
-            if (night)
-                imageView.setImageDrawable(drawableNight)
-            else imageView.setImageDrawable(drawableDay)
-
-        }
-    }
 }

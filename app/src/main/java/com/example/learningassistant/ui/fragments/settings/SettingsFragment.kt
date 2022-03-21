@@ -23,6 +23,7 @@ import com.example.learningassistant.utilits.showToast
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment() {
@@ -56,8 +57,12 @@ class SettingsFragment : BaseFragment() {
             setHasOptionsMenu(true)
             mBinding.userBoolean = true
 
-            mViewModel.readLangCodeAndId.asLiveData().observeOnce(this, {
-                mBinding.settingsLanguage.text = it.language.capitalize()
+            mViewModel.readLangCodeAndId.asLiveData().observeOnce(this, { it ->
+                mBinding.settingsLanguage.text = it.language.replaceFirstChar { char ->
+                    if (char.isLowerCase()) char.titlecase(
+                        Locale.getDefault()
+                    ) else char.toString()
+                }
 
             })
 
